@@ -1,0 +1,46 @@
+{% extends "analysis/base.html" %}
+{% load static %}
+{% block content %}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'analysis/jquery.datetimepicker.full.min.js' %}"></script>
+
+    {% if validation %}
+        <p><br>Hello, {{ email }}!<br><br><br></p>
+        <form method="POST" name="connection">
+            {% csrf_token %}
+            <input type="hidden" name="name" value="connection_form">
+            {{ form }}
+            <button type="submit">Connect to Firebase Database</button>
+        </form>
+
+
+        {% if start_date %}
+            <p><br>Time Range: {{ start_date }} to {{ end_date }} <br><br></p>
+            <input type="button" value="Download Dataset" onclick="window.open('download')">
+            <br><br>
+
+
+            <table border="1px">
+                <tr>
+                    <th>index</th>
+                    {% for data in fbdata %}
+                        <th>{{ data }}</th>
+                    {% endfor %}
+
+                    {% for index, record in fbdata.iterrows %}
+                        <tr>
+                            <td>{{ index }}</td>
+                            {% for cell in record %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tr>
+            </table>
+        {% endif %}
+    {% else %}
+        <p>Please Login</p>
+    {% endif %}
+{% endblock content %}

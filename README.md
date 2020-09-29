@@ -27,11 +27,23 @@ Install Packages
 
 6. pipenv install pycryptodome
     Install pycryptodome dependency and update Pipfile on virtual env.
+    PS: cd to site-packages, change folder crypto to upercase Crypto, Python is case sensitive.
 
-7. 
+7. pipenv install requests-toolbelt
+    Install requests-toolbelt dependency and update Pipfile on virtual env.
 
+8. pipenv install pandas 
+    Install pandas dependency and update Pipfile on virtual env.
+
+9. pipenv install pyrebase
+    Install pyrebase dependency and update Pipfile on virtual env.
+
+Then you have finished installation!!
 
 To run the project:
 
 1. python manage.py runserver
+
 2. python manage.py migrate
+    IF you have unapplied migration.
+

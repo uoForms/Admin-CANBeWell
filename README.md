@@ -27,7 +27,8 @@ Install Packages
 
 6. pipenv install pycryptodome
     Install pycryptodome dependency and update Pipfile on virtual env.
-    PS: cd to site-packages, change folder crypto to upercase Crypto, Python is case sensitive.
+    
+    PS: cd to site-packages, change folder crypto to upercase Crypto, Python is case sensitive. You may want to check that.
 
 7. pipenv install requests-toolbelt
     Install requests-toolbelt dependency and update Pipfile on virtual env.

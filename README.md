@@ -53,6 +53,10 @@ Install Packages
     
     Install pyrebase dependency and update Pipfile on virtual env.
 
+10. pipenv install django-allauth 
+
+    Install django-allauth dependency and update Pipfile on virtual env.
+
 
 Congrats! You have finished installation!!
 
@@ -63,4 +67,10 @@ To run the project:
 2. python manage.py migrate
 
     IF you have unapplied migration.
+
+3. python manage.py createsuperuser
+
+    Create user (username, email adress and password)
+
+
 

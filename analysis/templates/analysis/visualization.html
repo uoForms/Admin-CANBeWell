@@ -1,6 +1,56 @@
 {% extends "analysis/base.html" %}
 {% load static %}
 {% block content %}
-<p><br><br>Explore our latest data visualization dashboards on <a href="https://public.tableau.com/profile/healthcare.project#!/">Tableau public</a></p>
-<p><br><br><a href="#">Power BI</a> and customized charts are also on the way...</p>
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+</head>
+
+<p><br><br>
+    Explore our latest data visualization dashboards on 
+    <a href="https://public.tableau.com/profile/healthcare.project#!/">
+        Tableau public
+    </a>
+</p>
+
+<p><br><br>
+    <a href="#">
+        Power BI
+    </a> 
+    and customized charts are also on the way...
+</p>
+
+
+
+<div id="chart-1" class="chart-container"></div>
+<script>
+
+    var chart_data = {
+        "type": "bar",
+        "scale-x": {
+            "values": [
+                "Male",
+                "Femal"
+            ]
+        },
+        "series": [
+            {
+                "page_view_time": [
+                    34,
+                    67, 
+                    54.
+                ]
+            }
+        ]
+    }
+
+    zingchart.render({
+        id: "chart-1",
+        data: chart_data,
+    });
+
+</script>
+
 {% endblock content %}

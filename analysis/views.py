@@ -142,3 +142,6 @@ def viz(request):
     }
     return render(request, 'analysis/visualization.html', context)
 
+
+# charts js goes here 
+

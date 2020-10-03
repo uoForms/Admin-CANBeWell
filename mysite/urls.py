@@ -16,10 +16,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
+from users import views as user_views
 
 
 urlpatterns = [
     path('', include('analysis.urls')),
     path('admin/', admin.site.urls),
+    path('login/', user_views.login, name='firebase-login'),
+    path('logout/', user_views.logout, name='firebase-logout'),
     path('analysis/', include('analysis.urls')),
 ]

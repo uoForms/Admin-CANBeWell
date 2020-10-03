@@ -2,12 +2,6 @@
 {% load static %}
 {% block content %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Demo</title>
-    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-</head>
-
 <p><br><br>
     Explore our latest data visualization dashboards on 
     <a href="https://public.tableau.com/profile/healthcare.project#!/">
@@ -22,35 +16,12 @@
     and customized charts are also on the way...
 </p>
 
+<p><br><br>
+    Visualization with
+    <a href="#">
+        Dash
+    </a> 
+</p>
 
-
-<div id="chart-1" class="chart-container"></div>
-<script>
-
-    var chart_data = {
-        "type": "bar",
-        "scale-x": {
-            "values": [
-                "Male",
-                "Femal"
-            ]
-        },
-        "series": [
-            {
-                "page_view_time": [
-                    34,
-                    67, 
-                    54.
-                ]
-            }
-        ]
-    }
-
-    zingchart.render({
-        id: "chart-1",
-        data: chart_data,
-    });
-
-</script>
 
 {% endblock content %}

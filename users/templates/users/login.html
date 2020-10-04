@@ -5,18 +5,15 @@
         <form method="POST" action="{% url 'analysis-home' %}">
             {% csrf_token %}
             <fieldset class="form-group">
-                <!-- <legend class="border-bottom mb-4">Log In</legend>
-                <input type="email" name="email" type="email" placeholder="Email">
-                <input type="password" name="password" type="password" placeholder="Password">             -->
-                <input type="hidden" name="name" value="login_form">
-                Email:
-                <input type="email" name="email">
-                Password:
-                <input type="password" name="password">
-                <input type="submit" value="login">
+                <input type="hidden" class="form-control" name="name" value="login_form">
+                <label>Email Address</label>
+                <input type="email" class="form-control" name="email">
+                <p></p>
+                <label>Password</label>
+                <input type="password" class="form-control" name="password">
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Login</button>
+                <button class="btn btn-outline-info" value="login" type="submit">Login</button>
             </div>
         </form>
         <div class="border-top pt-3">

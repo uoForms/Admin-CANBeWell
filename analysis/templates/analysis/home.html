@@ -41,6 +41,9 @@
             </table>
         {% endif %}
     {% else %}
-        <p>Please Login</p>
+        <div class="content-section">
+            <h3>Welcome to CANBeWell Admin Site</h2>
+            <p class="lead">Please <a href="{% url 'firebase-login'%}">log in</a> to use the web app.</p>
+        </div>
     {% endif %}
 {% endblock content %}

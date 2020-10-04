@@ -1,13 +1,28 @@
 {% extends "analysis/base.html" %}
-{% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <form action="{% url 'analysis-home' %}" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="name" value="login_form">
-        Email:
-        <input type="email" name="email">
-        Password:
-        <input type="password" name="password">
-        <input type="submit" value="login">
-    </form>
-{% endblock content %}
+    <div class="content-section">
+        <form method="POST" action="{% url 'analysis-home' %}">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <!-- <legend class="border-bottom mb-4">Log In</legend>
+                <input type="email" name="email" type="email" placeholder="Email">
+                <input type="password" name="password" type="password" placeholder="Password">             -->
+                <input type="hidden" name="name" value="login_form">
+                Email:
+                <input type="email" name="email">
+                Password:
+                <input type="password" name="password">
+                <input type="submit" value="login">
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up Now</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %} 

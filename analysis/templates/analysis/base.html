@@ -36,8 +36,13 @@
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="{% url 'firebase-login' %}">Login</a>
+                  {% if validation %}
+                    <a class="nav-item nav-link" href="#">Profile</a>
                     <a class="nav-item nav-link" href="{% url 'firebase-logout' %}">Logout</a>
+                  {% else %}
+                    <a class="nav-item nav-link" href="{% url 'firebase-login' %}">Login</a>
+                    <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                  {% endif %}
                 </div>
               </div>
             </div>

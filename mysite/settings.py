@@ -125,6 +125,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# change if deploying on test environment
+STATIC_ROOT = '/home/CanBeWell/Admin-CANBeWell/static'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 

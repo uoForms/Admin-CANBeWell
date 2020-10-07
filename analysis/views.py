@@ -136,9 +136,3 @@ def about(request):
     }
     return render(request, 'analysis/about.html', context)
 
-def viz(request):
-    context = {
-        'page_title': 'Data Visualization'
-    }
-    return render(request, 'analysis/visualization.html', context)
-

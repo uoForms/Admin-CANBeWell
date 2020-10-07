@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'linkchecker.apps.LinkcheckerConfig',
+    'visualization.apps.VisualizationConfig',
     'users.apps.UsersConfig',
     'analysis.apps.AnalysisConfig',
     'crispy_forms',

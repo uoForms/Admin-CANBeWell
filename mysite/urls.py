@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from users import views as user_views
-
+from visualization import views as visualization_views
+from linkchecker import views as linkchecker_views
 
 urlpatterns = [
     path('', include('analysis.urls')),
@@ -25,4 +26,6 @@ urlpatterns = [
     path('login/', user_views.login, name='firebase-login'),
     path('logout/', user_views.logout, name='firebase-logout'),
     path('analysis/', include('analysis.urls')),
+    path('visualization/', visualization_views.visualization, name='visualization'),
+    path('linkchecker/', linkchecker_views.linkchecker, name='link-checker'),
 ]

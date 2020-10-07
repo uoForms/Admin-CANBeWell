@@ -28,10 +28,9 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="{% url 'analysis-home' %}">Data</a>
+                    <a class="nav-item nav-link" href="{% url 'analysis-data' %}">Data</a>
                     <a class="nav-item nav-link" href="{% url 'visualization' %}">Visualization</a>
                     <a class="nav-item nav-link" href="{% url 'link-checker' %}">Link Checker</a>
-                    <a class="nav-item nav-link" href="{% url 'analysis-about' %}">About</a>
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
@@ -51,6 +50,7 @@
         <main role="main" class="container">
           <div class="row">
             <div class="col-md-12">
+              <h4 class="mb-2">{{page_title}}</h3>
             {% block content %}
             {% endblock content %}
             </div>

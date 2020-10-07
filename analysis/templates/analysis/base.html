@@ -12,12 +12,11 @@
 
 
         {% if page_title %}
-            <title>CANBeWell {{ page_title }}</title>
+            <title>{{ page_title }} - CANBeWell Admin</title>
         {% else %}
-            <title>CANBeWell</title>
+            <title>CANBeWell Admin</title>
         {% endif %}
     </head>
-
 
     <body>
         <header class="site-header">
@@ -29,10 +28,9 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="{% url 'analysis-home' %}">Data Home</a>
-                    <a class="nav-item nav-link" href="{% url 'analysis-viz' %}">Visualization</a>
-                    <a class="nav-item nav-link" href="#">Auto Testing Toolbox</a>
-                    <a class="nav-item nav-link" href="{% url 'analysis-about' %}">About</a>
+                    <a class="nav-item nav-link" href="{% url 'analysis-data' %}">Data</a>
+                    <a class="nav-item nav-link" href="{% url 'visualization' %}">Visualization</a>
+                    <a class="nav-item nav-link" href="{% url 'link-checker' %}">Link Checker</a>
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
@@ -49,10 +47,15 @@
         </header>
 
 
-        <div class="container">
+        <main role="main" class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="mb-2"> {{page_title}}</h3>
             {% block content %}
             {% endblock content %}
-        </div>
+            </div>
+          </div>
+        </main>
 
 
         <!-- Optional JavaScript -->

@@ -23,13 +23,11 @@ firebaseConfig = {
 firebaseInit = pyrebase.initialize_app(firebaseConfig)
 auth = firebaseInit.auth()
 
-
-def login(request):
-    return render(request, 'analysis/login.html')
-
-
-def logout(request):
-    return render(request, 'analysis/logout.html')
+def home(request):
+    context = {
+        'page_title': 'Home'
+    }
+    return render(request, 'analysis/home.html', context)
 
 
 def firebase_date_range(startDate, endDate):
@@ -82,7 +80,7 @@ def Download_csv(self):
     return response
 
 
-def home(request):
+def data(request):
     global context
     if request.method == 'POST':
         request_name = request.POST.get('name')
@@ -95,7 +93,7 @@ def home(request):
                 print(firebaseUser)
                 validation = 1
                 context = {
-                    'page_title': 'Analysis Home',
+                    'page_title': 'Firebase Data',
                     'form': dateRangeForm(),
                     'validation': validation,
                     'email': email,
@@ -104,7 +102,7 @@ def home(request):
                 }
             except:
                 context['validation'] = 0
-            return render(request, 'analysis/home.html', context)
+            return render(request, 'analysis/data.html', context)
 
 
         elif request_name == 'connection_form':
@@ -120,25 +118,12 @@ def home(request):
                     context['fbdata'] = fbdata
                     context['start_date'] = start_date
                     context['end_date'] = end_date
-            return render(request, 'analysis/home.html', context)
+            return render(request, 'analysis/data.html', context)
 
 
     context = {
-        'page_title': 'Analysis Home',
+        'page_title': 'Data',
         'form': dateRangeForm(),
     }
-    return render(request, 'analysis/home.html', context)
-
-
-def about(request):
-    context = {
-        'page_title': 'About Page'
-    }
-    return render(request, 'analysis/about.html', context)
-
-def viz(request):
-    context = {
-        'page_title': 'Data Visualization'
-    }
-    return render(request, 'analysis/visualization.html', context)
+    return render(request, 'analysis/data.html', context)
 

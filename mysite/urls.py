@@ -25,7 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', user_views.login, name='firebase-login'),
     path('logout/', user_views.logout, name='firebase-logout'),
-    path('analysis/', include('analysis.urls')),
     path('visualization/', visualization_views.visualization, name='visualization'),
     path('linkchecker/', linkchecker_views.linkchecker, name='link-checker'),
 ]

@@ -4,6 +4,6 @@ from django.shortcuts import render
 
 def visualization(request):
     context = {
-        'page_title': 'Data Visualization'
+        'page_title': 'Visualization'
     }
     return render(request, 'visualization/index.html', context)

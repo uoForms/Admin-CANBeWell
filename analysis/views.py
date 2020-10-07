@@ -93,7 +93,7 @@ def data(request):
                 print(firebaseUser)
                 validation = 1
                 context = {
-                    'page_title': 'Analysis Home',
+                    'page_title': 'Firebase Data',
                     'form': dateRangeForm(),
                     'validation': validation,
                     'email': email,

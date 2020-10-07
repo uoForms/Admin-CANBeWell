@@ -12,9 +12,9 @@
 
 
         {% if page_title %}
-            <title>CANBeWell {{ page_title }}</title>
+            <title>{{ page_title }} - CANBeWell Admin</title>
         {% else %}
-            <title>CANBeWell</title>
+            <title>CANBeWell Admin</title>
         {% endif %}
     </head>
 
@@ -50,7 +50,7 @@
         <main role="main" class="container">
           <div class="row">
             <div class="col-md-12">
-              <h4 class="mb-2">{{page_title}}</h3>
+              <h3 class="mb-2"> {{page_title}}</h3>
             {% block content %}
             {% endblock content %}
             </div>

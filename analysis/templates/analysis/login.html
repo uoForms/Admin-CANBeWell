@@ -1,13 +1,1 @@
-{% extends "analysis/base.html" %}
-{% load static %}
-{% block content %}
-    <form action="{% url 'analysis-home' %}" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="name" value="login_form">
-        Email:
-        <input type="email" name="email">
-        Password:
-        <input type="password" name="password">
-        <input type="submit" value="login">
-    </form>
-{% endblock content %}
+<p>old login</p>

@@ -22,7 +22,8 @@
             <br><br>
 
 
-            <table border="1px">
+            <table class="table table-responsive" border="1px">
+                <small>Scroll right/left for all available columns.</small>
                 <tr>
                     <th>index</th>
                     {% for data in fbdata %}
@@ -41,6 +42,9 @@
             </table>
         {% endif %}
     {% else %}
-        <p>Please Login</p>
+        <div class="content-section">
+            <h3>Welcome to CANBeWell Admin Site</h2>
+            <p class="lead">Please <a href="{% url 'firebase-login'%}">log in</a> to use the web app.</p>
+        </div>
     {% endif %}
 {% endblock content %}

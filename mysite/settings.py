@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'visualization.apps.VisualizationConfig',
     'users.apps.UsersConfig',
     'analysis.apps.AnalysisConfig',
-    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,9 +124,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = '/home/CanBeWell/Admin-CANBeWell/static'
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 
 # specify the allauth backend
 AUTHENTICATION_BACKENDS = (

@@ -6,8 +6,10 @@ def login(request):
     context = {
         'page_title': 'Login'
     }
-
     return render(request, 'users/login.html', context)
 
 def logout(request):
-    return render(request, 'users/logout.html')
+    context = {
+        'page_title': 'Logout'
+    }
+    return render(request, 'users/logout.html', context)

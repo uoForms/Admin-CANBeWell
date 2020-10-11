@@ -6,15 +6,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="{% static 'analysis/jquery.datetimepicker.full.min.js' %}"></script>
 
-    {% if validation %}
-        <p><br>Hello, {{ email }}!<br><br><br></p>
+    {% if user.is_authenticated %}
         <form method="POST" name="connection">
             {% csrf_token %}
             <input type="hidden" name="name" value="connection_form">
             {{ form }}
             <button type="submit">Connect to Firebase Database</button>
         </form>
-
 
         {% if start_date %}
             <p><br>Time Range: {{ start_date }} to {{ end_date }} <br><br></p>
@@ -42,8 +40,7 @@
             </table>
         {% endif %}
     {% else %}
-        <div class="content-section">
-            <p class="lead">Please <a href="{% url 'firebase-login'%}">log in</a> to access the data.</p>
-        </div>
+        <p class="lead">Please <a href="{% url 'login'%}">log in</a> to access the data.</p>
+
     {% endif %}
 {% endblock content %}

@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'visualization.apps.VisualizationConfig',
     'users.apps.UsersConfig',
     'analysis.apps.AnalysisConfig',
+    'crispy_forms',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -134,4 +136,6 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

@@ -7,9 +7,6 @@ import datetime
 import pyrebase
 
 
-# Create your views here.
-
-
 firebaseConfig = {
     'apiKey': "AIzaSyAPuIZi-ns_KRkpTjpnEbTnnAYGflqwbwI",
     'authDomain': "canbewell-uottawa.firebaseapp.com",

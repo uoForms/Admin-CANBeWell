@@ -25,7 +25,7 @@ SECRET_KEY = '!#dqd(unff_x60f&xzr_diik-pcoe+t2k=q7twft44hw$+5y1g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['canbewell.herokuapp.com']
+ALLOWED_HOSTS = ['canbewell.herokuapp.com', 'canbewell-test.herokuapp.com']
 
 
 # Application definition

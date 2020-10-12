@@ -15,11 +15,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
 from users import views as user_views
 from visualization import views as visualization_views
 from linkchecker import views as linkchecker_views
+
 
 urlpatterns = [
     path('', include('analysis.urls')),
@@ -29,3 +31,5 @@ urlpatterns = [
     path('visualization/', visualization_views.visualization, name='visualization'),
     path('linkchecker/', linkchecker_views.linkchecker, name='link-checker'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

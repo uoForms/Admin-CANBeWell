@@ -25,7 +25,7 @@ SECRET_KEY = '!#dqd(unff_x60f&xzr_diik-pcoe+t2k=q7twft44hw$+5y1g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['canbewell.herokuapp.com']
 
 
 # Application definition
@@ -125,7 +125,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/home/CanBeWell/Admin-CANBeWell/static'
+#STATIC_ROOT = '/home/CanBeWell/Admin-CANBeWell/static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # specify the allauth backend
 AUTHENTICATION_BACKENDS = (

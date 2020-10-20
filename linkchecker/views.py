@@ -10,10 +10,6 @@ def linkchecker(request):
         'page_title': 'LinkChecker'
     }
     return render(request, 'linkchecker/index.html', context)
-
-def button(requst):
-
-    return render(request,'index.html')
     
 def output(request):
     opener = urllib.request.build_opener()

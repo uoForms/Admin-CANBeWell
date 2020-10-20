@@ -1,10 +1,5 @@
 {% extends "analysis/base.html" %} {% load static %} {% block content %}
 
-<body>
-    <div class="content-section">
-    </div>
-    <button onclick="location.href={% url 'script'%}">Run Script</button>
-    <hr> {% if data %} {{data}} {% endif %}
+<a href="{% url 'output' %}" class="btn btn-info mb-3">Run Script</a>
 
-</body>
 {% endblock content %}

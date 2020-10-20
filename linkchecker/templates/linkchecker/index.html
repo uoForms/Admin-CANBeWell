@@ -3,8 +3,8 @@
 <body>
     <div class="content-section">
     </div>
-    <button onclick="location.href='{% url 'script' %}'">Run Script</button>
-    <hr> {% if output %} {{output}} {% endif %}
+    <button onclick="location.href={% url 'script'%}">Run Script</button>
+    <hr> {% if data %} {{data}} {% endif %}
 
 </body>
 {% endblock content %}

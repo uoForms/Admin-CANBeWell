@@ -29,14 +29,16 @@ def output(request):
         tempUrl = a
         try :
             opener.open(tempUrl)
-            print(f'\033[34m{tempUrl + "  Pass"}\033[0m')
+            return(f'\033[34m{tempUrl + "  Pass"}\033[0m')
         except urllib.error.HTTPError:
-            print(f'\033[33m{tempUrl+ "  HttpError"}\033[0m') #yellow
+            return(f'\033[33m{tempUrl+ "  HttpError"}\033[0m') #yellow
             time.sleep(2)
         except urllib.error.URLError:
-            print(f'\033[35m{tempUrl + "  URLError"}\033[0m') #purple
+            return(f'\033[35m{tempUrl + "  URLError"}\033[0m') #purple
             time.sleep(2)
         time.sleep(0.1)
-
-    return render(request,'index.html')
-
+    
+    data = output()
+    print (data())
+    data = data()
+    return render(request,'index.html',{'data':data})

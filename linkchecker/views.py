@@ -37,5 +37,6 @@ def output(request):
             print(f'\033[35m{tempUrl + "  URLError"}\033[0m') #purple
             time.sleep(2)
         time.sleep(0.1)
-    output=code output
-    return HttpResponse(output)
+
+    return render(request,'index.html')
+

@@ -2,6 +2,8 @@ from django.shortcuts import render
 import os
 import urllib.request
 import time
+from django.http import HttpResponse
+
 
 def linkchecker(request):
     context = {
@@ -17,7 +19,7 @@ def output(request):
     opener = urllib.request.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/49.0.2')]
     #Folder name of urls
-    file = open('test.txt')
+    file = open('linkchecker/test.txt')
     lines = file.readlines()
     aa=[]
     for line in lines:
@@ -41,4 +43,4 @@ def output(request):
     data = output()
     print (data())
     data = data()
-    return render(request,'index.html',{'data':data})
+    return render(request,'linkchecker/output.html',{'data':data})

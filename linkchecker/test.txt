@@ -6,7 +6,6 @@ https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-
 https://www.canada.ca/en/services/benefits/covid19-emergency-benefits.html
 https://www.ottawapublichealth.ca/en/public-health-topics/resources-for-first-nations-inuit-and-m-tis-community-members.aspx
 https://www.youtube.com/watch?v=jefCDf6ccJ4
-https://www.youtube.com/watch?v=bk2fp5rS-kg&feature=youtu.be
 http://nada.ca/?page_id=3172
 https://www.ottawapublichealth.ca/en/public-health-topics/multilingual-resources.aspx
 https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection/symptoms/provincial-territorial-resources-covid-19.html
@@ -27,7 +26,6 @@ https://choosingwiselycanada.org/bone-density-tests/
 https://www.sheffield.ac.uk/FRAX/tool.jsp?country=19
 https://www.mycanceriq.ca/Cancers/Risk
 https://www.cancer.ca/en/prevention-and-screening/reduce-cancer-risk/find-cancer-early/get-screened-for-breast-cancer/at-high-risk-for-breast-cancer/?region=on
-http://www.cancer.ca/en/cancer-information/cancer-type/breast/risks/?region=on
 https://www.youtube.com/watch?v=UZlY6Q4m-MM
 http://www.cancer.ca/en/cancer-information/cancer-type/breast/risks/?region=on
 http://www.cancer.ca/en/cancer-information/cancer-type/cervical/cervical-cancer/?region=on
@@ -35,7 +33,6 @@ http://www.cancer.ca/en/cancer-information/cancer-type/cervical/screening/?regio
 http://www.cancer.ca/en/cancer-information/cancer-type/cervical/risks/reducing-your-risk/?region=on
 https://www.unlockfood.ca/en/Articles/Weight-Loss/BMI-Calculator.aspx
 http://www.cancer.ca/en/cancer-information/cancer-type/colorectal/risks/reducing-your-risk/?region=on
-https://canadiantaskforce.ca/tools-resources/colorectal-cancer-for-patients-2/
 https://canadiantaskforce.ca/tools-resources/colorectal-cancer-for-patients-2/
 https://www.unlockfood.ca/en/Articles/Weight-Loss/BMI-Calculator.aspx
 https://diabetes.ca/about-diabetes/take-the-test
@@ -46,12 +43,9 @@ https://www.jogc.com/article/S1701-2163(17)30936-2/abstract
 http://www.csep.ca/CMFiles/Guidelines/CSEP_PAGuidelines_adults_en.pdf
 http://csepguidelines.ca/wp-content/uploads/2018/03/CSEP_PAGuidelines_older-adults_en.pdf
 https://www.heartandstroke.ca/heart/risk-and-prevention
-https://www.heartandstroke.ca/heart/risk-and-prevention
 https://myhealth.alberta.ca/Alberta/Pages/Heart-Disease-Risk-Calculator.aspx
 https://www.canimmunize.ca/en/home
 https://www.reframehealthlab.com/should-you-get-the-hpv-vaccine/
-https://www.canimmunize.ca/en/home
-https://www.cdc.gov/vaccines/vpd/shingles/public/shingrix/index.html
 https://www.cdc.gov/vaccines/vpd/shingles/public/shingrix/index.html
 http://www.smokershelpline.ca/
 http://www.cancer.ca/en/cancer-information/cancer-type/lung/finding-cancer-early/?region=on
@@ -67,9 +61,6 @@ https://choosingwiselycanada.org/health-check-ups/
 https://www.cdc.gov/teenpregnancy/pdf/Teen-Condom-Fact_Sheet-English-March-2016.pdf
 http://www.sexandu.ca/
 https://www.canada.ca/en/public-health/services/infectious-diseases/sexual-health-sexually-transmitted-infections/sexually-transmitted-infections-sexual-health-facts-information-public.html#geninfo
-https://www.cdc.gov/teenpregnancy/pdf/Teen-Condom-Fact_Sheet-English-March-2016.pdf
-http://www.sexandu.ca/
-https://www.canada.ca/en/public-health/services/infectious-diseases/sexual-health-sexually-transmitted-infections/sexually-transmitted-infections-sexual-health-facts-information-public.html#geninfo
 http://www.cancer.ca/en/cancer-information/cancer-type/prostate/prostate-cancer/?region=on
 http://www.cancer.ca/en/cancer-information/cancer-type/prostate/risks/?region=on
 https://canadiantaskforce.ca/wp-content/uploads/2016/05/2014-prostate-cancer-patient-faq-colour-en.pdf
@@ -77,8 +68,6 @@ https://www.uspreventiveservicestaskforce.org/uspstf/document/RecommendationStat
 https://www.camh.ca/-/media/files/canadas-low-risk-guidelines-pdf.pdf
 https://www.canada.ca/en/health-canada/services/substance-use/get-help/get-help-problematic-substance-use.html
 https://www.canada.ca/en/public-health/services/sun-safety/skin-cancer.html
-https://www.canada.ca/en/public-health/services/pregnancy/folic-acid.html
-https://www.canada.ca/en/public-health/services/pregnancy/folic-acid.html#a4
 https://www.canada.ca/en/public-health/services/pregnancy/folic-acid.html
 https://osteoporosis.ca/bone-health-osteoporosis/calcium-calculator/#page-1
 https://osteoporosis.ca/bone-health-osteoporosis/calcium-and-vitamin-d/
@@ -108,15 +97,12 @@ https://canadiantaskforce.ca/tools-resources/breast-cancer-2/breast-cancer-risks
 https://canadiantaskforce.ca/guidelines/published-guidelines/breast-cancer-update/
 https://www.cfp.ca/content/cfp/65/8/543.full.pdf
 https://canadiantaskforce.ca/guidelines/published-guidelines/cervical-cancer/
-https://canadiantaskforce.ca/guidelines/published-guidelines/cervical-cancer/
-https://www.cfp.ca/content/cfp/65/8/543.full.pdf
 https://www.canada.ca/en/public-health/services/publications/healthy-living/update-recommended-human-papillomavirus-vaccine-immunization-schedule.html#sum
 https://www.unlockfood.ca/en/Articles/Weight-Loss/BMI-Calculator.aspx
 http://www.cancer.ca/en/cancer-information/cancer-type/colorectal/risks/reducing-your-risk/?region=on
 https://canadiantaskforce.ca/guidelines/published-guidelines/colorectal-cancer/
 https://www.cfp.ca/content/cfp/65/8/543.full.pdf
 https://www.cag-acg.org/images/publications/CAG_CPG_CRC_Screening_Aug2018.pdf
-https://www.unlockfood.ca/en/Articles/Weight-Loss/BMI-Calculator.aspx
 https://qxmd.com/calculate/calculator_236/findrisc-diabetes-risk-calculator
 https://canadiantaskforce.ca/tools-resources/type-2-diabetes-2/type-2-diabetes-patient-findrisc/
 https://diabetes.ca/about-diabetes/take-the-test
@@ -131,7 +117,6 @@ http://www.cfp.ca/content/cfp/61/10/857.full.pdf
 http://www.onlinecjc.ca/article/S0828-282X(16)30732-2/pdf
 https://www.jogc.com/article/S1701-2163(18)30836-3/abstract
 http://www.cfp.ca/content/cfp/61/10/857.full.pdf
-http://www.onlinecjc.ca/article/S0828-282X(16)30732-2/pdf
 http://chd.bestsciencemedicine.com/calc2.html
 https://www.canimmunize.ca/en/home
 https://www.reframehealthlab.com/should-you-get-the-hpv-vaccine/
@@ -148,7 +133,6 @@ https://www.diabetes.ca/nutrition---fitness
 http://www.unlockfood.ca/getmedia/255dbbe6-23cd-4adf-9aba-f18310f09e3d/Handy-Servings-Guide-English-for-web-FINAL-October-2015.aspx)of%20vegetables%20and%20fruit/day
 http://jandonline.org/article/S2212-2672(14)01871-1/fulltext
 http://www.healthycanadians.gc.ca/eating-nutrition/healthy-eating-saine-alimentation/tips-conseils/interactive-tools-outils-interactifs/eat-well-bien-manger-eng.php
-http://jandonline.org/article/S2212-2672(14)01871-1/fulltext
 https://www.reframehealthlab.com/23-and-12-hours/
 http://www.csep.ca/CMFiles/Guidelines/CSEP_PAGuidelines_adults_en.pdf
 http://csepguidelines.ca/wp-content/uploads/2018/03/CSEP_PAGuidelines_older-adults_en.pdf

@@ -2,7 +2,6 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-  path('', include('linkchecker.urls')),
-  path('', views.button),
-  path('output', views.output,name="script"),
+    path('', views.linkchecker, name='link-checker'),
+    path('output/', views.output, name="output")
 ]

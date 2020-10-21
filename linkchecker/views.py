@@ -29,10 +29,10 @@ def output(request):
             print(f'\033[34m{tempUrl + "  Pass"}\033[0m')
         except urllib.error.HTTPError:
             print(f'\033[33m{tempUrl+ "  HttpError"}\033[0m') #yellow
-            time.sleep(2)
+            time.sleep(1)
         except urllib.error.URLError:
             print(f'\033[35m{tempUrl + "  URLError"}\033[0m') #purple
-            time.sleep(2)
+            time.sleep(1)
         time.sleep(0.1)
     
     data = output()

@@ -35,7 +35,7 @@ def output(request):
             time.sleep(1)
         time.sleep(0.1)
     
-    data = output()
-    print (data())
-    data = data()
+    data = output
+    print (data)
+    # data = data()
     return render(request,'linkchecker/output.html',{'data':data})

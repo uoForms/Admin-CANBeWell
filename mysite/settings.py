@@ -130,11 +130,10 @@ AUTHENTICATION_BACKENDS = (
  )
 
 # Activate Django-Heroku.
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
 
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-

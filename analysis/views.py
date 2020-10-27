@@ -48,7 +48,7 @@ def firebase_live_connection(date_list):
             fbdata = fbdata.append(temp)
         except:
             print('date exception caught -- ', str(date_list[i]))
-            return redirect('users/logout.html')
+            return redirect('analysis/home.html')
     return fbdata
 
 
@@ -119,7 +119,7 @@ def data(request):
                         context['start_date'] = start_date
                         context['end_date'] = end_date
                 except:
-                    return redirect('users/logout.html')
+                    return redirect('analysis/home.html')
             return render(request, 'analysis/data.html', context)
 
 

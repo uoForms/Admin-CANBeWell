@@ -1,4 +1,7 @@
 {% extends "analysis/base.html" %} {% load static %} {% block content %}
 <h2>Linkchecker Output</h2>
 <p>{{ output }}</p>
+{% for result in results %}
+<p>{{ result }}</p>
+{% endfor %}
 {% endblock content %}

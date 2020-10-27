@@ -51,6 +51,10 @@ def firebase_live_connection(date_list):
             fbdata = fbdata.append(temp)
         except:
             print('date exception caught -- ', str(date_list[i]))
+<<<<<<< Updated upstream
+=======
+            return redirect('/home.html')
+>>>>>>> Stashed changes
     return fbdata
 
 
@@ -121,8 +125,12 @@ def data(request):
                         context['start_date'] = start_date
                         context['end_date'] = end_date
                 except:
+<<<<<<< Updated upstream
                     messages.error(request, "Data is not available")
                     return render(request, 'analysis/home.html', context)
+=======
+                    return redirect('/home.html')
+>>>>>>> Stashed changes
             return render(request, 'analysis/data.html', context)
 
 

@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from django.shortcuts import redirect
 from django.http import HttpResponse
+from django.http import Http404
+from django.contrib import messages
+#from users import views as user_views
 from firebase import firebase
 import pandas as pd
 from .myform import dateRangeForm
@@ -48,7 +51,6 @@ def firebase_live_connection(date_list):
             fbdata = fbdata.append(temp)
         except:
             print('date exception caught -- ', str(date_list[i]))
-            return redirect('analysis/home.html')
     return fbdata
 
 
@@ -119,7 +121,8 @@ def data(request):
                         context['start_date'] = start_date
                         context['end_date'] = end_date
                 except:
-                    return redirect('analysis/home.html')
+                    messages.error(request, "Data is not available")
+                    return render(request, 'analysis/home.html', context)
             return render(request, 'analysis/data.html', context)
 
 

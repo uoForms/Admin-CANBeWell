@@ -5,6 +5,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="{% static 'analysis/jquery.datetimepicker.full.min.js' %}"></script>
+     {% for message in messages %}
+
+                    <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert">×</a>
+
+                        {{ message }}
+
+                    </div>
+        {% endfor %}
 
     {% if user.is_authenticated %}
         <form method="POST" name="connection">
@@ -38,6 +47,7 @@
                     {% endfor %}
                 </tr>
             </table>
+        
         {% endif %}
     {% else %}
         <p class="lead">Please <a href="{% url 'login'%}">log in</a> to access the data.</p>

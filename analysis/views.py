@@ -121,8 +121,8 @@ def data(request):
                         context['start_date'] = start_date
                         context['end_date'] = end_date
                 except:
-                    messages.error(request, "Data is not available")
-                    return render(request, 'analysis/home.html', context)
+                    messages.error(request, "Kindly select the valid dates")
+                    #return render(request, 'analysis/home.html', context)
             return render(request, 'analysis/data.html', context)
 
 

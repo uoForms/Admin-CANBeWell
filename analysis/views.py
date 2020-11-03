@@ -44,7 +44,7 @@ def firebase_date_range(startDate, endDate):
 def firebase_live_connection(date_list):
     fbdata = pd.DataFrame()
     fbobject = firebase.FirebaseApplication("https://canbewell-uottawa.firebaseio.com/", None)
-    fbdata_temp = fbobject.get("","")
+    fbdata_temp = fbobject.get("", "")
     for i in range(0, len(date_list)):
         try:
             temp = pd.DataFrame.from_dict(fbdata_temp[date_list[i]], orient='index')

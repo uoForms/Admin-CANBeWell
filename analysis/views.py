@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
+from django.shortcuts import redirect
 from django.http import HttpResponse
+from django.http import Http404
+from django.contrib import messages
+#from users import views as user_views
 from firebase import firebase
 import pandas as pd
 from .myform import dateRangeForm
@@ -105,16 +109,20 @@ def data(request):
         elif request_name == 'connection_form':
             form = dateRangeForm(request.POST)
             if form.is_valid():
-                start_date = form.cleaned_data['startDate']
-                end_date = form.cleaned_data['endDate']
-                date_list = firebase_date_range(start_date, end_date)
-                if date_list:
-                    global fbdata
-                    fbdata = firebase_live_connection(date_list)
-                    fbdata = data_cleaning(fbdata)
-                    context['fbdata'] = fbdata
-                    context['start_date'] = start_date
-                    context['end_date'] = end_date
+                try:
+                    start_date = form.cleaned_data['startDate']
+                    end_date = form.cleaned_data['endDate']
+                    date_list = firebase_date_range(start_date, end_date)
+                    if date_list:
+                        global fbdata
+                        fbdata = firebase_live_connection(date_list)
+                        fbdata = data_cleaning(fbdata)
+                        context['fbdata'] = fbdata
+                        context['start_date'] = start_date
+                        context['end_date'] = end_date
+                except:
+                    messages.error(request, "Kindly select the valid dates")
+                    #return render(request, 'analysis/home.html', context)
             return render(request, 'analysis/data.html', context)
 
 

@@ -35,12 +35,12 @@ def output(request):
         except urllib.error.HTTPError:
             results.append(tempUrl + ' >>> HttpError')
             print(f'\033[33m{tempUrl+ "  HttpError"}\033[0m') #yellow
-            time.sleep(1)
+            time.sleep(0.01)
         except urllib.error.URLError:
             results.append(tempUrl + ' >>> URLError')
             print(f'\033[35m{tempUrl + "  URLError"}\033[0m') #purple
-            time.sleep(1)
-        time.sleep(0.1)
+            time.sleep(0.01)
+        time.sleep(0.01)
     
     data = output
     print (data)

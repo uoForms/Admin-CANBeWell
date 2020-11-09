@@ -109,6 +109,7 @@ def data(request):
 
         elif request_name == 'connection_form':
             form = dateRangeForm(request.POST)
+            context
             if form.is_valid():
                 try:
                     start_date = form.cleaned_data['startDate']

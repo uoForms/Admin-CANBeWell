@@ -1,14 +1,14 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render
 from django.shortcuts import redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.http import Http404
 from django.contrib import messages
-#from users import views as user_views
 from firebase import firebase
 import pandas as pd
 from .myform import dateRangeForm
 import datetime
 import pyrebase
+import csv,io
 
 
 firebaseConfig = {
@@ -75,6 +75,7 @@ def data_cleaning(fbdata):
 
 
 def Download_csv(self):
+    global fbdata
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=canbewell_data_export.csv'
     fbdata.to_csv(path_or_buf=response, index=True)
@@ -108,6 +109,7 @@ def data(request):
 
         elif request_name == 'connection_form':
             form = dateRangeForm(request.POST)
+            context
             if form.is_valid():
                 try:
                     start_date = form.cleaned_data['startDate']
@@ -122,7 +124,6 @@ def data(request):
                         context['end_date'] = end_date
                 except:
                     messages.error(request, "Kindly select the valid dates")
-                    #return render(request, 'analysis/home.html', context)
             return render(request, 'analysis/data.html', context)
 
 

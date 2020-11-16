@@ -1,69 +1,62 @@
-<script type="text/javascript" src="https://www.canada.ca/etc.clientlibs/clientlibs/granite/jquery.min.js">
-</script>
+{% extends "analysis/base.html" %} {% load static %}{% block content %}
+
 <table id="div_result" cellspacing="0" style="width:98%;margin:auto;">
-    <tr style="font-weight:700;">
+    <tr class="bold">
         <td style="width:30px;">#</td>
         <td>URL</td>
         <td style="width:120px;">Result</td>
     </tr>
     {% for u in urls %}
-    <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>{{ u }}</td>
-        <td id="td_{{ forloop.counter }}">loading..</td>
-    </tr>
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ u }}</td>
+            <td id="td_{{ forloop.counter }}">loading..</td>
+        </tr>
     {% endfor %}
 </table>
 <script type="text/javascript">
-    var total = parseInt('{{total}}');
-    jQuery(document).ready(function() {
-        load_check(1);
-        load_check(2);
-        load_check(3);
-        load_check(4);
+    var DEFAULT_TIMEOUT = 8000,LONG_TIMEOUT=30000;
+    var total = parseInt('{{ total }}');
+    jQuery(document).ready(function () {
+        load_check(1);load_check(2);load_check(3);load_check(4);
     });
+    function load_check(idx, timeout){
+        if(idx > total
+            || (jQuery('#td_'+idx).html() !== 'loading..'
+            && jQuery('#td_'+idx).html().indexOf('Retry') === -1)) return;
 
-    function load_check(idx, timeout) {
-        if (idx > total ||
-            (jQuery('#td_' + idx).html() !== 'loading..' &&
-                jQuery('#td_' + idx).html().indexOf('Retry') === -1)) return;
-
-        if (!timeout) timeout = 8000;
-        jQuery('#td_' + idx).html('loading..');
+        if(!timeout) timeout = DEFAULT_TIMEOUT;
+        jQuery('#td_'+idx).html('loading..');
         jQuery.ajax({
-            url: idx.toString(),
-            method: 'get',
-            timeout: timeout,
-            success: function(d) {
-                d.result = d.result === 'PASS' ?
-                    ('<span style="color:#0d0;">' + d.result + '</span>') :
-                    (d.result = d.result === 'HttpError' ?
-                        ('<span style="color:#ee0;">' + d.result + '</span>') :
-                        ('<span style="color:#DD22DD;">' + d.result + '</span>')
-                    );
-                jQuery('#td_' + d.index).html(d.result);
-                load_check(idx + 4);
-            },
-            error: function(e) {
-                jQuery('#td_' + idx).html('<span style="color:#d00;">Timeout</span>' + ' | ' +
-                    '<a href="javascript:;" onclick="load_check(' + idx + ',30000)">Retry</a>');
-                load_check(idx + 4);
-            }
-        })
+                url: +idx.toString(),
+                type: 'GET',
+                timeout:timeout,
+                success: function(d){
+                    d.result = d.result==='PASS'
+                        ? ('<span class="green">'+d.result+'</span>')
+                        : (d.result = d.result==='HttpError'
+                            ? ('<span class="yellow">'+d.result+'</span>')
+                            : ('<span class="purple">'+d.result+'</span>')
+                        );
+                    jQuery('#td_'+d.index).html(d.result);
+                    load_check(idx+4);
+                },
+                error: function(e) {
+                    jQuery('#td_' + idx).html('<span class="red">Timeout</span>' + ' | ' +
+                        '<a href="javascript:;" onclick="load_check(' + idx + ',LONG_TIMEOUT)">Retry</a>');
+                    load_check(idx+4);
+                }
+            })
     }
 </script>
 <style>
-    table {
-        border: 1px solid #666;
-    }
-    
-    tr {
-        border-left: 1px solid #666;
-        border-top: 1px solid #666;
-    }
-    
-    td {
-        border-right: 1px solid #666;
-        border-bottom: 1px solid #666;
-    }
+    table {border:1px solid #666;}
+    tr {border-left:1px solid #666;border-top:1px solid #666;}
+    td {border-right:1px solid #666;border-bottom:1px solid #666;}
+        .bold {font-weight:700;}
+        .green {color:#0d0;}
+        .yellow{color:#ee0;}
+        .purple{color:#DD22DD;}
+        .red{color:#d00;}
 </style>
+{% endblock content %}

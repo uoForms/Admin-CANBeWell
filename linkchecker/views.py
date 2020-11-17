@@ -7,8 +7,11 @@ from django.http import HttpResponse
 
 
 def linkchecker(request):
+    file = open('linkchecker/test.txt')
+    lines = file.readlines()
     context = {
-        'page_title': 'LinkChecker'
+        'page_title': 'LinkChecker',
+        'total': len(lines)
     }
     return render(request, 'linkchecker/index.html', context)
 

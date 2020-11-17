@@ -6,6 +6,7 @@ from django.contrib import messages
 from firebase import firebase
 import pandas as pd
 from .myform import dateRangeForm
+from django.utils.safestring import mark_safe
 import datetime
 import pyrebase
 import csv,io
@@ -109,7 +110,6 @@ def data(request):
 
         elif request_name == 'connection_form':
             form = dateRangeForm(request.POST)
-            context
             if form.is_valid():
                 try:
                     start_date = form.cleaned_data['startDate']
@@ -123,7 +123,7 @@ def data(request):
                         context['start_date'] = start_date
                         context['end_date'] = end_date
                 except:
-                    messages.error(request, "Kindly select the valid dates")
+                    messages.error(request, mark_safe("Invalid dates.<br/> No data available"))
             return render(request, 'analysis/data.html', context)
 
 

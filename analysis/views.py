@@ -123,7 +123,7 @@ def data(request):
                         context['start_date'] = start_date
                         context['end_date'] = end_date
                 except:
-                    messages.error(request, "Kindly select the valid dates")
+                    messages.error(request, "Invalid dates and No data available")
             return render(request, 'analysis/data.html', context)
 
 

@@ -18,7 +18,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'canbewell.pythonanywhere.com',
-    'canbewell.herokuapp.com', 
+    'canbewell.herokuapp.com',
     'canbewell-test.herokuapp.com'
 ]
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dashboard.apps.DashboardConfig',
 ]
 
 MIDDLEWARE = [

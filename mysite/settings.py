@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -123,6 +124,7 @@ STATIC_URL = '/static/'
 #STATIC_ROOT = '/home/CanBeWell/Admin-CANBeWell/static'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # specify the allauth backend
 AUTHENTICATION_BACKENDS = (

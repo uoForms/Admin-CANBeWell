@@ -1,7 +1,28 @@
 {% extends "analysis/base.html" %}
 {% load static %}
 {% block content %}
-    <p>Link to Power Bi folder on google drive <a href="https://drive.google.com/drive/folders/1ugXQrabFfpAWFNGDLD5Su82KMPQQe3Nz"> Microsoft Power BI </a>.</p>
-    <p>Link to Tableau folder on google drive <a href="https://drive.google.com/drive/folders/1CD03UiWFPwyY5oAwn_IDO2TqeHbz6INx">Tableau Public</a>.</p>
-    <p> Data analysis and visualization using Pandas and Matplotlib both python libraries is on the way.</p>
+<p>Link to the Power BI folder on Google Drive: <a href="https://drive.google.com/drive/folders/1ugXQrabFfpAWFNGDLD5Su82KMPQQe3Nz"> Microsoft Power BI</a>.</p>
+<p>Link to the Tableau folder on Google Drive: <a href="https://drive.google.com/drive/folders/1CD03UiWFPwyY5oAwn_IDO2TqeHbz6INx">Tableau Public</a>.</p>
+
+<p class="lead">Python Libraries Visualizations</p>
+<p>The below charts have been generated using the Pandas and Matplotlib libraries in Python.</p>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col">
+            <h6 class="text-center">Users Age Range</h6>
+            <img src="{% static 'visualization/images/CommonUsedDevices.png' %}" class="img-fuild float-left" style="max-width: 100%;">
+        </div>
+        <div class="col">
+            <img src="{% static 'visualization/images/gender.png' %}" class="img-fuild float-right" style="max-width: 100%;">
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <h6 class="text-center">Mean Page View Time</h6>
+                <img src="{% static 'visualization/images/MeanPageviewtime.png' %}" class="img-fuild float-left" style="max-width: 100%;">
+            </div>
+            <div class="col">
+                <img src="{% static 'visualization/images/MostPopularTopics.png' %}" class="img-fuild float-right" style="max-width: 100%;">
+            </div>
+    </div>
+</div>
 {% endblock content %}

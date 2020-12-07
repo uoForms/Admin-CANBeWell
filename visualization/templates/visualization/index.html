@@ -6,7 +6,70 @@
 
 <p class="lead">Python Libraries Visualizations</p>
 <p>The below charts have been generated using the Pandas and Matplotlib libraries in Python.</p>
+
+
+
 <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <h6 class="text-center">Gender Distribution</h6>
+                <img src="{% static 'visualization/Gender Distribution.png' %}" class="img-fuild float-left" style="max-width: 100%;">
+            </div>
+            <div class="col">
+                <h6 class="text-center">Gender Distribution Based on Languages</h6>
+                <img src="{% static 'visualization/Language_Gender Distribution.png' %}" class="img-fuild float-right" style="max-width: 100%;">
+            </div>
+            <div class="row mt-5">
+                <div class="col">
+                    <h6 class="text-center">Most Viewed Topics</h6>
+                    <img src="{% static 'visualization/Frequent_Topics.png' %}" class="img-fuild float-left" style="max-width: 100%;">
+                </div>
+                <div class="col">
+                    <h6 class="text-center">Most Viewed Topics Per Day</h6>
+                    <img src="{% static 'visualization/Time Spent on Topics.png' %}"  class="img-fuild float-right" style="max-width: 100%;">
+                </div>
+        </div>
+
+           <div class="row mt-5">
+                <div class="col">
+                    <h6 class="text-center">Gender Based Topic Distribution</h6>
+                    <img src="{% static 'visualization/Gender_Topic Distribution.png' %}" class="img-fuild float-left" style="max-width: 100%;">
+                </div>
+                <div class="col">
+                    <h6 class="text-center">Roles Based Topic Distribution</h6>
+                    <img src="{% static 'visualization/Topics According to Roles.png' %}"  class="img-fuild float-right" style="max-width: 100%;">
+                </div>
+        </div>
+
+           <div class="row mt-5">
+                <div class="col">
+                    <h6 class="text-center">Common Used Devices</h6>
+                    <img src=<img src="{% static 'visualization/Device Distribution.png' %}"  class="img-fuild float-left" style="max-width: 100%;">
+                </div>
+                <div class="col">
+                    <h6 class="text-center">Percentage Distribution of Topics</h6>
+                    <img src=<img src=<img src="{% static 'visualization/Percentage Topics.png' %}"  class="img-fuild float-right" style="max-width: 100%;">
+                </div>
+        </div>
+
+         <!--  <div class="row mt-5">
+                <div class="col">
+                    <h6 class="text-center">Common Used Devices</h6>
+                    <img src="data:image/png;base64, {{common_used_devices_uri}}" class="img-fuild float-left" style="max-width: 100%;">
+                </div>
+                <div class="col">
+                    <h6 class="text-center">Items Gender Specific</h6>
+                    <img src="data:image/png;base64, {{ItemsGenderSpecific_uri}}"  class="img-fuild float-right" style="max-width: 100%;">
+                </div>
+        </div> -->
+    </div>
+
+
+
+
+
+
+<!-- <div class="container">
     <div class="row mt-5">
         <div class="col">
             <h6 class="text-center">Users Age Range</h6>
@@ -24,5 +87,5 @@
                 <img src="{% static 'visualization/MostPopularTopics.png' %}" class="img-fuild float-right" style="max-width: 100%;">
             </div>
     </div>
-</div>
+</div> -->
 {% endblock content %}

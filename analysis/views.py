@@ -82,9 +82,19 @@ def Download_csv(self):
     fbdata.to_csv(path_or_buf=response, index=True)
     return response
 
+start_date = "yyyy-mm-dd"
+end_date = "yyyy-mm-dd"
 
 def data(request):
     global context
+    global start_date
+    global end_date
+    context = {
+        'page_title': 'Data',
+        'form': dateRangeForm(),
+        'start_date': start_date,
+        'end_date': end_date
+    }
     if request.method == 'POST':
         request_name = request.POST.get('name')
         print(request_name)
@@ -128,10 +138,5 @@ def data(request):
                     messages.error(request, mark_safe("Invalid dates.<br/> No data available"))
             return render(request, 'analysis/data.html', context)
 
-
-    context = {
-        'page_title': 'Data',
-        'form': dateRangeForm(),
-    }
     return render(request, 'analysis/data.html', context)
 

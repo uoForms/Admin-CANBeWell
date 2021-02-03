@@ -112,9 +112,11 @@ def data(request):
             form = dateRangeForm(request.POST)
             if form.is_valid():
                 try:
-                    start_date = form.cleaned_data['startDate']
-                    end_date = form.cleaned_data['endDate']
-                    date_list = firebase_date_range(start_date, end_date)
+                    start_date = form.cleaned_data['start_date']
+                    start_date_obj = datetime.datetime.strptime(start_date, '%Y-%m-%d')
+                    end_date = form.cleaned_data['end_date']
+                    end_date_obj = datetime.datetime.strptime(end_date, '%Y-%m-%d')
+                    date_list = firebase_date_range(start_date_obj, end_date_obj)
                     if date_list:
                         global fbdata
                         fbdata = firebase_live_connection(date_list)

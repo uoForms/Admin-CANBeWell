@@ -1,42 +1,65 @@
 {% extends "analysis/base.html" %}
 {% load static %}
+{% load widget_tweaks %}
 {% block content %}
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'analysis/bootstrap-datepicker.css' %}"/>
     <script src="{% static 'analysis/jquery.datetimepicker.full.min.js' %}"></script>
-     {% for message in messages %}
+    {% for message in messages %}
 
-                    <div class="alert alert-success">
-                        <a class="close" href="#" data-dismiss="alert">×</a>
+        <div class="alert alert-success">
+            <a class="close" href="#" data-dismiss="alert">×</a>
 
-                        {{ message }}
+            {{ message }}
 
-                    </div>
-        {% endfor %}
+        </div>
+    {% endfor %}
 
     {% if user.is_authenticated %}
         <form method="POST" name="connection">
             {% csrf_token %}
             <input type="hidden" name="name" value="connection_form">
-            {{ form }}
+            <div class="form-group row">
+                <label for="start_date" class="col-md-3 col-lg-2 col-form-label">Start Date :</label>
+                {% render_field form.start_date type="text" id="start_date" class="col-md-3 col-lg-2 form-control" autocomplete="off" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd" %}
+            </div>
+            <div class="form-group row">
+                <label for="end_date" class="col-md-3 col-lg-2 col-form-label">End Date :</label>
+                {% render_field form.end_date type="text" id="end_date" class="col-md-3 col-lg-2 form-control" autocomplete="off" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd" %}
+            </div>
             <button type="submit">Connect to Firebase Database</button>
         </form>
 
-        {% if start_date %}
-            <p><br>Time Range: {{ start_date }} to {{ end_date }} <br><br></p>
-            <input type="button" value="Download Dataset" onclick="window.open('download')" >
-            <br><br>
+
+        <input type="button" value="Download Dataset" onclick="window.open('download')">
+        <br><br>
 
 
-            <table class="table table-responsive" border="1px">
-                <small>Scroll right/left for all available columns.</small>
-                <tr>
-                    <th>index</th>
-                    {% for data in fbdata %}
-                        <th>{{ data }}</th>
-                    {% endfor %}
+        <table class="table table-responsive" border="1px">
+            <small>Scroll right/left for all available columns.</small>
+            <tr>
+                <th>Index</th>
+                <th>Firebase Json Index</th>
+                <th>Age Range</th>
+                <th>Age</th>
+                <th>Browser</th>
+                <th>City</th>
+                <th>Date</th>
+                <th>Device</th>
+                <th>Gender</th>
+                <th>Item</th>
+                <th>Language</th>
+                <th>Navigation</th>
+                <th>OS</th>
+                <th>Page view time</th>
+                <th>Region</th>
+                <th>Role</th>
+                <th>Session id</th>
+                <th>User id</th>
 
+                {% if start_date %}
                     {% for index, record in fbdata.iterrows %}
                         <tr>
                             <td>{{ index }}</td>
@@ -45,12 +68,24 @@
                             {% endfor %}
                         </tr>
                     {% endfor %}
-                </tr>
-            </table>
-        
-        {% endif %}
+                {% endif %}
+            </tr>
+        </table>
+
     {% else %}
-        <p class="lead">Please <a href="{% url 'login'%}">log in</a> to access the data.</p>
+        <p class="lead">Please <a href="{% url 'login' %}">log in</a> to access the data.</p>
 
     {% endif %}
+
+    <script src="{% static 'analysis/bootstrap-datepicker.js' %}"></script>
+    <script>
+        $('#start_date').datepicker(
+            'update',
+            '{{ start_date }}',
+        );
+        $('#end_date').datepicker(
+            'update',
+            '{{ end_date }}',
+        );
+    </script>
 {% endblock content %}

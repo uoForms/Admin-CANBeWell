@@ -1,10 +1,6 @@
 from django import forms
 
 
-class DateInput(forms.DateInput):
-    input_type = 'date'
-
-
 class dateRangeForm(forms.Form):
-    startDate = forms.DateField(widget=DateInput, label='Start Date')
-    endDate = forms.DateField(widget=DateInput, label='End Date')
+    start_date = forms.CharField(label="start_date", max_length=100)
+    end_date = forms.CharField(label="end_date", max_length=100)

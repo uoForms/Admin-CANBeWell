@@ -1,41 +1,38 @@
 {% extends "analysis/base.html" %}
 {% load static %}
 {% load widget_tweaks %}
-{% block content %}
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+{% block header_links %}
     <link rel="stylesheet" href="{% static 'analysis/bootstrap-datepicker.css' %}"/>
-    <script src="{% static 'analysis/jquery.datetimepicker.full.min.js' %}"></script>
-    {% for message in messages %}
+{% endblock header_links %}
 
-        <div class="alert alert-success">
-            <a class="close" href="#" data-dismiss="alert">×</a>
-
-            {{ message }}
-
-        </div>
-    {% endfor %}
+{% block content %}
 
     {% if user.is_authenticated %}
-        <form method="POST" name="connection">
+        <form method="POST" name="connection" class="form-group" autocomplete="off">
             {% csrf_token %}
+            <div class="form-group row">
+                <label for="start_date" class="col-md-3 col-lg-2 col-form-label"> Start Date :</label>
+                {% render_field form.start_date type="text" id="start_date" class="col-md-3 col-lg-2 form-control" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd" %}
+            </div>
+            <div class="form-group row">
+                <label for="end_date" class="col-md-3 col-lg-2 col-form-label"> End Date :</label>
+                {% render_field form.end_date type="text" id="end_date" class="col-md-3 col-lg-2 form-control" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd" %}
+            </div>
             <input type="hidden" name="name" value="connection_form">
-            <div class="form-group row">
-                <label for="start_date" class="col-md-3 col-lg-2 col-form-label">Start Date :</label>
-                {% render_field form.start_date type="text" id="start_date" class="col-md-3 col-lg-2 form-control" autocomplete="off" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd" %}
-            </div>
-            <div class="form-group row">
-                <label for="end_date" class="col-md-3 col-lg-2 col-form-label">End Date :</label>
-                {% render_field form.end_date type="text" id="end_date" class="col-md-3 col-lg-2 form-control" autocomplete="off" placeholder="yyyy-mm-dd" data-date-format="yyyy-mm-dd" %}
-            </div>
-            <button type="submit">Connect to Firebase Database</button>
+            <button class="btn btn-primary" type="submit">Connect to Firebase Database</button>
         </form>
+        <br>
 
-
-        <input type="button" value="Download Dataset" onclick="window.open('download')">
+        <input class="btn btn-primary" type="button" value="Download Dataset" onclick="window.open('download')">
         <br><br>
 
+        {% for message in messages %}
+            <div class="alert alert-success">
+                <a class="close" href="#" data-dismiss="alert">×</a>
+                {{ message }}
+            </div>
+        {% endfor %}
 
         <table class="table table-responsive" border="1px">
             <small>Scroll right/left for all available columns.</small>
@@ -74,18 +71,25 @@
 
     {% else %}
         <p class="lead">Please <a href="{% url 'login' %}">log in</a> to access the data.</p>
-
     {% endif %}
 
+    {% block footer_js %}
     <script src="{% static 'analysis/bootstrap-datepicker.js' %}"></script>
     <script>
-        $('#start_date').datepicker(
-            'update',
-            '{{ start_date }}',
-        );
-        $('#end_date').datepicker(
-            'update',
-            '{{ end_date }}',
-        );
+
+        $('#start_date').datepicker({
+            startDate: '2020-01-01',
+            endDate:'+0d',
+            autoclose: true,
+        });
+        $('#end_date').datepicker({
+            startDate: '2020-01-01',
+            endDate:'+0d',
+            autoclose: true,
+        });
     </script>
+    {% endblock footer_js %}
+
+
+
 {% endblock content %}

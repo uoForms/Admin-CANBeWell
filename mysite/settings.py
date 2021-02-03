@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'analysis.apps.AnalysisConfig',
     'crispy_forms',
+    'widget_tweaks',
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',

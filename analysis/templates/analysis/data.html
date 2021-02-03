@@ -24,6 +24,7 @@
         </form>
         <br>
 
+        <p><br>Time Range: {{ start_date }} to {{ end_date }} <br><br></p>
         <input class="btn btn-primary" type="button" value="Download Dataset" onclick="window.open('download')">
         <br><br>
 
@@ -73,23 +74,20 @@
         <p class="lead">Please <a href="{% url 'login' %}">log in</a> to access the data.</p>
     {% endif %}
 
-    {% block footer_js %}
+{% endblock content %}
+
+{% block footer_js %}
     <script src="{% static 'analysis/bootstrap-datepicker.js' %}"></script>
     <script>
-
         $('#start_date').datepicker({
             startDate: '2020-01-01',
-            endDate:'+0d',
+            endDate: '+0d',
             autoclose: true,
-        });
+        }).datepicker("update", "{{ start_date }}");
         $('#end_date').datepicker({
             startDate: '2020-01-01',
-            endDate:'+0d',
+            endDate: '+0d',
             autoclose: true,
-        });
+        }).datepicker("update", "{{ end_date }}");
     </script>
-    {% endblock footer_js %}
-
-
-
-{% endblock content %}
+{% endblock footer_js %}

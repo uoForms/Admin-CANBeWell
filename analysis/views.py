@@ -82,9 +82,22 @@ def Download_csv(self):
     fbdata.to_csv(path_or_buf=response, index=True)
     return response
 
+start_date = "yyyy-mm-dd"
+end_date = "yyyy-mm-dd"
+fbdata = []
 
 def data(request):
     global context
+    global start_date
+    global end_date
+    global fbdata
+    context = {
+        'page_title': 'Data',
+        'form': dateRangeForm(),
+        'start_date': start_date,
+        'end_date': end_date,
+        'fbdata': fbdata
+    }
     if request.method == 'POST':
         request_name = request.POST.get('name')
         print(request_name)
@@ -112,13 +125,15 @@ def data(request):
             form = dateRangeForm(request.POST)
             if form.is_valid():
                 try:
-                    start_date = form.cleaned_data['startDate']
-                    end_date = form.cleaned_data['endDate']
-                    date_list = firebase_date_range(start_date, end_date)
+                    start_date = form.cleaned_data['start_date']
+                    start_date_obj = datetime.datetime.strptime(start_date, '%Y-%m-%d')
+                    end_date = form.cleaned_data['end_date']
+                    end_date_obj = datetime.datetime.strptime(end_date, '%Y-%m-%d')
+                    date_list = firebase_date_range(start_date_obj, end_date_obj)
                     if date_list:
-                        global fbdata
                         fbdata = firebase_live_connection(date_list)
                         fbdata = data_cleaning(fbdata)
+                        print(type(fbdata))
                         context['fbdata'] = fbdata
                         context['start_date'] = start_date
                         context['end_date'] = end_date
@@ -126,10 +141,5 @@ def data(request):
                     messages.error(request, mark_safe("Invalid dates.<br/> No data available"))
             return render(request, 'analysis/data.html', context)
 
-
-    context = {
-        'page_title': 'Data',
-        'form': dateRangeForm(),
-    }
     return render(request, 'analysis/data.html', context)
 

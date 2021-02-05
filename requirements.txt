@@ -11,6 +11,7 @@ Django==3.1.2
 django-allauth==0.42.0
 django-crispy-forms==1.9.2
 django-heroku==0.3.1
+django-widget-tweaks==1.4.8
 djangorestframework==3.12.1
 firebase==3.0.1
 firebase-admin==4.4.0

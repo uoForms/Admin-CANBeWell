@@ -84,16 +84,19 @@ def Download_csv(self):
 
 start_date = "yyyy-mm-dd"
 end_date = "yyyy-mm-dd"
+fbdata = []
 
 def data(request):
     global context
     global start_date
     global end_date
+    global fbdata
     context = {
         'page_title': 'Data',
         'form': dateRangeForm(),
         'start_date': start_date,
-        'end_date': end_date
+        'end_date': end_date,
+        'fbdata': fbdata
     }
     if request.method == 'POST':
         request_name = request.POST.get('name')
@@ -128,9 +131,9 @@ def data(request):
                     end_date_obj = datetime.datetime.strptime(end_date, '%Y-%m-%d')
                     date_list = firebase_date_range(start_date_obj, end_date_obj)
                     if date_list:
-                        global fbdata
                         fbdata = firebase_live_connection(date_list)
                         fbdata = data_cleaning(fbdata)
+                        print(type(fbdata))
                         context['fbdata'] = fbdata
                         context['start_date'] = start_date
                         context['end_date'] = end_date

@@ -1,4 +1,7 @@
-{% extends "analysis/base.html" %} {% load static %} {% block content %}
+{% extends "analysis/base.html" %}
+{% load static %}
+
+{% block content %}
 
     <p><a href="javascript:;" class="btn btn-info mb-3" onclick="start_test();">Start testing</a></p>
     <table cellspacing="0" style="width:98%;margin:auto;">
@@ -21,65 +24,101 @@
             </td>
         </tr>
     </table>
+{% endblock content %}
+
+{% block footer_js %}
     <script type="text/javascript">
-        var pass=0, error=0, DEFAULT_TIMEOUT = 8000,LONG_TIMEOUT=30000;
+        var pass = 0, error = 0, DEFAULT_TIMEOUT = 8000, LONG_TIMEOUT = 30000;
         var total = parseInt('{{ total }}');
+
         function start_test() {
-            load_check(1);load_check(2);load_check(3);load_check(4);
+            load_check(1);
+            load_check(2);
+            load_check(3);
+            load_check(4);
         };
-        function load_check(idx, timeout){
-            if(idx > total) return;
-            if(!timeout) timeout = DEFAULT_TIMEOUT;
+
+        function load_check(idx, timeout) {
+            if (idx > total) return;
+            if (!timeout) timeout = DEFAULT_TIMEOUT;
 
             jQuery.ajax({
-                    url: "{% url 'output' %}"+idx.toString(),
-                    type: 'GET',
-                    timeout:timeout,
-                    success: function(d){
-                        switch(d.result){
-                            case "PASS":
-                                pass++;
-                                reCalc();
-                                load_check(idx+4);
-                                break;
-                            default:
-                                do_error_request(idx, timeout);
-                                break;
-                        }
-                    },
-                    error: function(e) {
-                        do_error_request(idx, timeout);
+                url: "{% url 'output' %}" + idx.toString(),
+                type: 'GET',
+                timeout: timeout,
+                success: function (d) {
+                    switch (d.result) {
+                        case "PASS":
+                            pass++;
+                            reCalc();
+                            load_check(idx + 4);
+                            break;
+                        default:
+                            do_error_request(idx, timeout);
+                            break;
                     }
-                })
+                },
+                error: function (e) {
+                    do_error_request(idx, timeout);
+                }
+            })
         }
-        function do_error_request(idx, timeout){
-            if(timeout > DEFAULT_TIMEOUT) {
+
+        function do_error_request(idx, timeout) {
+            if (timeout > DEFAULT_TIMEOUT) {
                 error++;
                 reCalc();
-                load_check(idx+4);
-            }else{
+                load_check(idx + 4);
+            } else {
                 load_check(idx, LONG_TIMEOUT);
             }
         }
-        function reCalc(){
-            var _error = error, _pass= pass;
+
+        function reCalc() {
+            var _error = error, _pass = pass;
             console.log(pass);
             console.log(error);
             jQuery('#td_pass').html(_pass);
             jQuery('#td_error').html(_error);
-            jQuery('#td_pass_rate').html((_pass / (_pass + _error) *100).toFixed(2) + '%');
-            jQuery('#td_comp_rate').html(((_pass + _error) / total *100).toFixed(2) + '%');
+            jQuery('#td_pass_rate').html((_pass / (_pass + _error) * 100).toFixed(2) + '%');
+            jQuery('#td_comp_rate').html(((_pass + _error) / total * 100).toFixed(2) + '%');
         }
     </script>
     <style> /*这些共有样式可以提取到一个公共css文件里*/
-        table {border:1px solid #666;}
-        tr {border-left:1px solid #666;border-top:1px solid #666;}
-        td {border-right:1px solid #666;border-bottom:1px solid #666;}
-        .bold {font-weight:700;}
-        .green {color:#0d0;}
-        .yellow{color:#ee0;}
-        .purple{color:#DD22DD;}
-        .red{color:#d00;}
-    </style>
+    table {
+        border: 1px solid #666;
+    }
 
-{% endblock content %}
+    tr {
+        border-left: 1px solid #666;
+        border-top: 1px solid #666;
+    }
+
+    td {
+        border-right: 1px solid #666;
+        border-bottom: 1px solid #666;
+    }
+
+    .bold {
+        font-weight: 700;
+    }
+
+    .green {
+        color: #0d0;
+    }
+
+    .yellow {
+        color: #ee0;
+    }
+
+    .purple {
+        color: #DD22DD;
+    }
+
+    .red {
+        color: #d00;
+    }
+    </style>
+{% endblock footer_js %}
+
+

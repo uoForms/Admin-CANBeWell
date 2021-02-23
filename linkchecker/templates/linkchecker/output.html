@@ -1,97 +1,63 @@
-{% extends "analysis/base.html" %}
-{% load static %}
+{% extends "analysis/base.html" %} {% load static %}{% block content %}
 
-{% block content %}
-
-    <table id="div_result" cellspacing="0" style="width:98%;margin:auto;">
-        <tr class="bold">
-            <td style="width:30px;">#</td>
-            <td>URL</td>
-            <td style="width:120px;">Result</td>
+<h4>{{ fileType }}</h4>
+<table id="div_result" cellspacing="0" style="width:98%;margin:auto;">
+    <tr class="bold">
+        <td style="width:30px;">#</td>
+        <td>Canbewell External Links</td>
+        <td style="width:120px;">Result</td>
+    </tr>
+    {% for u in urls %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ u }}</td>
+            <td id="td_{{ forloop.counter }}">loading..</td>
         </tr>
-        {% for u in urls %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ u }}</td>
-                <td id="td_{{ forloop.counter }}">loading..</td>
-            </tr>
-        {% endfor %}
-    </table>
-{% endblock content %}
+    {% endfor %}
+</table>
+<script type="text/javascript">
+    var DEFAULT_TIMEOUT = 8000,LONG_TIMEOUT=30000;
+    var total = parseInt('{{ total }}');
+    window.onload = function () {
+        load_check(1);load_check(2);load_check(3);load_check(4);
+    }
+    function load_check(idx, timeout){
+        if(idx > total
+            || (jQuery('#td_'+idx).html() !== 'loading..'
+            && jQuery('#td_'+idx).html().indexOf('Retry') === -1)) return;
 
-{% block footer_js %}
-    <script type="text/javascript">
-        var DEFAULT_TIMEOUT = 8000, LONG_TIMEOUT = 30000;
-        var total = parseInt('{{ total }}');
-        jQuery(document).ready(function () {
-            load_check(1);
-            load_check(2);
-            load_check(3);
-            load_check(4);
-        });
-
-        function load_check(idx, timeout) {
-            if (idx > total
-                || (jQuery('#td_' + idx).html() !== 'loading..'
-                    && jQuery('#td_' + idx).html().indexOf('Retry') === -1)) return;
-
-            if (!timeout) timeout = DEFAULT_TIMEOUT;
-            jQuery('#td_' + idx).html('loading..');
-            jQuery.ajax({
-                url: +idx.toString(),
+        if(!timeout) timeout = DEFAULT_TIMEOUT;
+        jQuery('#td_'+idx).html('loading..');
+        jQuery.ajax({
+                url: window.location.href+"/"+idx.toString(),
                 type: 'GET',
-                timeout: timeout,
-                success: function (d) {
-                    d.result = d.result === 'PASS'
-                        ? ('<span class="green">' + d.result + '</span>')
-                        : (d.result = d.result === 'HttpError'
-                                ? ('<span class="yellow">' + d.result + '</span>')
-                                : ('<span class="purple">' + d.result + '</span>')
+                timeout:timeout,
+                success: function(d){
+                    d.result = d.result==='PASS'
+                        ? ('<span class="green">'+d.result+'</span>')
+                        : (d.result = d.result==='HttpError'
+                            ? ('<span class="yellow">'+d.result+'</span>')
+                            : ('<span class="purple">'+d.result+'</span>')
                         );
-                    jQuery('#td_' + d.index).html(d.result);
-                    load_check(idx + 4);
+                    jQuery('#td_'+d.index).html(d.result);
+                    load_check(idx+4);
                 },
-                error: function (e) {
+                error: function(e) {
                     jQuery('#td_' + idx).html('<span class="red">Timeout</span>' + ' | ' +
                         '<a href="javascript:;" onclick="load_check(' + idx + ',LONG_TIMEOUT)">Retry</a>');
-                    load_check(idx + 4);
+                    load_check(idx+4);
                 }
             })
-        }
-    </script>
-    <style>
-        table {
-            border: 1px solid #666;
-        }
-
-        tr {
-            border-left: 1px solid #666;
-            border-top: 1px solid #666;
-        }
-
-        td {
-            border-right: 1px solid #666;
-            border-bottom: 1px solid #666;
-        }
-
-        .bold {
-            font-weight: 700;
-        }
-
-        .green {
-            color: #0d0;
-        }
-
-        .yellow {
-            color: #ee0;
-        }
-
-        .purple {
-            color: #DD22DD;
-        }
-
-        .red {
-            color: #d00;
-        }
-    </style>
-{% endblock footer_js %}
+    }
+</script>
+<style>
+    table {border:1px solid #666;}
+    tr {border-left:1px solid #666;border-top:1px solid #666;}
+    td {border-right:1px solid #666;border-bottom:1px solid #666;}
+        .bold {font-weight:700;}
+        .green {color:#0d0;}
+        .yellow{color:#ee0;}
+        .purple{color:#DD22DD;}
+        .red{color:#d00;}
+</style>
+{% endblock content %}

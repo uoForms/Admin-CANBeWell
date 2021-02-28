@@ -1,124 +1,133 @@
-{% extends "analysis/base.html" %}
-{% load static %}
+{% extends "analysis/base.html" %} {% load static %} {% block content %}
 
-{% block content %}
-
-    <p><a href="javascript:;" class="btn btn-info mb-3" onclick="start_test();">Start testing</a></p>
+    <p>
+        <a href="javascript:;" class="btn btn-info mb-3" onclick="start_test('en_topic');">Topic-EN</a> &nbsp;&nbsp;
+        <a href="javascript:;" class="btn btn-info mb-3" onclick="start_test('en_test');">Test-EN</a> &nbsp;&nbsp;
+        <a href="javascript:;" class="btn btn-info mb-3" onclick="start_test('fr_topic');">Topic-FR</a> &nbsp;&nbsp;
+        <a href="javascript:;" class="btn btn-info mb-3" onclick="start_test('fr_test');">Test-FR</a> &nbsp;&nbsp;
+    </p>
     <table cellspacing="0" style="width:98%;margin:auto;">
         <tr class="bold">
-            <td style="width:15%;">Url Amount</td>
+            <td style="width:10%;">File</td>
+            <td style="width:15%;">External links Amount</td>
             <td style="width:15%;">Pass</td>
-            <td style="width:20%;">Fail & Error</td>
-            <td style="width:20%;">Pass Rate</td>
+            <td style="width:10%;">Fail</td>
+            <td style="width:10%;">Pass Rate</td>
             <td style="width:20%;">Complete Rate</td>
             <td style="width:10%;">Detail</td>
         </tr>
         <tr>
-            <td>{{ total }}</td>
-            <td class="green" id="td_pass">0</td>
-            <td class="red" id="td_error">0</td>
-            <td id="td_pass_rate">0%</td>
-            <td id="td_comp_rate">0%</td>
+            <td>Topic-EN</td>
+            <td id="en_topic_total">{{ en_topic }}</td>
+            <td class="green" id="en_topic_td_pass">0</td>
+            <td class="red" id="en_topic_td_error">0</td>
+            <td id="en_topic_td_pass_rate">0%</td>
+            <td id="en_topic_td_comp_rate">0%</td>
             <td>
-                <a href="{% url 'output' %}" target="_blank" class="btn btn-info mb-3">View Detail</a>
+                <a href="{% url 'output' %}en_topic" target="_blank" class="btn btn-info mb-3">View Detail</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Test-EN</td>
+            <td id="en_test_total">{{ en_test }}</td>
+            <td class="green" id="en_test_td_pass">0</td>
+            <td class="red" id="en_test_td_error">0</td>
+            <td id="en_test_td_pass_rate">0%</td>
+            <td id="en_test_td_comp_rate">0%</td>
+            <td>
+                <a href="{% url 'output' %}en_test" target="_blank" class="btn btn-info mb-3">View Detail</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Topic-FR</td>
+            <td id="fr_topic_total">{{ fr_topic }}</td>
+            <td class="green" id="fr_topic_td_pass">0</td>
+            <td class="red" id="fr_topic_td_error">0</td>
+            <td id="fr_topic_td_pass_rate">0%</td>
+            <td id="fr_topic_td_comp_rate">0%</td>
+            <td>
+                <a href="{% url 'output' %}fr_topic" target="_blank" class="btn btn-info mb-3">View Detail</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Test-FR</td>
+            <td id="fr_test_total">{{ fr_test }}</td>
+            <td class="green" id="fr_test_td_pass">0</td>
+            <td class="red" id="fr_test_td_error">0</td>
+            <td id="fr_test_td_pass_rate">0%</td>
+            <td id="fr_test_td_comp_rate">0%</td>
+            <td>
+                <a href="{% url 'output' %}fr_test" target="_blank" class="btn btn-info mb-3">View Detail</a>
             </td>
         </tr>
     </table>
-{% endblock content %}
-
-{% block footer_js %}
     <script type="text/javascript">
-        var pass = 0, error = 0, DEFAULT_TIMEOUT = 8000, LONG_TIMEOUT = 30000;
-        var total = parseInt('{{ total }}');
-
-        function start_test() {
-            load_check(1);
-            load_check(2);
-            load_check(3);
-            load_check(4);
+        var pass={"fr_test":0, "fr_topic":0, "en_test":0, "en_topic":0},
+            error={"fr_test":0, "fr_topic":0, "en_test":0, "en_topic":0},
+            DEFAULT_TIMEOUT = 8000,LONG_TIMEOUT=30000;
+        function start_test(fileName) {
+            pass[fileName] = 0;
+            error[fileName] = 0;
+            load_check(1,fileName);load_check(2,fileName);load_check(3,fileName);load_check(4,fileName);
         };
-
-        function load_check(idx, timeout) {
-            if (idx > total) return;
-            if (!timeout) timeout = DEFAULT_TIMEOUT;
+        function load_check(idx,fileName, timeout){
+            var total = parseInt(jQuery('#'+fileName+"_total").html());
+            if(idx > total) return;
+            if(!timeout) timeout = DEFAULT_TIMEOUT;
 
             jQuery.ajax({
-                url: "{% url 'output' %}" + idx.toString(),
-                type: 'GET',
-                timeout: timeout,
-                success: function (d) {
-                    switch (d.result) {
-                        case "PASS":
-                            pass++;
-                            reCalc();
-                            load_check(idx + 4);
-                            break;
-                        default:
-                            do_error_request(idx, timeout);
-                            break;
+                    url: "{% url 'output' %}"+fileName+"/"+idx.toString(),
+                    type: 'GET',
+                    timeout:timeout,
+                    success: function(d){
+                        switch(d.result){
+                            case "PASS":
+                                pass[fileName]++;
+                                reCalc(fileName);
+                                load_check(idx+4, fileName);
+                                break;
+                            default:
+                                do_error_request(idx,fileName, timeout);
+                                break;
+                        }
+                    },
+                    error: function(e) {
+                        do_error_request(idx, fileName, timeout);
                     }
-                },
-                error: function (e) {
-                    do_error_request(idx, timeout);
-                }
-            })
+                })
         }
-
-        function do_error_request(idx, timeout) {
-            if (timeout > DEFAULT_TIMEOUT) {
-                error++;
-                reCalc();
-                load_check(idx + 4);
-            } else {
-                load_check(idx, LONG_TIMEOUT);
+        function do_error_request(idx,fileName, timeout){
+            if(timeout > DEFAULT_TIMEOUT) {
+                error[fileName]++;
+                reCalc(fileName);
+                load_check(idx+4,fileName);
+            }else{
+                load_check(idx,fileName, LONG_TIMEOUT);
             }
         }
-
-        function reCalc() {
-            var _error = error, _pass = pass;
+        function reCalc(fileName){
+            var total = parseInt(jQuery('#'+fileName+"_total").html());
+            var _error = error[fileName], _pass= pass[fileName];
             console.log(pass);
             console.log(error);
-            jQuery('#td_pass').html(_pass);
-            jQuery('#td_error').html(_error);
-            jQuery('#td_pass_rate').html((_pass / (_pass + _error) * 100).toFixed(2) + '%');
-            jQuery('#td_comp_rate').html(((_pass + _error) / total * 100).toFixed(2) + '%');
+            jQuery('#'+fileName+'_td_pass').html(_pass);
+            jQuery('#'+fileName+'_td_error').html(_error);
+            jQuery('#'+fileName+'_td_pass_rate').html((_pass / (_pass + _error) *100).toFixed(2) + '%');
+            jQuery('#'+fileName+'_td_comp_rate').html(((_pass + _error) / total *100).toFixed(2) + '%');
         }
     </script>
-    <style> /*这些共有样式可以提取到一个公共css文件里*/
-    table {
-        border: 1px solid #666;
-    }
-
-    tr {
-        border-left: 1px solid #666;
-        border-top: 1px solid #666;
-    }
-
-    td {
-        border-right: 1px solid #666;
-        border-bottom: 1px solid #666;
-    }
-
-    .bold {
-        font-weight: 700;
-    }
-
-    .green {
-        color: #0d0;
-    }
-
-    .yellow {
-        color: #ee0;
-    }
-
-    .purple {
-        color: #DD22DD;
-    }
-
-    .red {
-        color: #d00;
-    }
+    <style> 
+        table {border:1px solid #666;}
+        tr {border-left:1px solid #666;border-top:1px solid #666;}
+        td {border-right:1px solid #666;border-bottom:1px solid #666;}
+        .bold {font-weight:700;}
+        .green {color:#0d0;}
+        .yellow{color:#ee0;}
+        .purple{color:#DD22DD;}
+        .red{color:#d00;}
     </style>
-{% endblock footer_js %}
 
-
+{% endblock content %}

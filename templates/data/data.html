@@ -20,7 +20,7 @@
         <button class="btn btn-primary" type="submit">Connect to Firebase Database</button>
     </form>
 
-    {% if start_date != "yyyy-mm-dd" %}
+    {% if not fb_data.empty %}
         <p>Time Range: {{ start_date }} to {{ end_date }} <br></p>
         <input class="btn btn-primary" type="button" value="Download Dataset" onclick="window.open('download')">
     {% endif %}

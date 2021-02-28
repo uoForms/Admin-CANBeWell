@@ -3,16 +3,20 @@ import datetime
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
+from django.utils.safestring import mark_safe
 from firebase import firebase
 import pandas as pd
 
 from data.forms import dateRangeForm
 
 def home(request):
-    return render(request, 'data/index.html')
+    context = {
+        'page_title': 'Home',
+     }
+    return render(request, 'data/index.html', context)
 
 
-def generate_date_list(start_date, end_date):
+def generate_date_list(request, start_date, end_date):
     diff = end_date - start_date
     date_list = list()
     for i in range(diff.days + 1):
@@ -54,30 +58,31 @@ def clean_data(fb_data):
     return fb_data
 
 def download_csv(self):
-    global fbdata
+    global fb_data
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=canbewell_data_export.csv'
-    fbdata.to_csv(path_or_buf=response, index=True)
+    fb_data.to_csv(path_or_buf=response, index=True)
     return response
 
 
 start_date = "yyyy-mm-dd"
 end_date = "yyyy-mm-dd"
-fbdata = []
+fb_data = pd.DataFrame()
 
 def data(request):
     if request.user.is_authenticated:
         global context
         global start_date
         global end_date
-        global fbdata
+        global fb_data
         context = {
             'page_title': 'Data',
             'form': dateRangeForm(),
             'start_date': start_date,
             'end_date': end_date,
-            'fbdata': fbdata
+            'fbdata': fb_data
         }
+
         if request.method == 'POST':
             form = dateRangeForm(request.POST)
             if form.is_valid():
@@ -85,19 +90,25 @@ def data(request):
                 start_date_obj = datetime.datetime.strptime(start_date, '%Y-%m-%d')
                 end_date = form.cleaned_data['end_date']
                 end_date_obj = datetime.datetime.strptime(end_date, '%Y-%m-%d')
-                date_list = generate_date_list(start_date_obj, end_date_obj)
+                date_list = generate_date_list(request, start_date_obj, end_date_obj)
 
-                global fb_data
                 if date_list:
                     fb_data = fb_fetch_data(date_list)
-                    fb_data = clean_data(fb_data)
-                context['form'] = form
-                context['fb_data'] = fb_data
-                context['start_date'] = start_date
-                context['end_date'] = end_date
+                    if not fb_data.empty:
+                        fb_data = clean_data(fb_data)
+                    else:
+                        messages.error(request, mark_safe("No data available."))
+                else:
+                    fb_data = pd.DataFrame()
+                    messages.error(request, mark_safe("Invalid dates selected."))
         else:
             form = dateRangeForm()
-            context['form'] = form
+
+        context['form'] = form
+        context['fb_data'] = fb_data
+        context['start_date'] = start_date
+        context['end_date'] = end_date
+
         return render(request, 'data/data.html', context)
     else:
         return redirect('home_page')

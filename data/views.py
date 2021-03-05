@@ -26,9 +26,13 @@ def generate_date_list(request, start_date, end_date):
     return date_list
 
 
-def fb_fetch_data(date_list):
+def fb_fetch_data(date_list, db_choice):
     fb_data = pd.DataFrame()
-    fb_app_obj = firebase.FirebaseApplication("https://canbewell-uottawa.firebaseio.com/", None)
+    if db_choice == "CANBeWell_uOttawa":
+        fb_app_obj = firebase.FirebaseApplication("https://canbewell-uottawa.firebaseio.com/", None)
+    elif db_choice == "Export_CSV_CANBeWell":
+        fb_app_obj = firebase.FirebaseApplication("https://export-csv-canbewell.firebaseio.com/", None)
+    print(fb_app_obj)
     fb_data_temp = fb_app_obj.get("", "")
     for i in range(0, len(date_list)):
         try:
@@ -90,10 +94,10 @@ def data(request):
                 start_date_obj = datetime.datetime.strptime(start_date, '%Y-%m-%d')
                 end_date = form.cleaned_data['end_date']
                 end_date_obj = datetime.datetime.strptime(end_date, '%Y-%m-%d')
+                db_choice = form.cleaned_data['db_choice']
                 date_list = generate_date_list(request, start_date_obj, end_date_obj)
-
                 if date_list:
-                    fb_data = fb_fetch_data(date_list)
+                    fb_data = fb_fetch_data(date_list, db_choice)
                     if not fb_data.empty:
                         fb_data = clean_data(fb_data)
                     else:

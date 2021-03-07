@@ -90,43 +90,43 @@ class DatasetAnalysis():
 
         return uri, self.gender_distribution_table
 
-     # def Topic_distribution(self):
-     #    plt.clf()
+    def Topic_distribution(self):
+          plt.clf()
 
-     #    genders = self.frame.gender
+          genders = self.frame.gender
 
-     #    gender_counter = Counter()
-     #    gender_counter.update(genders)
-     #    total_gender = sum(gender_counter.values())
-     #    label, values = zip(*gender_counter.items())
-     #    table = {}
-     #    for gender, value in gender_counter.most_common(4):
-     #        gender_pct = (value / total_gender) * 100
-     #        gender_pct = round(gender_pct, 2)
-     #        table[gender] = gender_pct
-     #    output_table1 = tabulate(table.items(), headers=[
-     #                             'Gender', 'Percentage(%)'], tablefmt='html')
+          gender_counter = Counter()
+          gender_counter.update(genders)
+          total_gender = sum(gender_counter.values())
+          label, values = zip(*gender_counter.items())
+          table = {}
+          for gender, value in gender_counter.most_common(4):
+              gender_pct = (value / total_gender) * 100
+              gender_pct = round(gender_pct, 2)
+              table[gender] = gender_pct
+          output_table1 = tabulate(table.items(), headers=[
+                                   'Gender', 'Percentage(%)'], tablefmt='html')
 
-     #    self.gender_distribution_table = output_table1
+          self.gender_distribution_table = output_table1
      #    # print("====gender_distribution====")
      #    # print(output_table1)
      #    # print("=" * 30)
 
-     #    plt.style.use("ggplot")
+          plt.style.use("ggplot")
 
-     #    explode = [0, 0.1, 0, 0]
-     #    plt.pie(values, labels=label, explode=explode, shadow=True,
-     #            startangle=45, autopct='%1.1f%%', wedgeprops={'edgecolor': 'black'})
+          explode = [0, 0.1, 0, 0]
+          plt.pie(values, labels=label, explode=explode, shadow=True,
+                  startangle=45, autopct='%1.1f%%', wedgeprops={'edgecolor': 'black'})
 
      #    # plt.title('Gender distribution')
-     #    plt.tight_layout()
+          plt.tight_layout()
 
      #    # plt.show()
 
      #    # self.gender_distribution_fig = plt.gcf()
-     #    uri = self.getBase64URI(plt.gcf())
+          uri = self.getBase64URI(plt.gcf())
 
-     #    return uri, self.gender_distribution_table
+          return uri, self.gender_distribution_table
 
     def Median_category(self):
         plt.rcParams['axes.facecolor'] = 'white'

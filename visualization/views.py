@@ -14,7 +14,7 @@ def visualization(request):
     # visual_gender_bar_uri = dataset.Visual_Gender_Bar()
     # most_viewed_topics_uri = dataset.Most_Viewed_topics()
     # mostviewedtopic_based_on_roles_uri, mostviewedtopic_based_on_roles_table = dataset.MostViewedTopic_Based_on_roles()
-    # common_used_devices_uri = dataset.Common_used_devices()
+    common_used_devices_uri = dataset.Common_used_devices()
     # ItemsGenderSpecific_uri = dataset.ItemsGenderSpecific()
     # popular_topics_languages_uri, popular_topics_languages_table = dataset.Popular_Topics_languages()
     # Topic_Distribution_uri = dataset.Topic_Distribution()
@@ -35,7 +35,7 @@ def visualization(request):
     #     'most_viewed_topics_uri': most_viewed_topics_uri,
     #     'mostviewedtopic_based_on_roles_uri': mostviewedtopic_based_on_roles_uri,
     #     'mostviewedtopic_based_on_roles_table': mostviewedtopic_based_on_roles_table,
-    #     'common_used_devices_uri': common_used_devices_uri,
+         'common_used_devices_uri': common_used_devices_uri,
     #     'popular_topics_languages_uri': popular_topics_languages_uri,
     #     'popular_topics_languages_table': popular_topics_languages_table,
     #     'ItemsGenderSpecific_uri': ItemsGenderSpecific_uri,

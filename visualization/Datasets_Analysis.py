@@ -386,7 +386,6 @@ class DatasetAnalysis():
         return uri
 
     def Most_Viewed_topics(self):
-
         plt.clf()
         cframe = self.frame.pivot_table(
             'pageviewtime', index='item', columns='agerange', aggfunc='mean')

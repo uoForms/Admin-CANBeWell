@@ -17,7 +17,7 @@ def visualization(request):
     common_used_devices_uri = dataset.Common_used_devices()
     ItemsGenderSpecific_uri = dataset.ItemsGenderSpecific()
     popular_topics_languages_uri, popular_topics_languages_table = dataset.Popular_Topics_languages()
-    # Topic_Distribution_uri = dataset.Topic_Distribution()
+    Topic_Distribution_uri = dataset.Topic_Distribution()
 
     fig_data = {
          'page_title': 'Visualization',
@@ -39,7 +39,7 @@ def visualization(request):
          'popular_topics_languages_uri': popular_topics_languages_uri,
          'popular_topics_languages_table': popular_topics_languages_table,
          'ItemsGenderSpecific_uri': ItemsGenderSpecific_uri,
-    #     'Topic_Distribution_uri': Topic_Distribution_uri,
+         'Topic_Distribution_uri': Topic_Distribution_uri,
           'Median_Age': Median_Age
     }
 

@@ -9,7 +9,7 @@ def visualization(request):
     gender_distribution_uri, gender_distribution_table = dataset.gender_distribution()
     # median_category_uri, median_category_table = dataset.Median_category()
     Median_Age = dataset.Median_Age()
-    # most_popular_topics_uri, most_popular_topics_table = dataset.Most_Popular_Topics()
+    most_popular_topics_uri, most_popular_topics_table = dataset.Most_Popular_Topics()
     french_gender_dis_uri, french_gender_dis_table, english_gender_dis_uri, english_gender_dis_table = dataset.Gender_distribution_language()
     visual_gender_bar_uri = dataset.Visual_Gender_Bar()
     # most_viewed_topics_uri = dataset.Most_Viewed_topics()
@@ -25,8 +25,8 @@ def visualization(request):
          "gender_distribution_table": gender_distribution_table,
     #     'median_category_uri': median_category_uri,
     #     'median_category_table': median_category_table,
-    #     "most_popular_topics_uri": most_popular_topics_uri,
-    #     "most_popular_topics_table": most_popular_topics_table,
+         "most_popular_topics_uri": most_popular_topics_uri,
+         "most_popular_topics_table": most_popular_topics_table,
          "french_gender_dis_uri": french_gender_dis_uri,
          "french_gender_dis_table": french_gender_dis_table,
          "english_gender_dis_uri": english_gender_dis_uri,

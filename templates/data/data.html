@@ -19,9 +19,9 @@
         </div>
         <div class="form-group row">
             <label for="db_option" class="col-md-3 col-lg-2 col-form-label"> Select Database :</label>
-            {% render_field form.db_choice type="select" id="db_choice" class="col-md-4 col-lg-3 form-control" placeholder="Select Database"%}
+            {% render_field form.db_choice type="select" id="db_choice" class="col-md-3 col-lg-2 form-control" placeholder="Select Database"%}
         </div>
-        <button class="btn btn-primary" type="submit">Connect to Firebase Database</button>
+        <button class="btn btn-primary" type="submit">Get Data</button>
     </form>
 
     {% if not fb_data.empty %}
@@ -37,40 +37,27 @@
         </div>
     {% endfor %}
 
-    <table class="table table-responsive" border="1px">
-        <small>Scroll right/left for all available columns.</small>
-        <tr>
-            <th>Index</th>
-            <th>Firebase Json Index</th>
-            <th>Age Range</th>
-            <th>Age</th>
-            <th>Browser</th>
-            <th>City</th>
-            <th>Date</th>
-            <th>Device</th>
-            <th>Gender</th>
-            <th>Item</th>
-            <th>Language</th>
-            <th>Navigation</th>
-            <th>OS</th>
-            <th>Page View Time</th>
-            <th>Region</th>
-            <th>Role</th>
-            <th>Session_Id</th>
-            <th>User_Id</th>
-
-            {% if start_date %}
-                {% for index, record in fb_data.iterrows %}
-                    <tr>
-                        <td>{{ index }}</td>
-                        {% for cell in record %}
-                            <td>{{ cell }}</td>
-                        {% endfor %}
-                    </tr>
+    {% if not fb_data.empty %}
+        <table class="table table-responsive" border="1px">
+            <small>Scroll right/left for all available columns.</small>
+            <tr>
+                <th>Index</th>
+                {% for col in fbdata.columns %}
+                    <th>{{ col }}</th>
                 {% endfor %}
-            {% endif %}
-        </tr>
-    </table>
+                {% if start_date %}
+                    {% for index, record in fb_data.iterrows %}
+                        <tr>
+                            <td>{{ index }}</td>
+                            {% for cell in record %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tr>
+        </table>
+    {% endif %}
 
 {% endblock content %}
 

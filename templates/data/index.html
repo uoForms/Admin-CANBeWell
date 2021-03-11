@@ -7,14 +7,14 @@
 {% endblock title %}
 
 {% block content %}
+    <img src="{% static 'images/logo_20-05-02.png' %}" class="img-fluid rounded mx-auto d-block">
+    <h5 class="text-center">Welcome to the CANBeWell Admin Site</h5>
 
-    <h4>Welcome to the CANBeWell Admin Site</h4>
-
-    {% if user.is_authenticated %}
-        <p class="lead">Hi, {{ user.username }}!</p>
-    {% else %}
-        <p class="lead">Please <a href="{% url 'login' %}">log in</a> to use all the services.</p>
-    {% endif %}
+{#    {% if user.is_authenticated %}#}
+{#        <p class="lead">Hi, {{ user.username }}!</p>#}
+{#    {% else %}#}
+{#        <p class="lead">Please <a href="{% url 'login' %}">log in</a> to use all the services.</p>#}
+{#    {% endif %}#}
 
 {% endblock content %}
 

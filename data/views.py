@@ -33,7 +33,6 @@ def fb_fetch_data(date_list, db_choice):
         fb_app_obj = firebase.FirebaseApplication("https://canbewell-uottawa.firebaseio.com/", None)
     elif db_choice == "Export_CSV_CANBeWell":
         fb_app_obj = firebase.FirebaseApplication("https://export-csv-canbewell.firebaseio.com/", None)
-    print(fb_app_obj)
     fb_data_temp = fb_app_obj.get("", "")
     for i in range(0, len(date_list)):
         try:
@@ -60,6 +59,11 @@ def clean_data(fb_data):
     fb_data.insert(1, 'Age Range', agerange)
     fb_data.reset_index(drop=True, inplace=True)
     fb_data.index = fb_data.index + 1
+    fb_data['date'] = pd.to_datetime(fb_data['date'], format='%Y%m%d')
+    fb_data['date'] = fb_data['date'].dt.strftime('%Y-%m-%d')
+    return fb_data
+
+def clean_headers(fb_data):
     fb_data.rename(columns={'age': 'Age',
                             'browser': 'Browser',
                             'city': 'City',
@@ -75,8 +79,7 @@ def clean_data(fb_data):
                             'role': 'Role',
                             'sessionid': 'Session ID',
                             'userid': 'User ID'}, inplace=True)
-    fb_data['Date'] = pd.to_datetime(fb_data['Date'], format='%Y%m%d')
-    fb_data['Date'] = fb_data['Date'].dt.strftime('%Y-%m-%d')
+    print(fb_data.columns)
     return fb_data
 
 @login_required(login_url='/')
@@ -108,6 +111,7 @@ def data(request):
     if request.method == 'POST':
         form = dateRangeForm(request.POST)
         if form.is_valid():
+            fb_data = pd.DataFrame()
             start_date = form.cleaned_data['start_date']
             start_date_obj = datetime.datetime.strptime(start_date, '%Y-%m-%d')
             end_date = form.cleaned_data['end_date']
@@ -118,10 +122,10 @@ def data(request):
                 fb_data = fb_fetch_data(date_list, db_choice)
                 if not fb_data.empty:
                     fb_data = clean_data(fb_data)
+                    fb_data = clean_headers(fb_data)
                 else:
                     messages.error(request, mark_safe("No data available."))
             else:
-                fb_data = pd.DataFrame()
                 messages.error(request, mark_safe("Invalid dates selected."))
     else:
         form = dateRangeForm()

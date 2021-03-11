@@ -40,22 +40,22 @@
     {% if not fb_data.empty %}
         <table class="table table-responsive" border="1px">
             <small>Scroll right/left for all available columns.</small>
-            <tr>
+            <thead>
                 <th>Index</th>
-                {% for col in fbdata.columns %}
+                {% for col in fb_data %}
                     <th>{{ col }}</th>
                 {% endfor %}
-                {% if start_date %}
-                    {% for index, record in fb_data.iterrows %}
-                        <tr>
-                            <td>{{ index }}</td>
-                            {% for cell in record %}
-                                <td>{{ cell }}</td>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
-                {% endif %}
-            </tr>
+            </thead>
+            <tbody>
+                {% for index, record in fb_data.iterrows %}
+                    <tr>
+                        <td>{{ index }}</td>
+                        {% for cell in record %}
+                            <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
     {% endif %}
 

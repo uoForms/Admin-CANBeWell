@@ -105,7 +105,7 @@ def data(request):
         'form': dateRangeForm(),
         'start_date': start_date,
         'end_date': end_date,
-        'fbdata': fb_data
+        'fb_data': fb_data
     }
 
     if request.method == 'POST':

@@ -1,6 +1,7 @@
 import datetime
 
-from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib import messages
 from django.utils.safestring import mark_safe
@@ -55,12 +56,30 @@ def clean_data(fb_data):
             agerange[i] = 'Middle'
         else:
             agerange[i] = 'Senior'
-    fb_data.insert(0, 'firebase_json_index', fb_data.index)
-    fb_data.insert(1, 'agerange', agerange)
+    fb_data.insert(0, 'Firebase JSON Index', fb_data.index)
+    fb_data.insert(1, 'Age Range', agerange)
     fb_data.reset_index(drop=True, inplace=True)
     fb_data.index = fb_data.index + 1
+    fb_data.rename(columns={'age': 'Age',
+                            'browser': 'Browser',
+                            'city': 'City',
+                            'date': 'Date',
+                            'device': 'Device',
+                            'gender': 'Gender',
+                            'item': 'Item',
+                            'language': 'Language',
+                            'navigation': 'Navigation',
+                            'os': 'OS',
+                            'pageviewtime': 'Page View Time',
+                            'region': 'Region',
+                            'role': 'Role',
+                            'sessionid': 'Session ID',
+                            'userid': 'User ID'}, inplace=True)
+    fb_data['Date'] = pd.to_datetime(fb_data['Date'], format='%Y%m%d')
+    fb_data['Date'] = fb_data['Date'].dt.strftime('%Y-%m-%d')
     return fb_data
 
+@login_required(login_url='/')
 def download_csv(self):
     global fb_data
     response = HttpResponse(content_type='text/csv')
@@ -73,46 +92,43 @@ start_date = "yyyy-mm-dd"
 end_date = "yyyy-mm-dd"
 fb_data = pd.DataFrame()
 
+@login_required(login_url='/')
 def data(request):
-    if request.user.is_authenticated:
-        global context
-        global start_date
-        global end_date
-        global fb_data
-        context = {
-            'page_title': 'Data',
-            'form': dateRangeForm(),
-            'start_date': start_date,
-            'end_date': end_date,
-            'fbdata': fb_data
-        }
+    global start_date
+    global end_date
+    global fb_data
+    context = {
+        'page_title': 'Data',
+        'form': dateRangeForm(),
+        'start_date': start_date,
+        'end_date': end_date,
+        'fbdata': fb_data
+    }
 
-        if request.method == 'POST':
-            form = dateRangeForm(request.POST)
-            if form.is_valid():
-                start_date = form.cleaned_data['start_date']
-                start_date_obj = datetime.datetime.strptime(start_date, '%Y-%m-%d')
-                end_date = form.cleaned_data['end_date']
-                end_date_obj = datetime.datetime.strptime(end_date, '%Y-%m-%d')
-                db_choice = form.cleaned_data['db_choice']
-                date_list = generate_date_list(request, start_date_obj, end_date_obj)
-                if date_list:
-                    fb_data = fb_fetch_data(date_list, db_choice)
-                    if not fb_data.empty:
-                        fb_data = clean_data(fb_data)
-                    else:
-                        messages.error(request, mark_safe("No data available."))
+    if request.method == 'POST':
+        form = dateRangeForm(request.POST)
+        if form.is_valid():
+            start_date = form.cleaned_data['start_date']
+            start_date_obj = datetime.datetime.strptime(start_date, '%Y-%m-%d')
+            end_date = form.cleaned_data['end_date']
+            end_date_obj = datetime.datetime.strptime(end_date, '%Y-%m-%d')
+            db_choice = form.cleaned_data['db_choice']
+            date_list = generate_date_list(request, start_date_obj, end_date_obj)
+            if date_list:
+                fb_data = fb_fetch_data(date_list, db_choice)
+                if not fb_data.empty:
+                    fb_data = clean_data(fb_data)
                 else:
-                    fb_data = pd.DataFrame()
-                    messages.error(request, mark_safe("Invalid dates selected."))
-        else:
-            form = dateRangeForm()
-
-        context['form'] = form
-        context['fb_data'] = fb_data
-        context['start_date'] = start_date
-        context['end_date'] = end_date
-
-        return render(request, 'data/data.html', context)
+                    messages.error(request, mark_safe("No data available."))
+            else:
+                fb_data = pd.DataFrame()
+                messages.error(request, mark_safe("Invalid dates selected."))
     else:
-        return redirect('home_page')
+        form = dateRangeForm()
+
+    context['form'] = form
+    context['fb_data'] = fb_data
+    context['start_date'] = start_date
+    context['end_date'] = end_date
+
+    return render(request, 'data/data.html', context)

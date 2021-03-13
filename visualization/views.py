@@ -20,7 +20,7 @@ Median_Age = None
 start_date = "yyyy-mm-dd"
 end_date = "yyyy-mm-dd"
 
-@login_required(login_url='/')
+@login_required(login_url='login')
 def visualization(request):
     global dataset
     global start_date

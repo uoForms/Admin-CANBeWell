@@ -17,7 +17,7 @@ def home(request):
     return render(request, 'data/index.html', context)
 
 
-def generate_date_list(request, start_date, end_date):
+def generate_date_list(start_date, end_date):
     diff = end_date - start_date
     date_list = list()
     for i in range(diff.days + 1):
@@ -78,11 +78,11 @@ def clean_headers(fb_data):
                             'region': 'Region',
                             'role': 'Role',
                             'sessionid': 'Session ID',
-                            'userid': 'User ID'}, inplace=True)
-    print(fb_data.columns)
+                            'userid': 'User ID',
+                            'user': 'User'}, inplace=True)
     return fb_data
 
-@login_required(login_url='/')
+@login_required(login_url='login')
 def download_csv(self):
     global fb_data
     response = HttpResponse(content_type='text/csv')
@@ -95,7 +95,7 @@ start_date = "yyyy-mm-dd"
 end_date = "yyyy-mm-dd"
 fb_data = pd.DataFrame()
 
-@login_required(login_url='/')
+@login_required(login_url='login')
 def data(request):
     global start_date
     global end_date
@@ -105,7 +105,7 @@ def data(request):
         'form': dateRangeForm(),
         'start_date': start_date,
         'end_date': end_date,
-        'fbdata': fb_data
+        'fb_data': fb_data
     }
 
     if request.method == 'POST':
@@ -117,7 +117,7 @@ def data(request):
             end_date = form.cleaned_data['end_date']
             end_date_obj = datetime.datetime.strptime(end_date, '%Y-%m-%d')
             db_choice = form.cleaned_data['db_choice']
-            date_list = generate_date_list(request, start_date_obj, end_date_obj)
+            date_list = generate_date_list(start_date_obj, end_date_obj)
             if date_list:
                 fb_data = fb_fetch_data(date_list, db_choice)
                 if not fb_data.empty:

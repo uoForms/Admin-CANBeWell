@@ -6,23 +6,32 @@
 
 <p class="lead">Python Libraries Visualizations</p>
 
-<p>The below charts have been generated using Pandas and Matplotlib libraries in Python for collected datasets between March 16 to August 26.</p>
-
-<form action='visualization/' method="post">
+<form method="POST" action="" class="form-group">
     {% csrf_token %}
-    <button type="submit" name="run_script">Run script</button>
+    <button class="btn btn-primary" type="submit" name="run_script">Run script</button>
 </form>
+</br>
 
-   <div class="container">
+{% for message in messages %}
+<div class="alert alert-success">
+    <a class="close" href="#" data-dismiss="alert">×</a>
+    {{ message }}
+</div>
+{% endfor %}
+
+{% if start_date != "yyyy-mm-dd" %}
+<p>The below charts have been generated using Pandas and Matplotlib libraries in Python for collected datasets between {{ start_date }} to {{ end_date }}.</p>
+   
+       <div class="container">
             <div class="row mt-5">
                 <div class="col">
                     <h6 class="text-center">Gender Distribution</h6>
                     <img src="data:image/png;base64, {{gender_distribution_uri}}" class="img-fuild float-left" style="max-width: 100%;">
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                     <h6 class="text-center">Median Monthly Age Distribution of Users</h6>
                     <img src="data:image/png;base64, {{median_category_uri}}" class="img-fuild float-right" style="max-width: 100%;">
-                </div>
+                </div> -->
                 <div class="row mt-5">
                     <div class="col">
                         <h6 class="text-center">Frequently Read Topics</h6>
@@ -46,10 +55,10 @@
             </div>
 
                <div class="row mt-5">
-                    <div class="col">
+                    <!-- <div class="col">
                         <h6 class="text-center">Most Viewed Topics</h6>
                         <img src="data:image/png;base64, {{most_viewed_topics_uri}}" class="img-fuild float-left" style="max-width: 100%;">
-                    </div>
+                    </div> -->
                     <div class="col">
                         <h6 class="text-center">Viewed Topics Based on Roles</h6>
                         <img src="data:image/png;base64, {{mostviewedtopic_based_on_roles_uri}}"  class="img-fuild float-right" style="max-width: 100%;">
@@ -82,7 +91,7 @@
         </div>
     </div>
 
-
+{% endif %}
 
 
 {% endblock content %}

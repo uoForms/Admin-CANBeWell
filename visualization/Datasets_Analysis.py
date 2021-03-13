@@ -12,49 +12,18 @@ import mpld3
 import urllib
 import base64
 
-# Connecting to firebase database
-
 class DatasetAnalysis():
 
-    def __init__(self):
-
-        # Loading csv_file into DataFrame
-        self.initrawData()
-
-        # convert the int date type to python datetime object
+    def __init__(self, fb_data):
+        self.initrawData(fb_data)
         self.convert_date()
-
-        # checking the uniqueness
         self.rawData['item'].unique()
-
         self.cleaning_data()
         self.frame = self.rawData[self.rawData.gender.notnull()]
-        # self.frame['DayOfWeek'] = self.frame['date'].dt.day_name()
-        # self.frame.set_index('date', inplace=True)
         self.bodypart = self.rawData[self.rawData.item.notnull()]
 
-    def run(self):
-
-        self.gender_distribution()
-        self.Median_category()
-        # self.Most_Popular_Topics()
-        # self.Gender_distribution_language()
-        # self.Visual_Gender_Bar()
-        # self.Most_Viewed_topics()
-        # self.MostViewedTopic_Based_on_roles()
-        # self.Common_used_devices()
-        # self.Popular_Topics_languages()
-
-    def initrawData(self):
-
-        # url_original = 'https://drive.google.com/file/d/1y93LMXvqSQF7mvgO4JlOIUZ1PsiyIa-z/view?usp=sharing'
-        # file_read = url_original.split('/')[-2]
-        # url = 'https://drive.google.com/uc?export=download&id=' + file_read
-
-        # response = requests.get(url).content
-        # self.rawData = pd.read_csv(io.StringIO(response.decode('UTF-8')))
-        self.rawData = pd.read_csv(
-            'visualization/data.csv', encoding='unicode_escape')
+    def initrawData(self,fb_data):
+        self.rawData = pd.DataFrame(fb_data)
         self.rawData['gender'] = self.rawData['gender'].str.capitalize()
         self.rawData.rename(columns={
                             'language': 'Languages', 'device': 'Device', 'role': 'Roles'}, inplace=True)
@@ -64,15 +33,8 @@ class DatasetAnalysis():
 
         self.rawData['agerange'] = self.rawData['agerange'].str.replace(
             'all ages', 'Unspecfied')
-
-        # self.rawData.rename(columns={'device':'Device'}, inplace=True)
-        # self.rawData.rename(columns={'role':'Roles'}, inplace=True)
-
-        # Setting display
         pd.set_option('display.max_columns', 100)
         pd.set_option('display.max_rows', 10)
-
-    # convert the int date type to python datetime object
 
     def convert_date(self):
         self.rawData['date'] = pd.to_datetime(
@@ -126,43 +88,43 @@ class DatasetAnalysis():
 
         return uri, self.gender_distribution_table
 
-     # def Topic_distribution(self):
-     #    plt.clf()
+    def Topic_distribution(self):
+          plt.clf()
 
-     #    genders = self.frame.gender
+          genders = self.frame.gender
 
-     #    gender_counter = Counter()
-     #    gender_counter.update(genders)
-     #    total_gender = sum(gender_counter.values())
-     #    label, values = zip(*gender_counter.items())
-     #    table = {}
-     #    for gender, value in gender_counter.most_common(4):
-     #        gender_pct = (value / total_gender) * 100
-     #        gender_pct = round(gender_pct, 2)
-     #        table[gender] = gender_pct
-     #    output_table1 = tabulate(table.items(), headers=[
-     #                             'Gender', 'Percentage(%)'], tablefmt='html')
+          gender_counter = Counter()
+          gender_counter.update(genders)
+          total_gender = sum(gender_counter.values())
+          label, values = zip(*gender_counter.items())
+          table = {}
+          for gender, value in gender_counter.most_common(4):
+              gender_pct = (value / total_gender) * 100
+              gender_pct = round(gender_pct, 2)
+              table[gender] = gender_pct
+          output_table1 = tabulate(table.items(), headers=[
+                                   'Gender', 'Percentage(%)'], tablefmt='html')
 
-     #    self.gender_distribution_table = output_table1
+          self.gender_distribution_table = output_table1
      #    # print("====gender_distribution====")
      #    # print(output_table1)
      #    # print("=" * 30)
 
-     #    plt.style.use("ggplot")
+          plt.style.use("ggplot")
 
-     #    explode = [0, 0.1, 0, 0]
-     #    plt.pie(values, labels=label, explode=explode, shadow=True,
-     #            startangle=45, autopct='%1.1f%%', wedgeprops={'edgecolor': 'black'})
+          explode = [0, 0.1, 0, 0]
+          plt.pie(values, labels=label, explode=explode, shadow=True,
+                  startangle=45, autopct='%1.1f%%', wedgeprops={'edgecolor': 'black'})
 
      #    # plt.title('Gender distribution')
-     #    plt.tight_layout()
+          plt.tight_layout()
 
      #    # plt.show()
 
      #    # self.gender_distribution_fig = plt.gcf()
-     #    uri = self.getBase64URI(plt.gcf())
+          uri = self.getBase64URI(plt.gcf())
 
-     #    return uri, self.gender_distribution_table
+          return uri, self.gender_distribution_table
 
     def Median_category(self):
         plt.rcParams['axes.facecolor'] = 'white'
@@ -195,29 +157,21 @@ class DatasetAnalysis():
 
         return uri, self.median_category_table
 
-    # def Median_Age(self):
-    #     plt.rcParams['axes.facecolor'] = 'white'
-    #     plt.clf()
-    #     # self.frame['DayOfWeek'] = self.frame['date'].dt.day_name()
-    #     # self.frame.set_index('date', inplace=True)
-    #     computation = self.frame.resample('M').agg(
-    #         {'age': 'median', 'pageviewtime': 'mean'})
-    #     output_table2 = tabulate(computation, headers=[
-    #         'date', 'age', 'pageviewtime'], tablefmt='html')
+    def Median_Age(self):
+        plt.rcParams['axes.facecolor'] = 'white'
+        plt.clf()
+        self.frame['DayOfWeek'] = self.frame['date'].dt.day_name()
+        self.frame.set_index('date', inplace=True)
+        computation = self.frame.resample('M').agg({'age': 'median', 'pageviewtime': 'mean'})
+        output_table2 = tabulate(computation, headers=['date', 'age', 'pageviewtime'], tablefmt='html')
+        self.median_category_table = output_table2
+        computation['age'].plot()
+        plt.ylabel('Mediam Age Per Month')
+        plt.tight_layout()
+        # plt.show()
+        age_dist = self.getBase64URI(plt.gcf())
 
-    #     # print("====Median_category====")
-    #     # print(output_table2)
-    #     # print("=" * 30)
-
-    #     self.median_category_table = output_table2
-
-    #     computation['age'].plot()
-    #     plt.ylabel('Mediam Age Per Month')
-    #     plt.tight_layout()
-    #     plt.show()
-    #     age_dist = self.getBase64URI(plt.gcf())
-
-    #     return age_dist
+        return age_dist
 
     def Most_Popular_Topics(self):
         plt.clf()
@@ -430,7 +384,6 @@ class DatasetAnalysis():
         return uri
 
     def Most_Viewed_topics(self):
-
         plt.clf()
         cframe = self.frame.pivot_table(
             'pageviewtime', index='item', columns='agerange', aggfunc='mean')
@@ -567,20 +520,3 @@ class DatasetAnalysis():
         uri = urllib.parse.quote(string)
 
         return uri
-
-
-if __name__ == "__main__":
-
-    dataset = DatasetAnalysis()
-    dataset.gender_distribution()
-    dataset.Median_category()
-    # dataset.Median_Age()
-    dataset.Most_Popular_Topics()
-    dataset.Gender_distribution_language()
-    dataset.Visual_Gender_Bar()
-    dataset.Most_Viewed_topics()
-    dataset.MostViewedTopic_Based_on_roles()
-    dataset.Common_used_devices()
-    dataset.Popular_Topics_languages()
-    dataset.ItemsGenderSpecific()
-    dataset.Topic_Distribution()

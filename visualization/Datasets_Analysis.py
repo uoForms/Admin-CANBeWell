@@ -11,20 +11,18 @@ import io
 import mpld3
 import urllib
 import base64
-from data import views
 
 class DatasetAnalysis():
 
-    def __init__(self):
-        self.initrawData()
+    def __init__(self, fb_data):
+        self.initrawData(fb_data)
         self.convert_date()
         self.rawData['item'].unique()
         self.cleaning_data()
         self.frame = self.rawData[self.rawData.gender.notnull()]
         self.bodypart = self.rawData[self.rawData.item.notnull()]
 
-    def initrawData(self):
-        fb_data = views.fb_data
+    def initrawData(self,fb_data):
         self.rawData = pd.DataFrame(fb_data)
         self.rawData['gender'] = self.rawData['gender'].str.capitalize()
         self.rawData.rename(columns={
@@ -522,20 +520,3 @@ class DatasetAnalysis():
         uri = urllib.parse.quote(string)
 
         return uri
-
-
-if __name__ == "__main__":
-
-    dataset = DatasetAnalysis()
-    dataset.gender_distribution()
-    dataset.Median_category()
-    dataset.Median_Age()
-    dataset.Most_Popular_Topics()
-    dataset.Gender_distribution_language()
-    dataset.Visual_Gender_Bar()
-    dataset.Most_Viewed_topics()
-    dataset.MostViewedTopic_Based_on_roles()
-    dataset.Common_used_devices()
-    dataset.Popular_Topics_languages()
-    dataset.ItemsGenderSpecific()
-    dataset.Topic_Distribution()

@@ -12,7 +12,15 @@
 </form>
 </br>
 
-<p>The below charts have been generated using Pandas and Matplotlib libraries in Python for collected datasets between March 16 to August 26.</p>
+{% for message in messages %}
+<div class="alert alert-success">
+    <a class="close" href="#" data-dismiss="alert">×</a>
+    {{ message }}
+</div>
+{% endfor %}
+
+{% if start_date != "yyyy-mm-dd" %}
+<p>The below charts have been generated using Pandas and Matplotlib libraries in Python for collected datasets between {{ start_date }} to {{ end_date }}.</p>
    
        <div class="container">
             <div class="row mt-5">
@@ -83,7 +91,7 @@
         </div>
     </div>
 
-
+{% endif %}
 
 
 {% endblock content %}

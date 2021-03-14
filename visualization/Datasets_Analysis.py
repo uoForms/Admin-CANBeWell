@@ -19,14 +19,14 @@ class DatasetAnalysis():
         self.convert_date()
         self.rawData['Item'].unique()
         self.cleaning_data()
-        self.frame = self.rawData[self.rawData.gender.notnull()]
-        self.bodypart = self.rawData[self.rawData.item.notnull()]
+        self.frame = self.rawData[self.rawData.Gender.notnull()]
+        self.bodypart = self.rawData[self.rawData.Item.notnull()]
 
     def initrawData(self,fb_data):
         self.rawData = pd.DataFrame(fb_data)
         self.rawData['Gender'] = self.rawData['Gender'].str.capitalize()
-        # self.rawData.rename(columns={
-        #                     'language': 'Languages', 'device': 'Device', 'role': 'Roles'}, inplace=True)
+        self.rawData.rename(columns={
+                            'Language': 'Languages', 'Device': 'Device', 'Role': 'Roles'}, inplace=True)
 
         self.rawData['Roles'] = self.rawData['Roles'].str.capitalize()
         self.rawData['Languages'] = self.rawData['Languages'].str.capitalize()
@@ -38,9 +38,9 @@ class DatasetAnalysis():
 
     def convert_date(self):
         self.rawData['Date'] = pd.to_datetime(
-            self.rawData['Date'], format='%Y%m%d')
+            self.rawData['Date'], format='%Y-%m-%d')
         self.rawData['Age'] = pd.to_numeric(
-            self.rawData.age, errors='coerce').astype('Int64')
+            self.rawData.Age, errors='coerce').astype('Int64')
         return self.rawData['Date'], self.rawData['Age']
 
     def cleaning_data(self):
@@ -50,7 +50,7 @@ class DatasetAnalysis():
     def gender_distribution(self):
         plt.clf()
 
-        genders = self.frame.gender
+        genders = self.frame.Gender
 
         gender_counter = Counter()
         gender_counter.update(genders)
@@ -142,9 +142,9 @@ class DatasetAnalysis():
 
         self.median_category_table = output_table2
 
-        # computation['age'].plot()
+        # computation['Age'].plot()
         # plt.ylabel('Median Age per month')
-        # plt.savefig('Median age distribution', bbox_inches='tight')
+        # plt.savefig('Median Age distribution', bbox_inches='tight')
         # plt.show()
         # computation['pageviewtime'].plot()
         computation['Age'].plot()
@@ -162,7 +162,7 @@ class DatasetAnalysis():
         plt.clf()
         self.frame['DayOfWeek'] = self.frame['Date'].dt.day_name()
         self.frame.set_index('Date', inplace=True)
-        computation = self.frame.resample('M').agg({'Age': 'median', 'pageviewtime': 'mean'})
+        computation = self.frame.resample('M').agg({'Age': 'median', 'Page View Time': 'mean'})
         output_table2 = tabulate(computation, headers=['Date', 'Age', 'pageviewtime'], tablefmt='html')
         self.median_category_table = output_table2
         computation['Age'].plot()
@@ -175,7 +175,7 @@ class DatasetAnalysis():
 
     def Most_Popular_Topics(self):
         plt.clf()
-        items = self.bodypart.item
+        items = self.bodypart.Item
         body_counter = Counter()
         body_counter.update(items)
         total_bodypart = sum(body_counter.values())
@@ -215,7 +215,7 @@ class DatasetAnalysis():
 
     def Topic_Distribution(self):
         plt.clf()
-        items = self.bodypart.item
+        items = self.bodypart.Item
         body_counter = Counter()
         body_counter.update(items)
         total_bodypart = sum(body_counter.values())
@@ -250,8 +250,8 @@ class DatasetAnalysis():
         french_speaker = self.frame.query("Languages =='French'")
         english_speaker = self.frame.query("Languages =='English'")
 
-        french_genders = french_speaker.gender
-        english_gender = english_speaker.gender
+        french_genders = french_speaker.Gender
+        english_gender = english_speaker.Gender
         french_gender_counter = Counter()
 
         french_gender_counter.update(french_genders)

@@ -8,9 +8,11 @@ from data import views
 dataset = None
 gender_distribution_uri = None
 most_popular_topics_uri = None
+median_category_uri = None
 french_gender_dis_uri = None
 english_gender_dis_uri = None
 visual_gender_bar_uri = None
+most_viewed_topics_uri = None
 mostviewedtopic_based_on_roles_uri = None
 common_used_devices_uri = None
 popular_topics_languages_uri = None
@@ -26,10 +28,12 @@ def visualization(request):
     global start_date
     global end_date
     global gender_distribution_uri
+    global median_category_uri
     global most_popular_topics_uri
     global french_gender_dis_uri
     global english_gender_dis_uri
     global visual_gender_bar_uri
+    global most_viewed_topics_uri
     global mostviewedtopic_based_on_roles_uri
     global common_used_devices_uri
     global popular_topics_languages_uri

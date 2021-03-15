@@ -132,9 +132,9 @@ class DatasetAnalysis():
         self.frame['DayOfWeek'] = self.frame['Date'].dt.day_name()
         self.frame.set_index('Date', inplace=True)
         computation = self.frame.resample('M').agg(
-            {'Age': 'median', 'pageviewtime': 'mean'})
+            {'Age': 'median', 'Page View Time': 'mean'})
         output_table2 = tabulate(computation, headers=[
-            'Date', 'Age', 'pageviewtime'], tablefmt='html')
+            'Date', 'Age', 'Page View Time'], tablefmt='html')
 
         # print("====Median_category====")
         # print(output_table2)
@@ -386,13 +386,13 @@ class DatasetAnalysis():
     def Most_Viewed_topics(self):
         plt.clf()
         cframe = self.frame.pivot_table(
-            'pageviewtime', index='Item', columns='Age Range', aggfunc='mean')
+            'Page View Time', index='Item', columns='Age Range', aggfunc='mean')
         cframe_update = cframe.fillna(0)
         view_by_title = self.frame.groupby('Item').size()
         activities = view_by_title.index[view_by_title >= 100]
         mean_view_time = cframe_update.loc[activities]
         viewtime_std_by_title = self.frame.groupby(
-            'Item')['pageviewtime'].mean()
+            'Item')['Page View Time'].mean()
         viewtime_std_by_title = viewtime_std_by_title.loc[activities]
         most_viewed = viewtime_std_by_title.sort_values(ascending=False)[:10]
 

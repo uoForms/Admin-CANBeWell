@@ -93,20 +93,15 @@ def download_csv(self):
 
 start_date = "yyyy-mm-dd"
 end_date = "yyyy-mm-dd"
+selected_database = "CANBeWell_uOttawa"
 fb_data = pd.DataFrame()
 
 @login_required(login_url='login')
 def data(request):
     global start_date
     global end_date
+    global selected_database
     global fb_data
-    context = {
-        'page_title': 'Data',
-        'form': dateRangeForm(),
-        'start_date': start_date,
-        'end_date': end_date,
-        'fb_data': fb_data
-    }
 
     if request.method == 'POST':
         form = dateRangeForm(request.POST)
@@ -117,6 +112,7 @@ def data(request):
             end_date = form.cleaned_data['end_date']
             end_date_obj = datetime.datetime.strptime(end_date, '%Y-%m-%d')
             db_choice = form.cleaned_data['db_choice']
+            selected_database = db_choice
             date_list = generate_date_list(start_date_obj, end_date_obj)
             if date_list:
                 fb_data = fb_fetch_data(date_list, db_choice)
@@ -130,9 +126,13 @@ def data(request):
     else:
         form = dateRangeForm()
 
-    context['form'] = form
-    context['fb_data'] = fb_data
-    context['start_date'] = start_date
-    context['end_date'] = end_date
+    context = {
+        'page_title': 'Data',
+        'form': form,
+        'start_date': start_date,
+        'end_date': end_date,
+        'selected_database': selected_database,
+        'fb_data': fb_data
+    }
 
     return render(request, 'data/data.html', context)

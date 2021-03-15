@@ -74,5 +74,6 @@
             endDate: '+0d',
             autoclose: true,
         }).datepicker("update", "{{ end_date }}");
+        $('#db_choice').val('{{ selected_database }}').selectpicker('render');
     </script>
 {% endblock footer_js %}

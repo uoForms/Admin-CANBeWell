@@ -48,7 +48,6 @@ class DatasetAnalysis():
                                                              'Physical activity': 'Be active', 'Covid': 'COVID-19', 'PRÉVENEZ LE  COVID-19': 'COVID-19', 'PRÉVENEZ LA COVID-19': 'COVID-19', 'Memory problems  or dementia': 'Memory Problems', 'lung': 'Lung', 'Vaccination': 'Immunization', 'Immunzation': 'Immunization', "Aorta:the body's main blood vessel": 'Aorta', 'Liver or Alcohol/Drugs': 'Liver'})
 
     def gender_distribution(self):
-        plt.clf()
 
         genders = self.frame.Gender
 
@@ -71,8 +70,8 @@ class DatasetAnalysis():
 
         plt.style.use("ggplot")
 
-        explode = [0, 0.1]
-        plt.pie(values, labels=label, explode=explode, shadow=True,
+        #explode = [0, 0.1]
+        plt.pie(values, labels=label, shadow=True,
                 startangle=45, autopct='%1.1f%%', wedgeprops={'edgecolor': 'black'})
 
         # plt.pie(values, labels=label, shadow=True,
@@ -85,11 +84,10 @@ class DatasetAnalysis():
 
         # self.gender_distribution_fig = plt.gcf()
         uri = self.getBase64URI(plt.gcf())
-
+        plt.clf()
         return uri, self.gender_distribution_table
 
     def Topic_distribution(self):
-          plt.clf()
 
           genders = self.frame.gender
 
@@ -113,7 +111,7 @@ class DatasetAnalysis():
           plt.style.use("ggplot")
 
           explode = [0, 0.1, 0, 0]
-          plt.pie(values, labels=label, explode=explode, shadow=True,
+          plt.pie(values, labels=label, shadow=True,
                   startangle=45, autopct='%1.1f%%', wedgeprops={'edgecolor': 'black'})
 
      #    # plt.title('Gender distribution')
@@ -124,11 +122,11 @@ class DatasetAnalysis():
      #    # self.gender_distribution_fig = plt.gcf()
           uri = self.getBase64URI(plt.gcf())
 
+          plt.clf()
           return uri, self.gender_distribution_table
 
     def Median_category(self):
         plt.rcParams['axes.facecolor'] = 'white'
-        plt.clf()
         self.frame['DayOfWeek'] = self.frame['Date'].dt.day_name()
         self.frame.set_index('Date', inplace=True)
         computation = self.frame.resample('M').agg(
@@ -154,12 +152,12 @@ class DatasetAnalysis():
         plt.tight_layout()
         # plt.show()
         uri = self.getBase64URI(plt.gcf())
-
+        plt.clf()
         return uri, self.median_category_table
 
     def Median_Age(self):
         plt.rcParams['axes.facecolor'] = 'white'
-        plt.clf()
+        
         self.frame['DayOfWeek'] = self.frame['Date'].dt.day_name()
         self.frame.set_index('Date', inplace=True)
         computation = self.frame.resample('M').agg({'Age': 'median', 'Page View Time': 'mean'})
@@ -170,11 +168,11 @@ class DatasetAnalysis():
         plt.tight_layout()
         # plt.show()
         age_dist = self.getBase64URI(plt.gcf())
-
+        plt.clf()
         return age_dist
 
     def Most_Popular_Topics(self):
-        plt.clf()
+        
         items = self.bodypart.Item
         body_counter = Counter()
         body_counter.update(items)
@@ -210,11 +208,11 @@ class DatasetAnalysis():
 
         # plt.show()
         uri = self.getBase64URI(plt.gcf())
-
+        plt.clf()
         return uri, self.most_popular_topics_table
 
     def Topic_Distribution(self):
-        plt.clf()
+        
         items = self.bodypart.Item
         body_counter = Counter()
         body_counter.update(items)
@@ -236,13 +234,13 @@ class DatasetAnalysis():
 
         plt.style.use("fivethirtyeight")
         explode = [0, 0, 0, 0, 0, 0, 0.1]
-        plt.pie(frequency, labels=topics_visited, explode=explode, shadow=True,
+        plt.pie(frequency, labels=topics_visited, shadow=True,
                 startangle=45, autopct='%1.1f%%', wedgeprops={'edgecolor': 'black'})
         # plt.title('French speakers gender distribution')
         plt.tight_layout()
         # plt.show()
         uri = self.getBase64URI(plt.gcf())
-
+        plt.clf()
         return uri
 
     def Gender_distribution_language(self):
@@ -305,10 +303,10 @@ class DatasetAnalysis():
         # print(output_table5)
         # print("=" * 30)
 
-        plt.clf()
+        
         plt.style.use("fivethirtyeight")
         explode = [0, 0.1]
-        plt.pie(french_values, labels=french_labels, explode=explode, shadow=True,
+        plt.pie(french_values, labels=french_labels, shadow=True,
                 startangle=45, autopct='%1.1f%%', wedgeprops={'edgecolor': 'black'})
 
         # plt.title('French speakers gender distribution')
@@ -320,7 +318,7 @@ class DatasetAnalysis():
         plt.clf()
         plt.style.use("fivethirtyeight")
         explode = [0, 0.1]
-        plt.pie(english_values, labels=english_labels, explode=explode, shadow=True,
+        plt.pie(english_values, labels=english_labels, shadow=True,
                 startangle=45, autopct='%1.1f%%', wedgeprops={'edgecolor': 'black'})
 
         # plt.title('English speakers gender distribution')
@@ -328,10 +326,11 @@ class DatasetAnalysis():
         english_gender_dis_fig = self.getBase64URI(plt.gcf())
 
         # plt.show()
+        plt.clf()
         return french_gender_dis_fig, output_table4, english_gender_dis_fig, output_table5
 
     def Visual_Gender_Bar(self):
-        plt.clf()
+        
         language_gender = self.frame.groupby(['Languages', 'Gender'])
         agg_gender = language_gender.size().unstack()
         agg_gender_subset = agg_gender.stack()
@@ -353,11 +352,11 @@ class DatasetAnalysis():
         # matplotlib.pyplot.show('hold')
 
         uri = self.getBase64URI(plt.gcf())
-
+        plt.clf()
         return uri
 
     def ItemsGenderSpecific(self):
-        plt.clf()
+        
         # language_gender = self.frame.groupby(['item', 'gender'])
         topic_gender = self.frame.groupby(['Item', 'Gender'])
         agg_topic = topic_gender.size().unstack()
@@ -380,11 +379,11 @@ class DatasetAnalysis():
         plt.tight_layout()
 
         uri = self.getBase64URI(plt.gcf())
-
+        plt.clf()
         return uri
 
     def Most_Viewed_topics(self):
-        plt.clf()
+        
         cframe = self.frame.pivot_table(
             'Page View Time', index='Item', columns='Age Range', aggfunc='mean')
         cframe_update = cframe.fillna(0)
@@ -410,10 +409,11 @@ class DatasetAnalysis():
         plt.tight_layout()
         uri = self.getBase64URI(plt.gcf())
         # plt.show()
+        plt.clf()
         return uri
 
     def MostViewedTopic_Based_on_roles(self):
-        plt.clf()
+        
         provider_patient = self.frame.groupby(['Item', 'Roles'])
         agg_counts = provider_patient.size().unstack().fillna(0)
         indexer = agg_counts.sum(1).argsort()
@@ -444,11 +444,12 @@ class DatasetAnalysis():
         # plt.title("MostViewedTopic Based On Roles")
         plt.tight_layout()
         uri = self.getBase64URI(plt.gcf())
+        plt.clf()
         return uri, self.mostviewedtopic_based_on_roles_table
 
     def Common_used_devices(self):
 
-        plt.clf()
+        
         by_dev_age = self.frame.groupby(['Age Range', 'Device'])
         figure = by_dev_age.size().unstack().plot(kind='barh')
         # plt.rcParams["figure.figsize"] = (25, 5)
@@ -459,7 +460,7 @@ class DatasetAnalysis():
         # plt.title("Common Used Devices")
         plt.tight_layout()
         uri = self.getBase64URI(plt.gcf())
-
+        plt.clf()
         return uri
 
         # fig = plt.figure()
@@ -476,7 +477,7 @@ class DatasetAnalysis():
         # Html_file.close()
 
     def Popular_Topics_languages(self):
-        plt.clf()
+        
         item_language = self.frame.groupby(['Item', 'Languages'])
         agg_item = item_language.size().unstack().fillna(0)
 
@@ -510,6 +511,7 @@ class DatasetAnalysis():
         # plt.savefig('Popular_Topics_languages', bbox_inches='tight')
 
         uri = self.getBase64URI(plt.gcf())
+        plt.clf()
         return uri, self.popular_topics_languages_table
 
     def getBase64URI(self, fig):

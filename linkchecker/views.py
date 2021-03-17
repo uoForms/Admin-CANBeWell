@@ -28,7 +28,7 @@ def linkchecker(request):
         context.update({key:len(urls)})
     return render(request, 'linkchecker/index.html', context)
 
-
+@login_required(login_url='login')
 def output(request, fileKey):
     urls = resolveUrlInFile(fileKey)
     print(f'\033[31m"start testing"\033[0m')

@@ -28,13 +28,14 @@ def linkchecker(request):
         context.update({key:len(urls)})
     return render(request, 'linkchecker/index.html', context)
 
-
+@login_required(login_url='login')
 def output(request, fileKey):
     urls = resolveUrlInFile(fileKey)
     print(f'\033[31m"start testing"\033[0m')
     # data = data()
     return render(request, 'linkchecker/output.html', {'total': len(urls), 'urls':urls, 'fileType': fileType[fileKey]})
 
+@login_required(login_url='login')
 def output_item(request,fileKey, idx):
     opener = urllib.request.build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/49.0.2')]
@@ -59,6 +60,7 @@ def output_item(request,fileKey, idx):
     return JsonResponse({'index':idx, 'result': results})
 
 # private function
+@login_required(login_url='login')
 def  resolveUrlInFile(fileKey):
     file = open(files[fileKey], mode='r', encoding='UTF-8')
     js = json.load(file)

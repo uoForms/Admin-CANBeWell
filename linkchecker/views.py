@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import JsonResponse
 import re
@@ -17,7 +18,7 @@ fileType = {"en_topic":"Topic-EN",
          "fr_topic":"Topic-FR",
          "en_test":"Test-EN",
          "fr_test":"Test-FR"}
-
+@login_required(login_url='login')
 def linkchecker(request):
     context = {
         'page_title': 'LinkChecker'

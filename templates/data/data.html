@@ -4,6 +4,7 @@
 
 {% block header_links %}
     <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-table.min.css' %}"/>
 {% endblock header_links %}
 
 {% block content %}
@@ -38,13 +39,27 @@
     {% endfor %}
 
     {% if not fb_data.empty %}
-        <table class="table table-responsive table-striped table-bordered">
-            <small>Scroll right/left for all available columns.</small>
+        <small>Scroll right/left for all available columns.</small>
+        <table class="table table-responsive table-striped table-bordered"
+               data-toggle="table"
+               data-pagination="true"
+               data-search="true"
+               data-search-align="left"
+               data-show-columns="true"
+               data-show-toggle="true"
+               data-show-fullscreen="true"
+               data-show-pagination-switch="true"
+               data-pagination-pre-text="Previous"
+               data-pagination-next-text="Next"
+               data-pagination-h-align="left"
+               data-pagination-detail-h-align="right" data-page-list="[10,100,500,1000,All]">
             <thead class="thead-dark">
-                <th scope="col">Index</th>
-                {% for col in fb_data.columns %}
-                    <th scope="col">{{ col }}</th>
-                {% endfor %}
+                <tr>
+                    <th data-field="Index" data-sortable="true" data-switchable="false">Index</th>
+                    {% for col in fb_data.columns %}
+                        <th data-field="{{ col }}" data-sortable="true">{{ col }}</th>
+                    {% endfor %}
+                </tr>
             </thead>
             <tbody>
                 {% for index, record in fb_data.iterrows %}
@@ -63,6 +78,7 @@
 
 {% block footer_js %}
     <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'js/bootstrap-table.min.js' %}"></script>
     <script>
         $('#start_date').datepicker({
             startDate: '2020-01-01',

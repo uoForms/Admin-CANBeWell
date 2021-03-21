@@ -38,12 +38,12 @@
     {% endfor %}
 
     {% if not fb_data.empty %}
-        <table class="table table-responsive" border="1px">
+        <table class="table table-responsive table-striped table-bordered">
             <small>Scroll right/left for all available columns.</small>
-            <thead>
-                <th>Index</th>
+            <thead class="thead-dark">
+                <th scope="col">Index</th>
                 {% for col in fb_data.columns %}
-                    <th>{{ col }}</th>
+                    <th scope="col">{{ col }}</th>
                 {% endfor %}
             </thead>
             <tbody>

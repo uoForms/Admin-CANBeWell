@@ -1,5 +1,6 @@
 import datetime
 
+import firebase_admin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -7,6 +8,7 @@ from django.contrib import messages
 from django.utils.safestring import mark_safe
 from firebase import firebase
 import pandas as pd
+from firebase_admin import credentials, db
 
 from data.forms import dateRangeForm
 
@@ -30,10 +32,16 @@ def generate_date_list(start_date, end_date):
 def fb_fetch_data(date_list, db_choice):
     fb_data = pd.DataFrame()
     if db_choice == "CANBeWell_uOttawa":
-        fb_app_obj = firebase.FirebaseApplication("https://canbewell-uottawa.firebaseio.com/", None)
+        ref = firebase.FirebaseApplication("https://canbewell-uottawa.firebaseio.com/", None)
     elif db_choice == "Export_CSV_CANBeWell":
-        fb_app_obj = firebase.FirebaseApplication("https://export-csv-canbewell.firebaseio.com/", None)
-    fb_data_temp = fb_app_obj.get("", "")
+        ref = firebase.FirebaseApplication("https://export-csv-canbewell.firebaseio.com/", None)
+    elif db_choice == "Bharath-test":
+        cred = credentials.Certificate("data/bharath-test-fe4b7-firebase-adminsdk-s8k7t-18bb9b223e.json")
+        firebase_admin.initialize_app(cred, {
+            'databaseURL': 'https://bharath-test-fe4b7-default-rtdb.firebaseio.com/'
+        })
+        ref = db.reference()
+    fb_data_temp = ref.get("", "")
     for i in range(0, len(date_list)):
         try:
             temp = pd.DataFrame.from_dict(fb_data_temp[date_list[i]], orient='index')

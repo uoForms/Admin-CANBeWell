@@ -28,19 +28,25 @@ def generate_date_list(start_date, end_date):
         date_list.append(date_temp)
     return date_list
 
+production_ref = None
+test_ref = None
+bharath_test_ref = None
 
-def fb_fetch_data(date_list, db_choice):
+def connections():
+    global production_ref
+    global test_ref
+    global bharath_test_ref
+    production_ref = firebase.FirebaseApplication("https://canbewell-uottawa.firebaseio.com/", None)
+    test_ref = firebase.FirebaseApplication("https://export-csv-canbewell.firebaseio.com/", None)
+    cred = credentials.Certificate("data/bharath-test-fe4b7-firebase-adminsdk-s8k7t-18bb9b223e.json")
+    bharath_app = firebase_admin.initialize_app(cred, {
+        'databaseURL': 'https://bharath-test-fe4b7-default-rtdb.firebaseio.com/'
+    })
+    bharath_test_ref = db.reference(app=bharath_app)
+    pass
+
+def fb_fetch_data(date_list, ref):
     fb_data = pd.DataFrame()
-    if db_choice == "CANBeWell_uOttawa":
-        ref = firebase.FirebaseApplication("https://canbewell-uottawa.firebaseio.com/", None)
-    elif db_choice == "Export_CSV_CANBeWell":
-        ref = firebase.FirebaseApplication("https://export-csv-canbewell.firebaseio.com/", None)
-    elif db_choice == "Bharath-test":
-        cred = credentials.Certificate("data/bharath-test-fe4b7-firebase-adminsdk-s8k7t-18bb9b223e.json")
-        firebase_admin.initialize_app(cred, {
-            'databaseURL': 'https://bharath-test-fe4b7-default-rtdb.firebaseio.com/'
-        })
-        ref = db.reference()
     fb_data_temp = ref.get("", "")
     for i in range(0, len(date_list)):
         try:
@@ -110,6 +116,12 @@ def data(request):
     global end_date
     global selected_database
     global fb_data
+    global production_ref
+    global test_ref
+    global bharath_test_ref
+
+    if not production_ref or not test_ref or not bharath_test_ref:
+        connections()
 
     if request.method == 'POST':
         form = dateRangeForm(request.POST)
@@ -123,7 +135,13 @@ def data(request):
             selected_database = db_choice
             date_list = generate_date_list(start_date_obj, end_date_obj)
             if date_list:
-                fb_data = fb_fetch_data(date_list, db_choice)
+                if db_choice == "Production":
+                    ref = production_ref
+                elif db_choice == "Test":
+                    ref = test_ref
+                elif db_choice == "Bharath_test":
+                    ref = bharath_test_ref
+                fb_data = fb_fetch_data(date_list, ref)
                 if not fb_data.empty:
                     fb_data = clean_data(fb_data)
                     fb_data = clean_headers(fb_data)
@@ -134,13 +152,15 @@ def data(request):
     else:
         form = dateRangeForm()
 
+    col_count = len(fb_data.columns) +1
     context = {
         'page_title': 'Data',
         'form': form,
         'start_date': start_date,
         'end_date': end_date,
         'selected_database': selected_database,
-        'fb_data': fb_data
+        'fb_data': fb_data,
+        'col_count': col_count
     }
 
     return render(request, 'data/data.html', context)

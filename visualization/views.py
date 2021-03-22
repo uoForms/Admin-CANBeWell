@@ -84,6 +84,5 @@ def visualization(request):
         'Topic_Distribution_uri': Topic_Distribution_uri,
         'Median_Age': Median_Age
     }
-    if start_date == "yyyy-mm-dd":
-        print(start_date)
+
     return render(request, "visualization/index.html", fig_data)

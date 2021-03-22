@@ -21,12 +21,14 @@ Topic_Distribution_uri = None
 Median_Age = None
 start_date = "yyyy-mm-dd"
 end_date = "yyyy-mm-dd"
+display_flag = False
 
 @login_required(login_url='login')
 def visualization(request):
     global dataset
     global start_date
     global end_date
+    global display_flag
     global gender_distribution_uri
     global median_category_uri
     global most_popular_topics_uri
@@ -58,13 +60,16 @@ def visualization(request):
             ItemsGenderSpecific_uri = dataset.ItemsGenderSpecific()
             popular_topics_languages_uri, popular_topics_languages_table = dataset.Popular_Topics_languages()
             Topic_Distribution_uri = dataset.Topic_Distribution()
+            display_flag = True
         else:
             messages.error(request, mark_safe("No data available to generate charts."))
+            display_flag = False
 
     fig_data = {
         'page_title': 'Visualization',
         'start_date': start_date,
         'end_date': end_date,
+        'display_flag': display_flag,
         'gender_distribution_uri': gender_distribution_uri,
         #'median_category_uri': median_category_uri,
         "most_popular_topics_uri": most_popular_topics_uri,
@@ -79,6 +84,5 @@ def visualization(request):
         'Topic_Distribution_uri': Topic_Distribution_uri,
         'Median_Age': Median_Age
     }
-    if start_date == "yyyy-mm-dd":
-        print(start_date)
+
     return render(request, "visualization/index.html", fig_data)

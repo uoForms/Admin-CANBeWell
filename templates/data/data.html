@@ -55,6 +55,10 @@
                data-pagination-detail-h-align="right" data-page-list="[10,100,500,1000,All]">
             <thead class="thead-dark">
                 <tr>
+                    <th rowspan="2" data-checkbox="true" data-valign="middle"></th>
+                    <th colspan="{{ col_count }}" data-align="center" id="table_header">Database: {{ selected_database }} Time Range: From {{ start_date }} to {{ end_date }} </th>
+                </tr>
+                <tr>
                     <th data-field="Index" data-sortable="true" data-switchable="false">Index</th>
                     {% for col in fb_data.columns %}
                         <th data-field="{{ col }}" data-sortable="true">{{ col }}</th>
@@ -64,6 +68,7 @@
             <tbody>
                 {% for index, record in fb_data.iterrows %}
                     <tr>
+                        <td></td>
                         <td>{{ index }}</td>
                         {% for cell in record %}
                             <td>{{ cell }}</td>

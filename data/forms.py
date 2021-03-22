@@ -1,9 +1,9 @@
 from django import forms
 
 DATABASE_CHOICES= [
-    ('CANBeWell_uOttawa', 'Production'),
-    ('Export_CSV_CANBeWell', 'Test'),
-    ('Bharath-test', 'Bharath Test'),
+    ('Production', 'Production'),
+    ('Test', 'Test'),
+    ('Bharath_test', 'Bharath_test'),
     ]
 
 class dateRangeForm(forms.Form):

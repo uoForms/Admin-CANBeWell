@@ -19,7 +19,7 @@
 </div>
 {% endfor %}
 
-{% if start_date != "yyyy-mm-dd" %}
+{% if display_flag %}
 <p>The below charts have been generated using Pandas and Matplotlib libraries in Python for collected datasets between {{ start_date }} to {{ end_date }}.</p>
    
 <div class="container loader">

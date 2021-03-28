@@ -2,6 +2,7 @@ from django import forms
 
 DATABASE_CHOICES= [
     ('Production', 'Production'),
+    ('Transgender', 'Transgender'),
     ('Test', 'Test'),
     ('Bharath_test', 'Bharath_test'),
     ]

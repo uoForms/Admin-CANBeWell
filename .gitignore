@@ -142,3 +142,7 @@ cython_debug/
 
 # VSCode
 .vscode
+/data/production_key.json
+/data/transgender_key.json
+/data/bharath_test_key.json
+/data/test_key.json

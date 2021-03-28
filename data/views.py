@@ -29,21 +29,35 @@ def generate_date_list(start_date, end_date):
     return date_list
 
 production_ref = None
+transgender_ref = None
 test_ref = None
 bharath_test_ref = None
 
 def connections():
     global production_ref
+    production_cred = credentials.Certificate("data/production_key.json")
+    production_app = firebase_admin.initialize_app(production_cred, {
+        'databaseURL': 'https://canbewell-uottawa.firebaseio.com/'
+    }, name='production')
+    production_ref = db.reference(app=production_app)
+    global transgender_ref
+    transgender_cred = credentials.Certificate("data/transgender_key.json")
+    transgender_app = firebase_admin.initialize_app(transgender_cred, {
+        'databaseURL': 'https://transgender-canbewell-default-rtdb.firebaseio.com/'
+    }, name='transgender')
+    transgender_ref = db.reference(app=transgender_app)
     global test_ref
+    test_cred = credentials.Certificate("data/test_key.json")
+    test_app = firebase_admin.initialize_app(test_cred, {
+        'databaseURL': 'https://export-csv-canbewell.firebaseio.com/'
+    }, name="test")
+    test_ref = db.reference(app=test_app)
     global bharath_test_ref
-    production_ref = firebase.FirebaseApplication("https://canbewell-uottawa.firebaseio.com/", None)
-    test_ref = firebase.FirebaseApplication("https://export-csv-canbewell.firebaseio.com/", None)
-    cred = credentials.Certificate("data/bharath-test-fe4b7-firebase-adminsdk-s8k7t-18bb9b223e.json")
-    bharath_app = firebase_admin.initialize_app(cred, {
+    bharath_test_cred = credentials.Certificate("data/bharath_test_key.json")
+    bharath_test_app = firebase_admin.initialize_app(bharath_test_cred, {
         'databaseURL': 'https://bharath-test-fe4b7-default-rtdb.firebaseio.com/'
-    })
-    bharath_test_ref = db.reference(app=bharath_app)
-    pass
+    }, name='bharath_test')
+    bharath_test_ref = db.reference(app=bharath_test_app)
 
 def fb_fetch_data(date_list, ref):
     fb_data = pd.DataFrame()
@@ -107,7 +121,7 @@ def download_csv(self):
 
 start_date = "yyyy-mm-dd"
 end_date = "yyyy-mm-dd"
-selected_database = "CANBeWell_uOttawa"
+selected_database = "Production"
 fb_data = pd.DataFrame()
 
 @login_required(login_url='login')
@@ -117,10 +131,11 @@ def data(request):
     global selected_database
     global fb_data
     global production_ref
+    global transgender_ref
     global test_ref
     global bharath_test_ref
 
-    if not production_ref or not test_ref or not bharath_test_ref:
+    if not production_ref or not transgender_ref or not test_ref or not bharath_test_ref:
         connections()
 
     if request.method == 'POST':
@@ -137,6 +152,8 @@ def data(request):
             if date_list:
                 if db_choice == "Production":
                     ref = production_ref
+                elif db_choice == "Transgender":
+                    ref = transgender_ref
                 elif db_choice == "Test":
                     ref = test_ref
                 elif db_choice == "Bharath_test":

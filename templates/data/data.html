@@ -56,10 +56,10 @@
                data-pagination-h-align="left"
                data-pagination-detail-h-align="right"
                data-page-list="[10, 25, 50, 100, 500, All]"
-               data-minimum-count-columns="3" >
+               data-minimum-count-columns="2" >
             <thead class="thead-dark">
                 <tr>
-                    <th rowspan="2" data-checkbox="true" data-valign="middle"></th>
+                    <th rowspan="2" data-field="state" data-checkbox="true" data-valign="middle"></th>
                     <th colspan="{{ col_count }}" data-align="center" id="table_header">Database: {{ selected_database }} Time Range: From {{ start_date }} to {{ end_date }} </th>
                 </tr>
                 <tr>
@@ -88,10 +88,9 @@
 {% block footer_js %}
     <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
     <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
-    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
-    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
     <script src="{% static 'js/bootstrap-table.min.js' %}"></script>
     <script src="{% static 'extensions/export/bootstrap-table-export.min.js' %}"></script>
+    <script src="{% static 'extensions/toolbar/bootstrap-table-toolbar.min.js' %}"></script>
     <script>
         $('#start_date').datepicker({
             startDate: '2020-01-01',
@@ -103,6 +102,20 @@
             endDate: '+0d',
             autoclose: true,
         }).datepicker("update", "{{ end_date }}");
-        $('#db_choice').val('{{ selected_database }}').selectpicker('render');
+        $('#db_choice').val('{{ selected_database }}');
+
+        var table = $('#table')
+        $('#remove').on('click',function () {
+            var ids = $.map(table.bootstrapTable('getSelections'),function (row) {
+                return row.Index
+            })
+            table.bootstrapTable('remove',{
+                field:'Index',
+                values: ids
+            })
+        })
+        $('#removeall').on('click',function () {
+            table.bootstrapTable('removeAll')
+        })
     </script>
 {% endblock footer_js %}

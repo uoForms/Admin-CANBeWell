@@ -6,7 +6,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib import messages
 from django.utils.safestring import mark_safe
-from firebase import firebase
 import pandas as pd
 from firebase_admin import credentials, db
 
@@ -31,7 +30,6 @@ def generate_date_list(start_date, end_date):
 production_ref = None
 transgender_ref = None
 test_ref = None
-bharath_test_ref = None
 
 def connections():
     global production_ref
@@ -52,12 +50,6 @@ def connections():
         'databaseURL': 'https://export-csv-canbewell.firebaseio.com/'
     }, name="test")
     test_ref = db.reference(app=test_app)
-    global bharath_test_ref
-    bharath_test_cred = credentials.Certificate("data/bharath_test_key.json")
-    bharath_test_app = firebase_admin.initialize_app(bharath_test_cred, {
-        'databaseURL': 'https://bharath-test-fe4b7-default-rtdb.firebaseio.com/'
-    }, name='bharath_test')
-    bharath_test_ref = db.reference(app=bharath_test_app)
 
 def fb_fetch_data(date_list, ref):
     fb_data = pd.DataFrame()
@@ -133,9 +125,8 @@ def data(request):
     global production_ref
     global transgender_ref
     global test_ref
-    global bharath_test_ref
 
-    if not production_ref or not transgender_ref or not test_ref or not bharath_test_ref:
+    if not production_ref or not transgender_ref or not test_ref:
         connections()
 
     if request.method == 'POST':
@@ -156,8 +147,6 @@ def data(request):
                     ref = transgender_ref
                 elif db_choice == "Test":
                     ref = test_ref
-                elif db_choice == "Bharath_test":
-                    ref = bharath_test_ref
                 fb_data = fb_fetch_data(date_list, ref)
                 if not fb_data.empty:
                     fb_data = clean_data(fb_data)

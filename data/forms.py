@@ -4,7 +4,6 @@ DATABASE_CHOICES= [
     ('Production', 'Production'),
     ('Transgender', 'Transgender'),
     ('Test', 'Test'),
-    ('Bharath_test', 'Bharath_test'),
     ]
 
 class dateRangeForm(forms.Form):

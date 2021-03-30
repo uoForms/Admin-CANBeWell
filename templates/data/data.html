@@ -4,6 +4,7 @@
 
 {% block header_links %}
     <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-table.min.css' %}"/>
 {% endblock header_links %}
 
 {% block content %}
@@ -24,12 +25,6 @@
         <button class="btn btn-primary" type="submit">Fetch Data</button>
     </form>
 
-    {% if not fb_data.empty %}
-        <p>Time Range: {{ start_date }} to {{ end_date }} <br></p>
-        <input class="btn btn-primary" type="button" value="Download Dataset" onclick="window.open('download')">
-    {% endif %}
-    <br><br>
-
     {% for message in messages %}
         <div class="alert alert-warning">
             <a class="close" href="#" data-dismiss="alert">×</a>
@@ -38,17 +33,46 @@
     {% endfor %}
 
     {% if not fb_data.empty %}
-        <table class="table table-responsive" border="1px">
-            <small>Scroll right/left for all available columns.</small>
-            <thead>
-                <th>Index</th>
-                {% for col in fb_data.columns %}
-                    <th>{{ col }}</th>
-                {% endfor %}
+        <small>Scroll right/left for all available columns.</small>
+        <div id="toolbar">
+            <button id="remove" class="btn btn-danger">Remove</button>
+            <button id="removeall" class="btn btn-danger">Remove All</button>
+        </div>
+        <table class="table table-responsive table-striped table-bordered"
+               id="table"
+               data-toggle="table"
+               data-pagination="false"
+               data-toolbar="#toolbar"
+               data-search="true"
+               data-show-export="true"
+               data-click-to-select="true"
+               data-search-align="right"
+               data-show-columns="true"
+               data-show-toggle="true"
+               data-show-fullscreen="true"
+               data-show-pagination-switch="true"
+               data-pagination-pre-text="Previous"
+               data-pagination-next-text="Next"
+               data-pagination-h-align="left"
+               data-pagination-detail-h-align="right"
+               data-page-list="[10, 25, 50, 100, 500, All]"
+               data-minimum-count-columns="2" >
+            <thead class="thead-dark">
+                <tr>
+                    <th rowspan="2" data-field="state" data-checkbox="true" data-valign="middle"></th>
+                    <th colspan="{{ col_count }}" data-align="center" id="table_header">Database: {{ selected_database }} Time Range: From {{ start_date }} to {{ end_date }} </th>
+                </tr>
+                <tr>
+                    <th data-field="Index" data-sortable="true" data-switchable="false">Index</th>
+                    {% for col in fb_data.columns %}
+                        <th data-field="{{ col }}" data-sortable="true">{{ col }}</th>
+                    {% endfor %}
+                </tr>
             </thead>
             <tbody>
                 {% for index, record in fb_data.iterrows %}
                     <tr>
+                        <td></td>
                         <td>{{ index }}</td>
                         {% for cell in record %}
                             <td>{{ cell }}</td>
@@ -63,6 +87,10 @@
 
 {% block footer_js %}
     <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="{% static 'js/bootstrap-table.min.js' %}"></script>
+    <script src="{% static 'extensions/export/bootstrap-table-export.min.js' %}"></script>
+    <script src="{% static 'extensions/toolbar/bootstrap-table-toolbar.min.js' %}"></script>
     <script>
         $('#start_date').datepicker({
             startDate: '2020-01-01',
@@ -74,6 +102,20 @@
             endDate: '+0d',
             autoclose: true,
         }).datepicker("update", "{{ end_date }}");
-        $('#db_choice').val('{{ selected_database }}').selectpicker('render');
+        $('#db_choice').val('{{ selected_database }}');
+
+        var table = $('#table')
+        $('#remove').on('click',function () {
+            var ids = $.map(table.bootstrapTable('getSelections'),function (row) {
+                return row.Index
+            })
+            table.bootstrapTable('remove',{
+                field:'Index',
+                values: ids
+            })
+        })
+        $('#removeall').on('click',function () {
+            table.bootstrapTable('removeAll')
+        })
     </script>
 {% endblock footer_js %}

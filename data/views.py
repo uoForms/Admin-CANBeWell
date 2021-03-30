@@ -1,12 +1,13 @@
 import datetime
 
+import firebase_admin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib import messages
 from django.utils.safestring import mark_safe
-from firebase import firebase
 import pandas as pd
+from firebase_admin import credentials, db
 
 from data.forms import dateRangeForm
 
@@ -26,14 +27,33 @@ def generate_date_list(start_date, end_date):
         date_list.append(date_temp)
     return date_list
 
+production_ref = None
+transgender_ref = None
+test_ref = None
 
-def fb_fetch_data(date_list, db_choice):
+def connections():
+    global production_ref
+    production_cred = credentials.Certificate("data/production_key.json")
+    production_app = firebase_admin.initialize_app(production_cred, {
+        'databaseURL': 'https://canbewell-uottawa.firebaseio.com/'
+    }, name='production')
+    production_ref = db.reference(app=production_app)
+    global transgender_ref
+    transgender_cred = credentials.Certificate("data/transgender_key.json")
+    transgender_app = firebase_admin.initialize_app(transgender_cred, {
+        'databaseURL': 'https://transgender-canbewell-default-rtdb.firebaseio.com/'
+    }, name='transgender')
+    transgender_ref = db.reference(app=transgender_app)
+    global test_ref
+    test_cred = credentials.Certificate("data/test_key.json")
+    test_app = firebase_admin.initialize_app(test_cred, {
+        'databaseURL': 'https://export-csv-canbewell.firebaseio.com/'
+    }, name="test")
+    test_ref = db.reference(app=test_app)
+
+def fb_fetch_data(date_list, ref):
     fb_data = pd.DataFrame()
-    if db_choice == "CANBeWell_uOttawa":
-        fb_app_obj = firebase.FirebaseApplication("https://canbewell-uottawa.firebaseio.com/", None)
-    elif db_choice == "Export_CSV_CANBeWell":
-        fb_app_obj = firebase.FirebaseApplication("https://export-csv-canbewell.firebaseio.com/", None)
-    fb_data_temp = fb_app_obj.get("", "")
+    fb_data_temp = ref.get("", "")
     for i in range(0, len(date_list)):
         try:
             temp = pd.DataFrame.from_dict(fb_data_temp[date_list[i]], orient='index')
@@ -93,7 +113,7 @@ def download_csv(self):
 
 start_date = "yyyy-mm-dd"
 end_date = "yyyy-mm-dd"
-selected_database = "CANBeWell_uOttawa"
+selected_database = "Production"
 fb_data = pd.DataFrame()
 
 @login_required(login_url='login')
@@ -102,6 +122,12 @@ def data(request):
     global end_date
     global selected_database
     global fb_data
+    global production_ref
+    global transgender_ref
+    global test_ref
+
+    if not production_ref or not transgender_ref or not test_ref:
+        connections()
 
     if request.method == 'POST':
         form = dateRangeForm(request.POST)
@@ -115,7 +141,13 @@ def data(request):
             selected_database = db_choice
             date_list = generate_date_list(start_date_obj, end_date_obj)
             if date_list:
-                fb_data = fb_fetch_data(date_list, db_choice)
+                if db_choice == "Production":
+                    ref = production_ref
+                elif db_choice == "Transgender":
+                    ref = transgender_ref
+                elif db_choice == "Test":
+                    ref = test_ref
+                fb_data = fb_fetch_data(date_list, ref)
                 if not fb_data.empty:
                     fb_data = clean_data(fb_data)
                     fb_data = clean_headers(fb_data)
@@ -126,13 +158,15 @@ def data(request):
     else:
         form = dateRangeForm()
 
+    col_count = len(fb_data.columns) +1
     context = {
         'page_title': 'Data',
         'form': form,
         'start_date': start_date,
         'end_date': end_date,
         'selected_database': selected_database,
-        'fb_data': fb_data
+        'fb_data': fb_data,
+        'col_count': col_count
     }
 
     return render(request, 'data/data.html', context)

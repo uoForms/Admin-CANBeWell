@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.utils.safestring import mark_safe
 import pandas as pd
+from firebase import firebase
 from firebase_admin import credentials, db
 
 from data.forms import dateRangeForm
@@ -33,23 +34,26 @@ test_ref = None
 
 def connections():
     global production_ref
-    production_cred = credentials.Certificate("data/production_key.json")
-    production_app = firebase_admin.initialize_app(production_cred, {
-        'databaseURL': 'https://canbewell-uottawa.firebaseio.com/'
-    }, name='production')
-    production_ref = db.reference(app=production_app)
+    production_ref = firebase.FirebaseApplication("https://canbewell-uottawa.firebaseio.com/", None)
+    # production_cred = credentials.Certificate("data/production_key.json")
+    # production_app = firebase_admin.initialize_app(production_cred, {
+    #     'databaseURL': 'https://canbewell-uottawa.firebaseio.com/'
+    # }, name='production')
+    # production_ref = db.reference(app=production_app)
     global transgender_ref
-    transgender_cred = credentials.Certificate("data/transgender_key.json")
-    transgender_app = firebase_admin.initialize_app(transgender_cred, {
-        'databaseURL': 'https://transgender-canbewell-default-rtdb.firebaseio.com/'
-    }, name='transgender')
-    transgender_ref = db.reference(app=transgender_app)
+    transgender_ref = firebase.FirebaseApplication("https://transgender-canbewell-default-rtdb.firebaseio.com/", None)
+    # transgender_cred = credentials.Certificate("data/transgender_key.json")
+    # transgender_app = firebase_admin.initialize_app(transgender_cred, {
+    #     'databaseURL': 'https://transgender-canbewell-default-rtdb.firebaseio.com/'
+    # }, name='transgender')
+    # transgender_ref = db.reference(app=transgender_app)
     global test_ref
-    test_cred = credentials.Certificate("data/test_key.json")
-    test_app = firebase_admin.initialize_app(test_cred, {
-        'databaseURL': 'https://export-csv-canbewell.firebaseio.com/'
-    }, name="test")
-    test_ref = db.reference(app=test_app)
+    test_ref = firebase.FirebaseApplication("https://export-csv-canbewell.firebaseio.com/", None)
+    # test_cred = credentials.Certificate("data/test_key.json")
+    # test_app = firebase_admin.initialize_app(test_cred, {
+    #     'databaseURL': 'https://export-csv-canbewell.firebaseio.com/'
+    # }, name="test")
+    # test_ref = db.reference(app=test_app)
 
 def fb_fetch_data(date_list, ref):
     fb_data = pd.DataFrame()

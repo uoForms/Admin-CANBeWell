@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.utils.safestring import mark_safe
 import pandas as pd
 from firebase import firebase
-from firebase_admin import credentials, db
+# from firebase_admin import credentials, db
 
 from data.forms import dateRangeForm
 

@@ -12,6 +12,16 @@
   {
     "Button": "Covid",
     "Topic heading": "COVID-19",
+    "Subject": "Vaccines",
+    "General Patient Text": "•Canada: click [[here; https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/vaccines/overview.html]]\n\n•Provinces: click [[here; https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/vaccines/overview.html#a5]]\n\n•New England Journal of Medicine [[FAQ; https://www.nejm.org/covid-vaccine/faq]]\n\n• Videos: how vaccines are developped \n[[3 minutes; https://www.canada.ca/en/public-health/services/video/covid-19-how-vaccines-developed.html]]\n[[7 minutes; https://www.youtube.com/watch?v=2t_mQwTY4WQ&feature=emb_logo]]",
+    "Health Provider Text": "•Info for professionals [[Centre for Effective Practice; https://cep.health/clinical-products/covid-19-vaccines/]] \n\n•[[NACI; https://www.canada.ca/en/public-health/services/immunization/national-advisory-committee-on-immunization-naci/recommendations-use-covid-19-vaccines.html]]\n\n•Canada: click [[here; https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/vaccines/overview.html]]\n\n•Provinces: click [[here; https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/vaccines/overview.html#a5]]\n\n•New England Journal of Medicine\n[[FAQ; https://www.nejm.org/covid-vaccine/faq]]\n[[Research; https://www.nejm.org/covid-vaccine]]\n\n• Videos: how vaccines are developped \n[[3 minutes; https://www.canada.ca/en/public-health/services/video/covid-19-how-vaccines-developed.html]]\n[[7 minutes; https://www.youtube.com/watch?v=2t_mQwTY4WQ&feature=emb_logo]]",
+    "Gender": "all",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Covid",
+    "Topic heading": "COVID-19",
     "Subject": "Elderly",
     "General Patient Text": "•Click on: [[For the elderly and their caregivers; https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/resources-older-adults-caregivers.html]]\n\n•If you need food or other help \nPhone 211 or click on [[211 national website; https://211.ca]]\n\n\n•Or contact your local public health department,\nor municipality to find community services\n[[Public health info by province or territory; https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection/symptoms/provincial-territorial-resources-covid-19.html]]",
     "Health Provider Text": "n/a",
@@ -290,6 +300,86 @@
     "Maximum age": 150
   },
   {
+    "Button": "Breast",
+    "Topic heading": "Breast Cancer",
+    "Subject": "Information",
+    "General Patient Text": "•        If you are taking estrogen and have breasts, you need regular screening mammograms depending on your age.\n•        In Ontario, the recommendation is for you to have a mammogram every 2 years from age 50 to 74.\n•        Some primary care providers may recommend that you only start undergoing mammograms at age 50 if you have been on estrogen for at least 5 years.",
+    "Health Provider Text": "•\tTrans women and people on the transfeminine spectrum who are on feminizing hormone therapy should undergo breast cancer screening as per current guidelines for cis women.\n•\tIn Ontario, the current recommendation is a mammogram every 2 years from age 50-74.\n•\tSome guidelines (such as those by RHO and UCSF) specify to only start once the patient has been on feminizing hormone therapy for > 5 years total (up to 10 years according to UCSF), whereas others do not specify a minimum hormone duration use.",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Breast",
+    "Topic heading": "Breast Cancer",
+    "Subject": "Resources",
+    "General Patient Text": "•       [[Overview of breast cancer screening for trans women in Canada; https://www.cancer.ca/en/prevention-and-screening/reduce-cancer-risk/find-cancer-early/screening-in-lgbtq-communities/trans-women-and-breast-cancer-screening/?region=on/]]\n•       [[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n•       [[ UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf ]]\n•       [[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Health Provider Text": "•\tNote that the presence of breast implants generally necessitates diagnostic mammography rather than routine screening mammography (RHO)\n•\t[[Overview of breast cancer screening for trans women in Canada; https://www.cancer.ca/en/prevention-andscreening/reduce-cancer-risk/find-cancer-early/screeningin-lgbtq-communities/trans-women-and-breast-cancerscreening/?region=on]]\n•\t[[RHO guidelines; https://www.rainbowhealthontario.ca/wpcontent/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n•\t[[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]\n•\t[[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Breast",
+    "Topic heading": "Breast Cancer",
+    "Subject": "Information",
+    "General Patient Text": "•\tIf you have not had top surgery to remove breast tissue in its entirety (also known as a mastectomy), you need a mammogram every 2 years from age 50 to 74 if you live in Ontario.\n•\tYou still need mammograms even if you have had a breast reduction (and not a mastectomy).\n•\tIf you have had a mastectomy, discuss whether you need regular chest exams with your primary care provider; it is generally not the case.",
+    "Health Provider Text": "•\tTrans men and people on the transmasculine spectrum who have not had a bilateral mastectomy should undergo breast cancer screening, as per the current guidelines for cis women.\n•\tIn Ontario, the current recommendation for cis women is a mammogram every 2 years from age 50-74.\n•\tThere is currently no reliable evidence on screening for trans men and people on the transmasculine spectrum patients who have had a mastectomy; consider discussing the unknown risks associated with residual breast tissue, as well as the possible technical limitations of mammography (UCSF).\n•\tConsider continuing regular monitoring for breast cancer even after mastectomy, as mastectomies usually do not remove breast tissue in its entirety; the Endocrine Society suggests conducting sub- and periareolar annual breast examinations if the patient has undergone a mastectomy, whereas UCSF cautions against it (not evidence-based).",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Breast",
+    "Topic heading": "Breast Cancer",
+    "Subject": "Resources",
+    "General Patient Text": "•\t[[Overview of breast cancer screening for trans men in Canada; https://www.cancer.ca/en/prevention-and-screening/reduce-cancer-risk/find-cancer-early/screening-in-lgbtq-communities/trans-men-and-chest-cancer-screening/?region=on]]\n•\t[[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n•\t[[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]\n•\t[[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Health Provider Text": "•\tBe mindful of the language you use when referring to traditionally gendered body parts, as certain words may make patients feel uncomfortable — consider following the patients lead with regards to terminology (e.g. some trans men may prefer to refer to their breasts as their “chest”).\n•\tNote that mastectomy typically does not involve the removal of all breast tissue, and that some may still remain in place, meaning that patients could still be at risk of breast cancer (TransCare BC).\n•\tIf an abnormality is noted on the exam of a trans man who had a mastectomy, ultrasound +/- MRI is indicated as mammography is technically difficult or may be impossible (RHO).\n•\t[[Overview of breast cancer screening for trans men in Canada; https://www.cancer.ca/en/prevention-and-screening/reduce-cancer-risk/find-cancer-early/screening-in-lgbtq-communities/trans-men-and-chest-cancer-screening/?region=on]]\n•\t[[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n•\t[[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]\n•\t[[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Heart",
+    "Topic heading": "Cardiovascular disease",
+    "Subject": "Information",
+    "General Patient Text": "(Can be the same suggestions as for cisgender patients)",
+    "Health Provider Text": "•The current guidelines for general population should be followed when evaluating for cardiovascular risk factors in trans patients, such as diabetes and dyslipidemia screening.\n•Encourage smoking cessation, weight loss, management of diabetes, and encouraging physical activity.",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Heart",
+    "Topic heading": "Cardiovascular disease",
+    "Subject": "Resources",
+    "General Patient Text": "(Can be the same suggestions as for cisgender patients)",
+    "Health Provider Text": "•When using a risk calculator, depending on when and how long the patient has been on hormones, consider using either a calculator based on the patient’s sex assigned at birth, their affirmed gender or an average of the two (UCSF).",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Heart",
+    "Topic heading": "Cardiovascular disease",
+    "Subject": "Information",
+    "General Patient Text": "(Can be the same suggestions as for cisgender patients)",
+    "Health Provider Text": "•The current guidelines for general population should be followed when evaluating for cardiovascular risk factors in trans patients, such as diabetes and dyslipidemia screening.\n•Encourage smoking cessation, weight loss, management of diabetes, and encouraging physical activity.",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Heart",
+    "Topic heading": "Cardiovascular disease",
+    "Subject": "Resources",
+    "General Patient Text": "(Can be the same suggestions as for cisgender patients)",
+    "Health Provider Text": "•When using a risk calculator, depending on when and how long the patient has been on hormones, consider using either a calculator based on the patient’s sex assigned at birth, their affirmed gender or an average of the  two (UCSF)",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
     "Button": "Uterus",
     "Topic heading": "Cervical Cancer",
     "Subject": "Get tested for Cervical Cancer \n(Pap test)",
@@ -316,6 +406,46 @@
     "General Patient Text": "•Get the HPV vaccine\nrecommended between age 9 and 26 \nbut can be given at any age\n•Don’t smoke\n•Use condoms\n•Limit your number of sexual partners\n[[more; http://www.cancer.ca/en/cancer-information/cancer-type/cervical/risks/reducing-your-risk/?region=on]]",
     "Health Provider Text": "•Recommend the HPV vaccine\n(recommended between 9 and 26 \nbut can be given at any age).\n[[Canadian recommendation; https://www.canada.ca/en/public-health/services/publications/healthy-living/update-recommended-human-papillomavirus-vaccine-immunization-schedule.html#sum]]\n•Recommend no smoking, condom use,\nand limiting number of partners.",
     "Gender": "f",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Uterus",
+    "Topic heading": "Cervical Cancer",
+    "Subject": "Information",
+    "General Patient Text": "•Most trans women and non-binary people on the transfeminine spectrum do not need any cervical cancer screening, regardless of whether or not they have had a vaginoplasty.\n•In the very rare instance where you would have had a cervix created during vaginoplasty, discuss the need for Pap tests with your primary care provider.\n•If you have had a vaginoplasty, your primary care provider may suggest yearly visual examination with a speculum.",
+    "Health Provider Text": "•Trans women and people on the transfeminine spectrum generally do not need any cervical cancer screening as vaginoplasty does not usually entail creation of a neocervix.\n•Neovagina vault testing is not recommended.\n•In the very rare instances where a neocervix may have been created during vaginoplasty (such as from the skin of the glans penis), consider following the current cervical cancer screening guidelines for cis women (ACOG) (in Ontario, Pap tests are recommended every 3 years from age 21 to 69 if the person has ever been sexually active).\n•Consider annual neovaginal speculum examination to visually detect any abnormalities (including malignancy) for those who have undergone vaginoplasty (RHO).",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Uterus",
+    "Topic heading": "Cervical Cancer",
+    "Subject": "Resources",
+    "General Patient Text": "•[[Overview of cervical cancer screening for trans women in Canada; https://www.cancer.ca/en/prevention-and-screening/reduce-cancer-risk/find-cancer-early/screening- in-lgbtq-communities/trans-women-and-cervical-cancer-screening/?region=on]]\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]\n• [[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]] (Can be the same suggestions as for cisgender patients)",
+    "Health Provider Text": "•\tNeovaginas may have a more posterior orientation than those of cis women, and using an anoscope rather than a speculum may be more appropriate for examination (UCSF).\n•\t[[Overview of cervical cancer screening for trans women in Canada; https://www.cancer.ca/en/prevention-and- screening/reduce-cancer-risk/find-cancer-early/screening- in-lgbtq-communities/trans-women-and-cervical-cancer- screening/?region=on]]\n•\t[[Tips for physical examination of trans patients; https://transcare.ucsf.edu/guidelines/physical- examination]]\n•\t[[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n•\t[[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]\n•\t[[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Uterus",
+    "Topic heading": "Cervical Cancer",
+    "Subject": "Information",
+    "General Patient Text": "•If you have not had surgery to remove the cervix (the lower part of the uterus leading to the vagina), you need regular cervical cancer screening.\n•In Ontario, Pap tests are recommended every 3 years from age 21-69 if you have ever been sexually active.\n•If you think your cervix was removed during surgery, discuss the need for Pap tests with your primary care provider.",
+    "Health Provider Text": "•\tTrans men and people on the transmasculine spectrum who still have a cervix should undergo cervical cancer screening as per current guidelines.\n•\tIn Ontario, Pap tests are recommended every 3 years from age 21-69 if the person has ever been sexually active.",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Uterus",
+    "Topic heading": "Cervical Cancer",
+    "Subject": "Resources",
+    "General Patient Text": "• [[Overview of cervical cancer screening for trans men in Canada; https://www.cancer.ca/en/prevention-and- screening/reduce-cancer-risk/find-cancer-early/screening-in-lgbtq-communities/trans-men-and- cervical-cancer-screening/?region=on]]\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]\n• [[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Health Provider Text": "• A trial of vaginal estrogens for 1 week prior to the exam may be helpful (RHO, UCSF).\n• Should speculum examination be painful or difficult due to vaginal atrophy, consider applying topical 2% lidocaine jelly vaginally 5-10 minutes prior to the procedure (RHO).\n• Consider administering a low-dose lorazepam pre-procedurally if the patient is particularly anxious about the exam (RHO, UCSF).\n• Use a paediatric speculum if possible to reduce discomfort.\n• If speculum insertion remains difficult, suggest allowing the patient to insert the speculum themselves or watching the procedure using a mirror (UCSF).\n• Note that unsatisfactory samples of Pap tests are far more common in trans men compared to cis women and that repeats may be required; ensure to note if the patient is/was on testosterone on the cytology requisition (UCSF, RHO), as cervical atrophy can mimic dysplasia (WHO).\n• [[Overview of cervical cancer screening for trans men in Canada: https://www.cancer.ca/en/prevention-and-screening/reduce-cancer-risk/find-cancer-early/screening-in-lgbtq-communities/trans-men-and-cervical-cancer-screening/?region=on]]\n• [[Tips for physical examination of trans patients: https://transcare.ucsf.edu/guidelines/physical-examination]]\n• [[Tips on performing Pap tests to trans men; https://www.rainbowhealthontario.ca/wp-content/uploads/2015/07/Tips_Paps_TransMen-1.jpg]]\n•  [[Tips on improving trans men’s experiences with Pap tests; https://transcare.ucsf.edu/guidelines/cervical-cancer]]\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]\n• [[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Gender": "tm",
     "Minimum age": 18,
     "Maximum age": 150
   },
@@ -450,6 +580,26 @@
     "Maximum age": 49
   },
   {
+    "Button": "Ovary",
+    "Topic heading": "Family Planning",
+    "Subject": "Ovarian cancer",
+    "General Patient Text": "Patient: Same as cis women/discuss with provider (not all bottom surgeries include oophorectomy)",
+    "Health Provider Text": "Provider: Same as cis women/discuss with provider (not all bottom surgeries include oophorectomy)",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Ovary",
+    "Topic heading": "Family Planning",
+    "Subject": "Ovarian cancer",
+    "General Patient Text": "Patient: No screening",
+    "Health Provider Text": "Provider: No screening",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
     "Button": "Heart",
     "Topic heading": "Heart Disease",
     "Subject": "Prevention",
@@ -523,7 +673,7 @@
     "Button": "Heart",
     "Topic heading": "Heart Disease",
     "Subject": "Get your heart risk score",
-    "General Patient Text": "See your provider and/ or answer this [[questionnaire; https://myhealthcheckup.com/]]",
+    "General Patient Text": "See your provider and/ or use these online tools \n[[myhealthcheckup; https://myhealthcheckup.com]]\n[[bestscience; http://chd.bestsciencemedicine.com/calc2.html]]",
     "Health Provider Text": "Risk assessment \nmodified Framingham or [[other; http://chd.bestsciencemedicine.com/calc2.html]]\nonly validated between age 30 and 74",
     "Gender": "all",
     "Minimum age": 30,
@@ -533,7 +683,7 @@
     "Button": "Heart",
     "Topic heading": "Heart Disease",
     "Subject": "Smoking",
-    "General Patient Text": "Recommended to quit or reduce.\nGet help with websites, groups, phone lines in each province.\n[[More; http://www.smokershelpline.ca/]]",
+    "General Patient Text": "Recommended to quit or reduce.\nGet help with websites, groups, phone lines \n[[By province; https://www.canada.ca/en/health-canada/services/smoking-tobacco/quit-smoking/provincial-territorial-services.html]].\n[[More; http://www.smokershelpline.ca/]]",
     "Health Provider Text": "n/a",
     "Gender": "all",
     "Minimum age": 18,
@@ -544,7 +694,7 @@
     "Topic heading": "Heart Disease",
     "Subject": "Smoking",
     "General Patient Text": "n/a",
-    "Health Provider Text": "•Ask all patients about tobacco use, \n•Advise stopping this,\n•Use behavioral  interventions\n•As needed use approved pharmacotherapy to promote cessation.\n[[USPSTF A (2013); https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/tobacco-use-in-adults-and-pregnant-women-counseling-and-interventions]]\n[[video; https://www.youtube.com/watch?v=URiKA7CKtfc]]",
+    "Health Provider Text": "•Ask all patients about tobacco use, \n•Advise stopping this,\n•Use behavioral  interventions\n•As needed use approved pharmacotherapy to promote cessation.\n[[USPSTF A (2013); https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/tobacco-use-in-adults-and-pregnant-women-counseling-and-interventions]]\n[[motivational interviewing video; https://www.youtube.com/watch?v=URiKA7CKtfc]]",
     "Gender": "all",
     "Minimum age": 18,
     "Maximum age": 150
@@ -573,10 +723,20 @@
     "Button": "Needle in arm",
     "Topic heading": "Immunization",
     "Subject": "Get immunized",
-    "General Patient Text": "For best information download the [[app CanImmunize; https://www.canimmunize.ca/en/home]]\n\nAGE 50 and over:\nThis schedule assumes the patient has  been vaccinated in childhood\n•Td (Tetanus-diphtheria) every 10 years\n•Tdap(Tetanus,diphtheria, acellular pertussis or whooping cough):once in your lifetime\n•Measles Mumps Rubella:it is advised that  most adults should have  2 doses of this vaccine\n•Influenza: is recommended for all adults. For high risk groups see CanImmunize app\n•Pneumococcal, varicella,  meningococcal are recommended for some high risk groups seeCANImmunize app\n•Shingles vaccine: \nShingrix recommended for 50 and over but you may have to pay for this most provinces not funding yet [[Shingrix; https://www.cdc.gov/vaccines/vpd/shingles/public/shingrix/index.html]]\n\nAGE 60 and over:\n•Shingles vaccine: Shingrix or Zostavax, your province may cover Zostavax but not Shingrix,discuss with your provider [[more info; https://www.cdc.gov/vaccines/vpd/shingles/public/shingrix/index.html]]\n\n\nAGE 65and over: \n•Pneumococca: Pneumococcal 23 is paid for by your province,Pneumococcal 13 may not be paid for by your province. Discuss with your doctor\n•Influenza yearly",
+    "General Patient Text": "For best information download the [[app CanImmunize; https://www.canimmunize.ca/en/home]]\n\nAGE 50 and over:\nThis schedule assumes the patient has  been vaccinated in childhood\n•Td (Tetanus-diphtheria) every 10 years\n•Tdap(Tetanus,diphtheria, acellular pertussis or whooping cough):once in your lifetime\n•Measles Mumps Rubella:it is advised that  most adults should have  2 doses of this vaccine\n•Influenza: is recommended for all adults. For high risk groups see CanImmunize app\n•Pneumococcal, varicella,  meningococcal are recommended for some high risk groups seeCANImmunize app\n•Shingles vaccine: \nShingrix recommended for 50 and over but you may have to pay for this most provinces not funding yet [[Shingrix; https://www.cdc.gov/vaccines/vpd/shingles/public/shingrix/index.html]]\n\nAGE 60 and over:\n•Shingles vaccine: Shingrix or Zostavax, your province may cover Zostavax but not Shingrix,discuss with your provider [[more info; https://www.cdc.gov/vaccines/vpd/shingles/public/shingrix/index.html]]\n\n\nAGE 65 and over: \n•Pneumococca : Pneumococcal 23 is paid for by your province,Pneumococcal 13 may not be paid for by your province. Discuss with your doctor\n•Influenza yearly",
     "Health Provider Text": "n/a",
     "Gender": "all",
     "Minimum age": 50,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Needle in arm",
+    "Topic heading": "Immunization",
+    "Subject": "COVID vaccines",
+    "General Patient Text": "•Canada: click [[here; https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/vaccines/overview.html]]\n\n•Provinces: click [[here; https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/vaccines/overview.html#a5]]\n\n•New England Journal of Medicine [[FAQ; https://www.nejm.org/covid-vaccine/faq]]\n\n• Videos: how vaccines are developped \n[[3 minutes; https://www.canada.ca/en/public-health/services/video/covid-19-how-vaccines-developed.html]]\n[[7 minutes; https://www.youtube.com/watch?v=2t_mQwTY4WQ&feature=emb_logo]]",
+    "Health Provider Text": "•Info for professionals [[Centre for Effective Practice; https://cep.health/clinical-products/covid-19-vaccines/]] \n\n•[[NACI; https://www.canada.ca/en/public-health/services/immunization/national-advisory-committee-on-immunization-naci/recommendations-use-covid-19-vaccines.html]]\n\n•Canada: click [[here; https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/vaccines/overview.html]]\n\n•Provinces: click [[here; https://www.canada.ca/en/public-health/services/diseases/coronavirus-disease-covid-19/vaccines/overview.html#a5]]\n\n•New England Journal of Medicine\n[[FAQ; https://www.nejm.org/covid-vaccine/faq]]\n[[Research; https://www.nejm.org/covid-vaccine]]\n\n• Videos: how vaccines are developped \n[[3 minutes; https://www.canada.ca/en/public-health/services/video/covid-19-how-vaccines-developed.html]]\n[[7 minutes; https://www.youtube.com/watch?v=2t_mQwTY4WQ&feature=emb_logo]]",
+    "Gender": "all",
+    "Minimum age": 18,
     "Maximum age": 150
   },
   {
@@ -720,6 +880,66 @@
     "Maximum age": 150
   },
   {
+    "Button": "Bone",
+    "Topic heading": "Osteoporosis",
+    "Subject": "Osteoporosis",
+    "General Patient Text": "Patient: Generally same as cis patients but considered high risk if not on ANY hormones for prolonged periods (e.g. no estrogen or testosterone)",
+    "Health Provider Text": "Provider: Generally same as cis patients but considered high risk if not on ANY hormones for prolonged periods (e.g. no estrogen or testosterone)",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Bone",
+    "Topic heading": "Osteoporosis",
+    "Subject": "Osteoporosis",
+    "General Patient Text": "Patient: Generally same as cis patients but considered high risk if not on ANY hormones for prolonged periods (e.g. no estrogen or testosterone)",
+    "Health Provider Text": "Provider: Generally same as cis patients but considered high risk if not on ANY hormones for prolonged periods (e.g. no estrogen or testosterone)",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Bone",
+    "Topic heading": "Osteoporosis",
+    "Subject": "Information",
+    "General Patient Text": "•Bone density testing is generally recommended for everyone at age 65 in Canada.\n•You may need bone density testing earlier if: you had an orchiectomy (removal of the testes) or you are/were on a testosterone or puberty blocker (such as spironolactone, cyproterone or Lupron), and you were taking no/low doses of hormone therapy.\n•You may also need testing earlier if you have other risk factors, such as taking certains medications. These are the same risk factors as for cisgender patients. Discuss any concerns you may have with your primary care provider.\n•Here is a risk calculator used to determine your 10-year fracture risk: https://www.sheffield.ac.uk/FRAX/. If you have been medically transitioning, consider using an average of both the female and male calculators to calculate your own fracture risk.\n•Some providers recommend that all patients on hormone therapy ensure a daily intake of 1200 mg of calcium (diet\n+ supplementation) and 1000 IU of vitamin D.",
+    "Health Provider Text": "•All trans women and people on the transfeminine spectrum should undergo bone density screening as per the current guidelines for the general population.\n•For a low risk patient without additional risk factors in Canada, screening usually begins at age 65.\n•As per the current guidelines for the general population, screening with BMD should be considered for younger patients who have risk factors for osteoporosis. For trans women and people on the transfeminine spectrum, this also includes anyone who, regardless of age:\n1)Has a history of hypogonadism/gonadectomy, and a history of insufficient (no/low-dose/intermittent) hormone replacement (UCSF recommends > 5 years without hormones to qualify; RHO recommends > 2 years; Endrocine Society, ISCD and TransCare BC do not specify a minimum amount of time).\n2)A history of taking an anti-androgen/GnRH analogue without exogenous hormones (RHO, ISCD).\n3)Is not adherent to hormone therapy or has taken it intermittently (Endocrine Society, TransCare BC).\n•On the other hand, the Endocrine Society suggests considering BMD testing at baseline in all trans feminine patients.\n•The RHO (based in Ontario) recommends that all patients",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Bone",
+    "Topic heading": "Osteoporosis",
+    "Subject": "Resources",
+    "General Patient Text": "•For more information about osteoporosis [[click here; https://strwebstgmedia.blob.core.windows.net/media/libmnj ci/transgender-people-and-osteoporosis-fact-sheet-march- 2018.pdf]]\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp- content/uploads/woocommerce_uploads/2019/12/Guideline s-FINAL-Dec-2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Tran sgender-PGACG-6-17-16.pdf]]\n• [[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Health Provider Text": "•When assessing for osteoporosis, consider assessing risk using an average of the results obtained using both a female and male calculator [[risk calculator; https://www.sheffield.ac.uk/FRAX/]] (UCSF).\n•The ISCD suggests that the Z-score should generally be derived from comparison to the reference data of the patient’s affirmed gender for binary transgender patients (i.e. who identify as solely male or female), and to the gender assigned at birth in non-binary patients (ISCD).\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp- content/uploads/woocommerce_uploads/2019/12/Guideli nes-FINAL-Dec-2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Tr ansgender-PGACG-6-17-16.pdf]]\n• [[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Bone",
+    "Topic heading": "Osteoporosis",
+    "Subject": "Information",
+    "General Patient Text": "•Bone density testing is generally recommended for everyone at age 65 in Canada.\n•You may need bone density testing earlier if: you had an oophorectomy (removal of the ovaries) or you are/were on a puberty blocker (such as Lupron), and you were taking no/low doses of hormone therapy.\n•You may also need testing earlier if you have other risk factors, such as taking certains medications. These are the same risk factors as for cisgender patients. Discuss any concerns you may have with your primary care provider.\n•Here is a risk calculator used to determine your 10-year fracture risk: https://www.sheffield.ac.uk/FRAX/. If you have been medically transitioning, consider using an average of both the female and male calculators to calculate your own fracture risk.\n•Some providers recommend that all patients on hormone therapy ensure a daily intake of 1200 mg of calcium (diet + supplementation) and 1000 IU of vitamin D.",
+    "Health Provider Text": "•All trans men and people on the transmasculine spectrum should undergo bone density screening as per the current guidelines for the general population.\n•For a low risk patient without additional risk factors in Canada, screening usually begins at age 65.\n•As per the current guidelines for the general population, screening with BMD should be considered for younger patients who have risk factors for osteoporosis. For trans men and people on the transmasculine spectrum, this also includes anyone who, regardless of age:\n1)Has a history of hypogonadism/gonadectomy, and a history of insufficient (no/low-dose/intermittent) hormone replacement (UCSF recommends > 5 years without hormones to qualify; RHO recommends > 2 years; Endocrine Society, ISCD and TransCare BC do not specify a minimum amount of time).\n2)A history of taking a GnRH analogue without exogenous hormones (RHO, ISCD).\n3)Is not adherent to hormone therapy or has taken it intermittently (Endocrine Society, TransCare BC).\n•The RHO (based in Ontario) recommends that all patients on hormone therapy ensure a daily intake of 1200 mg of calcium and 1000 IU of vitamin D.",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Bone",
+    "Topic heading": "Osteoporosis",
+    "Subject": "Resources",
+    "General Patient Text": "•For more information about osteoporosis [[click here; https://strwebstgmedia.blob.core.windows.net/media/lib mnjci/transgender-people-and-osteoporosis-fact-sheet- march-2018.pdf]]\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp- content/uploads/woocommerce_uploads/2019/12/Guidel ines-FINAL-Dec-2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]\n• [[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Health Provider Text": "•When assessing for osteoporosis, consider assessing risk using an average of the results obtained using both a female and male calculator [[risk calculator; https://www.sheffield.ac.uk/FRAX/]] (TransCare BC).\n•The ISCD suggests that the Z-score should generally be derived from comparison to the reference data of the patient’s affirmed gender for binary transgender patients (i.e. who identify as solely male or female), and to the gender assigned at birth in non-binary patients (ISCD).\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp- content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec- 2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender- PGACG-6-17-16.pdf]]\n• [[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
     "Button": "Figure outside body walking",
     "Topic heading": "Physical Activity",
     "Subject": "Recommendations",
@@ -776,6 +996,46 @@
     "General Patient Text": "•Blood pressure\n•Height, weight, Body Mass Index \n[[bmi; https://www.unlockfood.ca/en/Articles/Weight-Loss/BMI-Calculator.aspx]]\n•Other tests such as Pap Tests for women \n•After 40 more tests required see info in our app\n\n•SEE YOUR PROVIDER MORE OFTEN IF MEASUREMENTS ABNORMAL \n                          \n[[more; https://choosingwiselycanada.org/health-check-ups/]]\n\nIF YOU HAVE HEALTH PROBLEMS, SYMPTOMS, RISK FACTORS OR ARE ON MEDICATION\nyou need a more complete physical exam, more often, discuss with your provider",
     "Health Provider Text": "n/a",
     "Gender": "all",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Prostate cancer",
+    "Subject": "Information",
+    "General Patient Text": "• “Bottom” or “lower” surgery (such as vaginoplasty) does not remove the prostate so you could still develop prostate cancer even if you had surgery.\n• Should you have any concerns about your prostate, please discuss this with your primary care provider.\n• In Canada, prostate cancer screening is not recommended by the Canadian Task Force on Preventive Health Care.",
+    "Health Provider Text": "• The prostate remains in place even following surgery; trans women and people on the transfeminine spectrum therefore could still develop prostate cancer.\n• The current guidelines for prostate cancer screening should be followed in these patients.\n• In Canada, routine PSA screening is not recommended by the Canadian Task Force on Preventive Health Care.",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Prostate cancer",
+    "Subject": "Resources",
+    "General Patient Text": "• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]\n• [[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Health Provider Text": "• If a prostate exam is required in a trans woman who has undergone vaginoplasty, it can be done performed with a traditional digital rectal exam, or by palpating the prostate through the neovagina’s anterior wall (UCSF).\n• Tips for the prostate examination of trans women and people on the transfeminine spectrum: [[click here; https://transcare.ucsf.edu/guidelines/prostate-testicular- cancer]]\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]\n • [[Endocrine Society guidelines; https://academic.oup.com/jcem/article/102/11/3869/4157558]]",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Prostate cancer",
+    "Subject": "Information",
+    "General Patient Text": "•\t“Bottom” or “lower” surgery (such as metoidioplasty or phalloplasty) does not create a prostate, so you are not at risk of developing prostate cancer.",
+    "Health Provider Text": "• Trans men and people on the transmasculine spectrum generally do not have prostates (unless they have an intersex condition) nor are any created during surgery such as phalloplasty or metoidioplasty; prostate cancer is not a concern in these patients.",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Prostate cancer",
+    "Subject": "Resources",
+    "General Patient Text": "",
+    "Health Provider Text": "",
+    "Gender": "tm",
     "Minimum age": 18,
     "Maximum age": 150
   },
@@ -878,6 +1138,86 @@
     "Gender": "m",
     "Minimum age": 55,
     "Maximum age": 69
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Sex & Prostate",
+    "Subject": "Prostate Cancer",
+    "General Patient Text": "Patient: No screening",
+    "Health Provider Text": "Provider: No screening",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Sex & Prostate",
+    "Subject": "Prostate Cancer",
+    "General Patient Text": "Patient:  Same as cis men/discuss with provider (bottom surgery does not remove the prostate)",
+    "Health Provider Text": "Provider:  Same as cis men/discuss with provider (bottom surgery does not remove the prostate)",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Sex",
+    "Subject": "Contraception (Subject)",
+    "General Patient Text": "Patient: Any hormonal/barrier methods can used (no contraindications with testosterone)",
+    "Health Provider Text": "Provider: Any hormonal/barrier methods can used (no contraindications with testosterone)",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Sex",
+    "Subject": "Contraception (Subject)",
+    "General Patient Text": "Patient: Use barrier method (or have partner use hormonal contraception) if no bottom surgery and having intercourse with partner who could get pregnant",
+    "Health Provider Text": "Provider: Use barrier method (or have partner use hormonal contraception) if no bottom surgery and having intercourse with partner who could get pregnant",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Sexual health",
+    "Subject": "Information",
+    "General Patient Text": "•\tCondoms are recommended for anal sex.\n•\tDepending on your sexual practices and history, screening for sexually transmitted infections and HIV may be recommended. Discuss any concerns you may have with your primary care provider.\n• If you have been the receptive partner during anal sex (“bottom”), your primary care provider may recommend regular anal Pap tests.\n• If you have sex with men, have concerns about HIV prevention and would like to know more about pre- exposure prophylaxis (PrEP), discuss this with your primary care provider.",
+    "Health Provider Text": "• Condoms are recommended for anal sex.\n• Emphasize adequate provision of lubricants for trans women and trans men who have sex with men.\n• Screen for asymptomatic STIs based on behavioural history and sexual practices.\n• Consider anal Pap tests every 2-3 years (or yearly in those who are HIV+) for those who have a history of receptive anal sex (RHO).\n• UCSF (based in the USA) suggests that all trans patients should be screened at least once for HIV, as per US guidelines.\n• Daily oral pre-exposure prophylaxis (PrEP) may be considered as a possible additional intervention for trans women who have sex with men (WHO).\n• Voluntary medical circumcision (VMMC) is not",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Sexual health",
+    "Subject": "Resources",
+    "General Patient Text": "• [[WHO guidelines; https://apps.who.int/iris/bitstream/handle/10665/128048/9789241507431_eng.pdf?sequence=1]]\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guideline s-FINAL-Dec-2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]",
+    "Health Provider Text": "•\tIn the LGBTQ+ community, the terms “bottom” and “top” are often used to describe the receptive and penetrative partners during sexual activity, respectively. The term “versatile” is used to describe someone who may alternate between these roles.\n• [[WHO guidelines; https://apps.who.int/iris/bitstream/handle/10665/128048/9789241507431_eng.pdf?sequence=1]]\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]",
+    "Gender": "tf",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Sexual health",
+    "Subject": "Information",
+    "General Patient Text": "•\tIf you are on testosterone and have not had a hysterectomy (removal of the uterus), you need to use reliable form of birth control if there is a risk pregnancy based on your sexual practices, as testosterone can cause birth defects.\n•\tIf you are trying to or could become pregnant (based on your sexual practices), discuss this with your primary care provider, as you should take folic acid supplementation.\n•\tCondoms are recommended for anal sex.\n•\tDepending on your sexual practices and history, screening for sexually transmitted infections and HIV may be recommended. Discuss any concerns you may have with your primary care provider.\n• If you have been the receptive partner during anal sex (“bottom”), your primary care provider may recommend regular anal Pap tests.",
+    "Health Provider Text": "•\tThose on testosterone who have not undergone hysterectomy need reliable birth control if pregnancy is a risk based on sexual activity, as testosterone is a teratogen (RHO).\n•\tIf pregnancy is possible based on sexual activity, follow the same folic acid recommendations as for cis women.\n•\tCondoms are recommended for anal sex.\n•\tEmphasize adequate provision of lubricants for trans women and trans men who have sex with men.\n•Screen for asymptomatic STIs based on behavioural history and sexual practices.\n•Consider anal Pap tests every 2-3 years (or yearly in those who are HIV+) for those who have a history of receptive anal sex (RHO).\n•UCSF (based in the USA) suggests that all trans patients",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
+  },
+  {
+    "Button": "Genitalia",
+    "Topic heading": "Sexual health",
+    "Subject": "Resources",
+    "General Patient Text": "• [[WHO guidelines; https://apps.who.int/iris/bitstream/handle/10665/128048/9789241507431_eng.pdf?sequence=1]]\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec-2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender-PGACG-6-17-16.pdf]]",
+    "Health Provider Text": "•\tIn the LGBTQ+ community, the terms “bottom” and “top” are often used to describe the receptive and penetrative partners during sexual activity, respectively. The term “versatile” is used to describe someone who may alternate between these roles.\n•\t[[WHO guidelines; https://apps.who.int/iris/bitstream/handle/10665/128048/9789241507431_e ng.pdf?sequence=1]]\n• [[RHO guidelines; https://www.rainbowhealthontario.ca/wp-content/uploads/woocommerce_uploads/2019/12/Guidelines-FINAL-Dec- 2019-iw2oti.pdf]]\n• [[UCSF Transcare guidelines; https://transcare.ucsf.edu/sites/transcare.ucsf.edu/files/Transgender- PGACG-6-17-16.pdf]]",
+    "Gender": "tm",
+    "Minimum age": 18,
+    "Maximum age": 150
   },
   {
     "Button": "Sun",

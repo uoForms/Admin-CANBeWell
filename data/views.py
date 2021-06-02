@@ -171,6 +171,11 @@ def data(request):
                     fb_data = clean_data(fb_data)
                     fb_data = clean_headers(fb_data)
 
+                    #adding date: 2021/04/26 #86
+                    del fb_data['User']
+                    #end adding
+
+
                 else:
                     messages.error(request, mark_safe("No data available."))
             else:

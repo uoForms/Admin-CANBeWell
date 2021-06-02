@@ -120,6 +120,10 @@ end_date = "yyyy-mm-dd"
 selected_database = "Production"
 fb_data = pd.DataFrame()
 
+#adding date: 2021/04/25
+keys=['age','browser','city','date','device','gender','item','language','navigation','os','pageviewtime','region','role','sessionid','userid','user']
+#end adding
+
 @login_required(login_url='login')
 def data(request):
     global start_date
@@ -129,6 +133,9 @@ def data(request):
     global production_ref
     global transgender_ref
     global test_ref
+    #adding date: 2021/04/25
+    global keys
+    #end adding
 
     if not production_ref or not transgender_ref or not test_ref:
         connections()
@@ -152,9 +159,18 @@ def data(request):
                 elif db_choice == "Test":
                     ref = test_ref
                 fb_data = fb_fetch_data(date_list, ref)
+
                 if not fb_data.empty:
+                    #adding date: 2021/04/25
+                    fb_data_key=[i for i in fb_data.keys()]
+                    for key in keys:
+                        if key not in fb_data_key:
+                            fb_data[key]=None
+                    #end adding
+
                     fb_data = clean_data(fb_data)
                     fb_data = clean_headers(fb_data)
+
                 else:
                     messages.error(request, mark_safe("No data available."))
             else:

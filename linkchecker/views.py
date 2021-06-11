@@ -66,19 +66,25 @@ def  resolveUrlInFile(fileKey):
     if fileKey == 'en_test' or fileKey == 'fr_test':
         jsonKey = 'Patient/Provider Text'
     elif fileKey == 'fr_topic' or fileKey == 'en_topic':
-        jsonKey = 'General Patient Text'
+        jsonKey = ['General Patient Text','Health Provider Text']
     else:
         return []
-    urls = []
-    for i in range(len(js)):
-        txt = js[i][jsonKey]
-        url = re.findall('https://.*]$', txt)
-        for u in url:
-            u = u.replace(']]','')
-            urls .append(u)
 
-        url = re.findall('http://.*]$', txt)
-        for u in url:
-            u = u.replace(']]','')
-            urls.append(u)
-    return urls
+    urls = []
+    for x in range(len(jsonKey)):
+        for i in range(len(js)):
+            txt = js[i][jsonKey] if len(jsonKey)==21 else js[i][jsonKey[x]] #length of 'Patient/Provide text' is 21, which needs to be skipped
+            txt_split = txt.split('\n')
+
+            for i in txt_split:
+                url = re.findall('https://.*]$', i)
+                for u in url:
+                    u = u.replace(']]','')
+                    urls.append(u)
+
+                url = re.findall('http://.*]$', i)
+                for u in url:
+                    u = u.replace(']]','')
+                    urls.append(u)
+
+    return list(set(urls))

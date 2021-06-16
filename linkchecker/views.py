@@ -6,6 +6,25 @@ import urllib.request
 import time
 import json
 from django.http import HttpResponse
+import requests
+import json
+
+URL_Topic_EN = "https://drive.google.com/uc?export=download&id=1KmTemPnVDmXcxMKrJ48y0jAoG5MYl58f"
+URL_Topic_FR = "https://drive.google.com/uc?export=download&id=1lru1LitepXYPCvdovo11xz8s7MdZhBzI"
+URL_Test_FR = "https://drive.google.com/uc?export=download&id=1iapSdfbUYnUDn6nrDavN536rey-1tiBD"
+URL_Test_EN = "https://drive.google.com/uc?export=download&id=1eNwhPOhb9koID2G_c53O7yu3iQ2pJJZR"
+
+URL = [URL_Topic_EN,URL_Topic_FR,URL_Test_EN,URL_Test_FR]
+folder_loc = ['linkchecker/Topic-EN.json','linkchecker/Topic-FR.json','linkchecker/Test-EN.json','linkchecker/Test-FR.json']
+
+def json_write(url_name, loc): # function to populate the link checker with the latest json files
+    for i in range(0,4):
+        resp = requests.get(url = url_name[i]).json()
+
+        with open(loc[i],"w") as outfile:
+            json.dump(resp, outfile)
+
+json_write(URL,folder_loc)
 
 # Don't change the key of files, the name and path could be changed.
 files = {"en_topic":"linkchecker/Topic-EN.json",
